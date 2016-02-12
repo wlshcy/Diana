@@ -308,14 +308,13 @@
 }
 
 
-- (void)refreshAddress:(NSNotification *)noti
-{
-    UserAddressInfo *info = noti.userInfo[@"data"];
-    
-    self.address = info;
-    [self.listView reloadData];
-    
-}
+//- (void)refreshAddress:(NSNotification *)noti
+//{
+//
+//    self.address = noti.userInfo;
+//    [self.listView reloadData];
+//    
+//}
 
 
 
