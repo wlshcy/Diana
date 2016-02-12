@@ -1,0 +1,34 @@
+//
+//  pch.pch
+//  yzyw
+//
+//  Created by nmg on 16/2/10.
+//  Copyright © 2016年 nmg. All rights reserved.
+//
+
+#ifndef pch_pch
+#define pch_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "AppDelegate.h"
+#import <AFNetworking.h>
+#import <UIKit+AFNetworking.h>
+#import <MBProgressHUD.h>
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
+#import <PureLayout.h>
+
+//local
+#import "HTTPManager.h"
+#import "VGConstant.h"
+#import "EasyWork.h"
+#import "UIScrollView+TPKeyboardAvoidingAdditions.h"
+#import "VGModel.h"
+#import "VGUtils.h"
+#import "DBManager.h"
+//#import "ShareView.h"
+
+
+#endif /* pch_pch */
