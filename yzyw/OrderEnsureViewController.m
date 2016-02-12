@@ -307,17 +307,6 @@
     
 }
 
-
-//- (void)refreshAddress:(NSNotification *)noti
-//{
-//
-//    self.address = noti.userInfo;
-//    [self.listView reloadData];
-//    
-//}
-
-
-
 #pragma mark - Getter
 - (UITableView *)listView
 {
