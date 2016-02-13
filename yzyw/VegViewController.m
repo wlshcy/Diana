@@ -30,6 +30,7 @@
                                 UIScrollViewDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *listData;
+@property (nonatomic, strong) NSMutableArray *slideData;
 @property (nonatomic, strong) CaiHomeData *caiData;
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) VegHeader *header;
@@ -105,6 +106,8 @@
 - (void)getVegSlides
 {
     [HTTPManager getVegSlides:^(NSMutableArray *response) {
+        
+        _slideData = response;
         
         [self.header configVegHeader:response];
         
@@ -200,7 +203,7 @@
 - (void)didSelectItemAtIndex:(NSInteger)index
 {
     VegDetailViewController *controller = [[VegDetailViewController alloc] init];
-    controller.vid = _listData[index][@"id"];
+    controller.vid = _slideData[index][@"id"];
     controller.isNeedBottomBar = YES;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     
