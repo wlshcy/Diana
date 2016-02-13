@@ -181,15 +181,16 @@
 - (void)clickLeftBarButton:(UIBarButtonItem *)sender
 {
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定放弃此次编辑?" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    
-    [alert showAlertWithBlock:^(NSInteger buttonIndex) {
-        
-        if (buttonIndex == 1) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-    }];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定放弃此次编辑?" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//    
+//    [alert showAlertWithBlock:^(NSInteger buttonIndex) {
+//        
+//        if (buttonIndex == 1) {
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
+//        
+//    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
