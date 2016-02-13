@@ -54,7 +54,7 @@
 
 - (void)pullToRefresh
 {
-    [HTTPManager getVegs:nil success:^(NSMutableArray *response) {
+    [HTTPManager getEsps:nil success:^(NSMutableArray *response) {
         
         
                 [self.listView.header endRefreshing];
@@ -66,7 +66,7 @@
                 [_listData addObjectsFromArray:_items];
                 [self.listView reloadData];
         
-                if ([response count] <4){
+                if ([response count] <10){
                     self.listView.footer.hidden = YES;
                 }
             } failure:^(NSError *err) {

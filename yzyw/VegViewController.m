@@ -128,7 +128,7 @@
         [_listData addObjectsFromArray:_items];
         [self.collectionView reloadData];
         
-        if ([response count] <4){
+        if ([response count] <10){
             self.collectionView.footer.hidden = YES;
         }
     } failure:^(NSError *err) {

@@ -211,6 +211,10 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getVegSlides:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure;
 
++ (void) getEsps:(NSString *)lastid
+         success:(void (^)(id response))success
+         failure:(void (^)(NSError *err))failure;
+
 + (void)showFrt:(NSString *)cid
         success:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure;

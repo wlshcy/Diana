@@ -9,7 +9,7 @@
 #import "HTTPManager.h"
 
 //static NSString *const BASE_URL = @"https://api.shequcun.com";
-static NSString *const BASE_URL = @"http://192.168.1.102:8282";
+static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
 
 @implementation HTTPManager
 
@@ -554,9 +554,9 @@ static NSString *const BASE_URL = @"http://192.168.1.102:8282";
          failure:(void (^)(NSError *err))failure
 {
     if (lastid != nil) {
-        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/vegetables" parameter:@{@"lastid":lastid,@"length":@"4"} success:success failure:failure];
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/vegetables" parameter:@{@"lastid":lastid,@"length":@"10"} success:success failure:failure];
     }else{
-        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/vegetables" parameter:@{@"length":@"4"} success:success failure:failure];
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/vegetables" parameter:@{@"length":@"10"} success:success failure:failure];
     }
     
 }
@@ -565,6 +565,18 @@ static NSString *const BASE_URL = @"http://192.168.1.102:8282";
          failure:(void (^)(NSError *err))failure
 {
     [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/vegetables/slides" parameter:nil success:success failure:failure];
+}
+
++ (void) getEsps:(NSString *)lastid
+         success:(void (^)(id response))success
+         failure:(void (^)(NSError *err))failure
+{
+    if (lastid != nil) {
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/specialties" parameter:@{@"lastid":lastid,@"length":@"10"} success:success failure:failure];
+    }else{
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/specialties" parameter:@{@"length":@"10"} success:success failure:failure];
+    }
+    
 }
 
 + (void)showFrt:(NSString *)vid
