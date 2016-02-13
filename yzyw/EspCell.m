@@ -56,10 +56,10 @@
     [super layoutSubviews];
     
     
-    self.photo.frame = CGRectMake(0, 0, SCREEN_WIDTH * 0.4, 120);
+    self.photo.frame = CGRectMake(10, 10, SCREEN_WIDTH * 0.4 - 10, 100);
     self.name.frame = CGRectMake(self.photo.right+20, self.photo.top+15, 150, 20);
     self.size.frame = CGRectMake(self.photo.right+20, self.name.bottom+15, 150, 20);
-    self.price.frame = CGRectMake(self.photo.right+20, self.size.bottom+15, 50, 20);
+    self.price.frame = CGRectMake(self.photo.right+20, self.size.bottom+15, 80, 20);
     self.mprice.frame = CGRectMake(self.price.right+20, self.size.bottom+15, 50, 20);
     
     [self.name sizeToFit];
