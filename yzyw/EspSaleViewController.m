@@ -7,7 +7,7 @@
 //
 
 #import "EspSaleViewController.h"
-#import "VegDetailViewController.h"
+#import "EspDetailViewController.h"
 #import "EspCell.h"
 #import <MJRefresh.h>
 
@@ -134,7 +134,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VegDetailViewController *controller = [[VegDetailViewController alloc] init];
+    EspDetailViewController *controller = [[EspDetailViewController alloc] init];
     controller.vid = _listData[indexPath.row][@"id"];
     controller.isNeedBottomBar = YES;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
