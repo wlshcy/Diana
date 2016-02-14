@@ -181,13 +181,15 @@
             
             if (indexPath.row == 0) {
                 cell.imageView.image = [UIImage imageNamed:@"wxpay"];
-                cell.detailTextLabel.text = @"微信支付";
+                cell.textLabel.text = @"微信支付";
+//                cell.detailTextLabel.text = @"微信支付";
 
               
   
             }else{
                 cell.imageView.image = [UIImage imageNamed:@"alipay"];
-                cell.detailTextLabel.text = @"支付宝支付";
+                cell.textLabel.text = @"支付宝支付";
+//                cell.detailTextLabel.text = @"支付宝支付";
              }
             
             cell.detailTextLabel.font = FONT(16);
