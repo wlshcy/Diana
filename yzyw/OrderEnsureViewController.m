@@ -373,8 +373,14 @@
 - (void)commitOrder:(UIButton *)sender
 
 {
-   PayController *controller = [[PayController alloc] init];
-   controller.hidesBottomBarWhenPushed = YES;
-   [self.navigationController pushViewController:controller animated:YES];
+    if (self.address) {
+        PayController *controller = [[PayController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else{
+        [self showErrorStatusWithTitle:@"请选择收货地址"];
+    }
+   
 }
 @end
