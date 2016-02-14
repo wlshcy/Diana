@@ -55,12 +55,15 @@
     
     self.photo.frame = CGRectMake(20, 10, 100, 90);
     self.nameLabel.frame = CGRectMake(self.photo.right+20, self.photo.top+5, 150, 20);
-    self.priceLabel.frame = CGRectMake(self.photo.right+20, self.nameLabel.bottom+35, 150, 20);
-    
-    self.addBtn.frame = CGRectMake(self.width-50, self.nameLabel.bottom+25, 35, 35);
-    self.countLabel.frame = CGRectMake(self.addBtn.left-35, self.addBtn.top, 35, 35);
-    self.subBtn.frame = CGRectMake(self.countLabel.left-35, self.nameLabel.bottom+25, 35, 35);
-
+//    self.priceLabel.frame = CGRectMake(self.photo.right+20, self.nameLabel.bottom+35, 150, 20);
+//    
+//    self.addBtn.frame = CGRectMake(self.width-50, self.nameLabel.bottom+25, 35, 35);
+//    self.countLabel.frame = CGRectMake(self.addBtn.left-35, self.addBtn.top, 35, 35);
+//    self.subBtn.frame = CGRectMake(self.countLabel.left-35, self.nameLabel.bottom+25, 35, 35);
+    self.priceLabel.frame = CGRectMake(self.photo.right+20, self.nameLabel.bottom+10, 150, 20);
+    self.subBtn.frame = CGRectMake(self.photo.right+20, self.priceLabel.bottom+5, 35, 35);
+    self.countLabel.frame = CGRectMake(self.subBtn.right, self.priceLabel.bottom+5, 30, 35);
+    self.addBtn.frame = CGRectMake(self.countLabel.right, self.priceLabel.bottom+5, 35, 35);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
