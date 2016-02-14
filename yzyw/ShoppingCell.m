@@ -79,9 +79,9 @@
 {
     if (!_photo) {
         _photo = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _photo.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImage:)];
-        [_photo addGestureRecognizer:tap];
+//        _photo.userInteractionEnabled = YES;
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImage:)];
+//        [_photo addGestureRecognizer:tap];
 
     }
     return _photo;
@@ -144,26 +144,26 @@
 }
 
 
-- (void)showImage:(UITapGestureRecognizer *)tap
-{
-    
-    
-    NSArray *images = [(TCData *)_shopdata[@"data"] imgs];
-    
-    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:10];
-    for (int i = 0; i < images.count; i++) {
-        MJPhoto *photo = [[MJPhoto alloc] init];
-        photo.url = [NSURL URLWithString:images[i]]; // 图片路径
-        photo.srcImageView = _photo;
-        [photos addObject:photo];
-    }
-    
-    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
-//    browser.currentPhotoIndex = tap.view.tag; // 弹出相册时显示的第一张图片是？
-    browser.photos = photos; // 设置所有的图片
-    [browser show];
-    
-}
+//- (void)showImage:(UITapGestureRecognizer *)tap
+//{
+//    
+//    
+//    NSArray *images = [(TCData *)_shopdata[@"data"] imgs];
+//    
+//    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:10];
+//    for (int i = 0; i < images.count; i++) {
+//        MJPhoto *photo = [[MJPhoto alloc] init];
+//        photo.url = [NSURL URLWithString:images[i]]; // 图片路径
+//        photo.srcImageView = _photo;
+//        [photos addObject:photo];
+//    }
+//    
+//    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+////    browser.currentPhotoIndex = tap.view.tag; // 弹出相册时显示的第一张图片是？
+//    browser.photos = photos; // 设置所有的图片
+//    [browser show];
+//    
+//}
 
 
 @end

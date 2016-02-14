@@ -269,8 +269,8 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    
 //    if (indexPath.section == 0) {
@@ -287,7 +287,7 @@
 //        controller.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:controller animated:YES];
 //    }
-}
+//}
 
 
 - (void)sendMessage:(NSString *)message
