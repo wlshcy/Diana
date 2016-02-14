@@ -199,7 +199,7 @@
 {
     if (_flag == 1) {
      
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"CHOOSEADDRESS" object:nil userInfo:_listData[indexPath.row]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CHOOSEADDRESS" object:nil userInfo:_listData[indexPath.section]];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
