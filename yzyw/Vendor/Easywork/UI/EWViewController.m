@@ -90,7 +90,7 @@
     _HUD.removeFromSuperViewOnHide = YES;
     _HUD.labelText = title;
     [_HUD show:YES];
-    [_HUD hide:YES afterDelay:2.0];
+    [_HUD hide:YES afterDelay:1.0];
 
 }
 
