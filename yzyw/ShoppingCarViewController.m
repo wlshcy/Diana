@@ -413,16 +413,19 @@
 
 - (void)checkout:(UIButton *)sender
 {
-    OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
-    controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] +FREIGHT;
-    if ([self allPrice] >= PRICE_LIMIT) {
-        controller.freight = 0;
+    if ([VGUtils userHasLogin]) {
+        OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
+        controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] +FREIGHT;
+        if ([self allPrice] >= PRICE_LIMIT) {
+            controller.freight = 0;
+        }else{
+            controller.freight = FREIGHT;
+        }
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
     }else{
-        controller.freight = FREIGHT;
+        [self showErrorStatusWithTitle:@"登录后才能结算"];
     }
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
-    
     
 }
 
