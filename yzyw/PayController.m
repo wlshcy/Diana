@@ -887,10 +887,18 @@ if (!_cancelBtn) {
 
 - (void)cancelPay:(UIButton *)sender
 {
-//    [self.tabBarController 
-//    VegViewController *controller =  [[VegViewController alloc] init];
-//    controller.hidesBottomBarWhenPushed = NO;
-//    [self.navigationController pushViewController:controller animated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.tabBarController setSelectedIndex:0];
+//    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+//    [[AppDelegate tabbarController].navigationController popToViewControllerAnimated:YES];
+//    UINavigationController * home =[self.tabBarController.viewControllers objectAtIndex:0];
+//    DBLog(@"%@", home);
+//    UIViewController *rvc = [home.viewControllers firstObject];
+//    DBLog(@"%@", rvc);
+////    [self.navigationController popToViewController:rvc animated:YES];
+//    [home popToViewController:rvc animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JUMP" object:nil];
 }
 
 @end

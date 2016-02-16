@@ -54,8 +54,13 @@
     //db
     [[DBManager instance] createDB];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jump:) name:@"JUMP" object:nil];
     
     return YES;
+}
+
+- (void)jump:(NSNotification *)noti {
+    [self.tabbarController setSelectedIndex:0];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
