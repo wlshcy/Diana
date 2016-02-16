@@ -571,7 +571,8 @@
         _headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 540/2.0)];
         [_headerView sd_setImageWithURL:[NSURL URLWithString:_item[@"photo"]] placeholderImage:[UIImage imageNamed:@"goods_detail"]];
         _headerView.clipsToBounds = YES;
-        _headerView.contentMode = UIViewContentModeScaleAspectFit;
+//        _headerView.contentMode = UIViewContentModeScaleAspectFit;
+        _headerView.contentMode = UIViewContentModeScaleAspectFill;
     }
     
     return _headerView;
