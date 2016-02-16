@@ -172,8 +172,8 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
             }
             
-            [tableView setSeparatorColor:[UIColor colorWithRed:242.0/255.0f green:242.0/255.0f blue:242.0/255.0f alpha:1.0]];
-
+//            [tableView setSeparatorColor:[UIColor colorWithRed:242.0/255.0f green:242.0/255.0f blue:242.0/255.0f alpha:1.0]];
+            
             // Configure the cell...
             
             cell.imageView.image = nil;
@@ -184,7 +184,6 @@
                 cell.textLabel.text = @"微信支付";
                 cell.textLabel.textColor = GRAY_COLOR;
 //                cell.detailTextLabel.text = @"微信支付";
-
               
   
             }else{
