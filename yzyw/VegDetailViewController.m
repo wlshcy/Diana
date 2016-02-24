@@ -416,8 +416,8 @@
     if (!_backBtn) {
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn.frame = CGRectMake(10, 20, 36,36);
-        _backBtn.layer.cornerRadius = 18;
-        _backBtn.backgroundColor = RGB_COLOR(0,0,0);
+//        _backBtn.layer.cornerRadius = 18;
+//        _backBtn.backgroundColor = RGB_COLOR(0,0,0);
         [_backBtn setImage:[UIImage imageNamed:@"detail_close"] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(closePage:) forControlEvents:UIControlEventTouchUpInside];
     }
