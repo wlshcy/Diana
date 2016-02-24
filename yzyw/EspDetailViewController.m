@@ -256,7 +256,6 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    DBLog(@"--------y===%@",@(scrollView.contentOffset.y));
     
     if (scrollView.contentOffset.y < -80) {
         
@@ -273,7 +272,6 @@
     [self showLoading];
     
     [HTTPManager showEsp:self.vid success:^(NSDictionary *response) {
-        DBLog(@"%@",response);
         
         [self hideLoading];
         
@@ -299,7 +297,6 @@
 #pragma mark - UserAction
 - (void)closePage:(UIButton *)sender
 {
-    DBLog(@"-----count====%@",@(self.navigationController.viewControllers.count));
     
     if (self.navigationController.viewControllers.count > 1) {
         [self.navigationController popViewControllerAnimated:YES];
