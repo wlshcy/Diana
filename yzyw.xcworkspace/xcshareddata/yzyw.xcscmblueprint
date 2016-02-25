@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E6DA365BDD464536F5D5264C055993F12C468F93",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E6DA365BDD464536F5D5264C055993F12C468F93" : 0,
+    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D52E6C1F-A2C1-48D9-BD3F-39763934FD4B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E6DA365BDD464536F5D5264C055993F12C468F93" : "yzyw\/",
+    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : "yzyw\/yzyw\/Vendor\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "yzyw",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "yzyw.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/124.207.144.98:8989\/svn\/yjlc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nmg1986\/yzyw-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E6DA365BDD464536F5D5264C055993F12C468F93"
+    }
+  ]
+}
