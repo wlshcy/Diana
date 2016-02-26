@@ -7,17 +7,24 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "E6DA365BDD464536F5D5264C055993F12C468F93" : 0,
-    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : 0
+    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : 0,
+    "597B478819FC3672065A2D7E5CE52F348A78C188" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D52E6C1F-A2C1-48D9-BD3F-39763934FD4B",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "E6DA365BDD464536F5D5264C055993F12C468F93" : "yzyw\/",
-    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : "yzyw\/yzyw\/Vendor\/"
+    "6b1f14a6-a07b-1642-a1f0-043b9d6b1365++1285" : "yzyw\/yzyw\/Vendor\/",
+    "597B478819FC3672065A2D7E5CE52F348A78C188" : "PycharmProjects\/hubby\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "yzyw",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "yzyw.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/ftw\/hubby.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "597B478819FC3672065A2D7E5CE52F348A78C188"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/124.207.144.98:8989\/svn\/yjlc",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
