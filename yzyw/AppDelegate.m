@@ -19,6 +19,7 @@
 #import "EspSaleViewController.h"
 #import "ShoppingCarViewController.h"
 #import "VegViewController.h"
+#import "ComboListViewController.h"
 #import "LoginViewController.h"
 
 @interface AppDelegate ()<WXApiDelegate>
@@ -139,19 +140,20 @@
     
     UINavigationController *home = [[UINavigationController alloc] initWithRootViewController:VegViewController.new];
     
-    UINavigationController *esp = [[UINavigationController alloc] initWithRootViewController:EspSaleViewController.new];
+//    UINavigationController *esp = [[UINavigationController alloc] initWithRootViewController:EspSaleViewController.new];
+    UINavigationController *combo = [[UINavigationController alloc] initWithRootViewController:ComboListViewController.new];
     
     UINavigationController *car = [[UINavigationController alloc]initWithRootViewController:ShoppingCarViewController.new];
     
     UINavigationController *user = [[UINavigationController alloc]initWithRootViewController:UserViewController.new];
     
 
-    NSArray *titles = @[@"主页", @"特卖", @"购物车", @"我的"];
+    NSArray *titles = @[@"单品", @"套餐", @"购物车", @"我的"];
     NSArray *images = @[@"home_unselected", @"esp_unselected", @"cart_unselected", @"mine_unselected"];
     NSArray *selectimages = @[@"home_selected",@"esp_selected", @"cart_selected",@"mine_selected"];
     
     _tabbarController = [[UITabBarController alloc] init];
-    _tabbarController.viewControllers = @[home,esp,car,user];
+    _tabbarController.viewControllers = @[home,combo,car,user];
     [_tabbarController ew_configTabBarItemWithTitles:titles font:FONT(12) titleColor:RGB_COLOR(164, 162, 154) selectedTitleColor:RGB_COLOR(17,194, 88) images:images selectedImages:selectimages barBackgroundImage:nil];
     
     self.window.rootViewController = _tabbarController;

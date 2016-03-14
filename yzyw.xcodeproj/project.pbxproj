@@ -19,6 +19,7 @@
 		EF19EAF31C801888005BCC13 /* default_addr@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF19EAEF1C801888005BCC13 /* default_addr@3x.png */; };
 		EF19EAF41C801888005BCC13 /* set_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF19EAF01C801888005BCC13 /* set_default@2x.png */; };
 		EF19EAF51C801888005BCC13 /* set_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF19EAF11C801888005BCC13 /* set_default@3x.png */; };
+		EF1BA14D1C96FCAD00490233 /* ComboListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1BA14C1C96FCAD00490233 /* ComboListViewController.m */; };
 		EF597CF11C6E172C00CCBDBD /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EF597CF01C6E172C00CCBDBD /* libstdc++.tbd */; };
 		EF597CF31C6E176D00CCBDBD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF597CF21C6E176D00CCBDBD /* Security.framework */; };
 		EF597CF51C6E18EB00CCBDBD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EF597CF41C6E18EB00CCBDBD /* libz.tbd */; };
@@ -326,6 +327,9 @@
 		EF19EAEF1C801888005BCC13 /* default_addr@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_addr@3x.png"; sourceTree = "<group>"; };
 		EF19EAF01C801888005BCC13 /* set_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_default@2x.png"; sourceTree = "<group>"; };
 		EF19EAF11C801888005BCC13 /* set_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_default@3x.png"; sourceTree = "<group>"; };
+		EF1BA14C1C96FCAD00490233 /* ComboListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboListViewController.m; sourceTree = "<group>"; };
+		EF1BA14E1C96FCC400490233 /* ComboListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboListViewController.h; sourceTree = "<group>"; };
+		EF1BA14F1C97011100490233 /* ComboListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboListCell.h; sourceTree = "<group>"; };
 		EF597CF01C6E172C00CCBDBD /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		EF597CF21C6E176D00CCBDBD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EF597CF41C6E18EB00CCBDBD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -776,6 +780,8 @@
 				EF597CFB1C6E1CD300CCBDBD /* Images */,
 				EF597CF91C6E1C0900CCBDBD /* Images.xcassets */,
 				EFE10ABB1C6E0FD6004A869F /* AddAddressCell.h */,
+				EF1BA14C1C96FCAD00490233 /* ComboListViewController.m */,
+				EF1BA14E1C96FCC400490233 /* ComboListViewController.h */,
 				EFE10ABC1C6E0FD6004A869F /* AddAddressCell.m */,
 				EFE10ABD1C6E0FD6004A869F /* AddAddressViewController.h */,
 				EFE10ABE1C6E0FD6004A869F /* AddAddressViewController.m */,
@@ -788,6 +794,7 @@
 				EFE10AB01C6E0E70004A869F /* EnsureCell.m */,
 				EFE10AAC1C6E0E34004A869F /* AddressCell.h */,
 				EFE10AAD1C6E0E34004A869F /* AddressCell.m */,
+				EF1BA14F1C97011100490233 /* ComboListCell.h */,
 				EFE10AA01C6E0D5A004A869F /* PacketCell.h */,
 				EFE10AA11C6E0D5A004A869F /* PacketCell.m */,
 				EFE10AA21C6E0D5A004A869F /* PayController.h */,
@@ -1736,6 +1743,7 @@
 				EFE10A5E1C6E06C1004A869F /* TPKeyboardAvoidingScrollView.m in Sources */,
 				EFE10AC01C6E0FD6004A869F /* AddAddressViewController.m in Sources */,
 				EFE109B61C6E010D004A869F /* EspCell.m in Sources */,
+				EF1BA14D1C96FCAD00490233 /* ComboListViewController.m in Sources */,
 				EFE10A5A1C6E06C1004A869F /* EWLocationManager.m in Sources */,
 				EFE109961C6DF56B004A869F /* DBManager.m in Sources */,
 				EFE10AA81C6E0D5A004A869F /* PacketCell.m in Sources */,
