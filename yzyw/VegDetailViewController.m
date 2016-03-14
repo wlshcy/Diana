@@ -254,17 +254,17 @@
 //    }
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    DBLog(@"--------y===%@",@(scrollView.contentOffset.y));
-    
-    if (scrollView.contentOffset.y < -80) {
-        
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-
-        
-    }
-}
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    DBLog(@"--------y===%@",@(scrollView.contentOffset.y));
+//    
+//    if (scrollView.contentOffset.y < -80) {
+//        
+//        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//
+//        
+//    }
+//}
 
 
 #pragma mark - Fetch data
@@ -703,6 +703,26 @@
     }
     return _cImageView;
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGFloat yOffset  = scrollView.contentOffset.y;
+    
+    if(yOffset < 0) {
+//        CGRect f =self.headerView.frame;
+//        f.origin.y= yOffset ;
+//        f.size.height=  -yOffset;
+//        f.origin.x= xOffset;
+//        //int abs(int i); // 处理int类型的取绝对值
+//        //double fabs(double i); //处理double类型的取绝对值
+//        //float fabsf(float i); //处理float类型的取绝对值
+//        f.size.width=SCREEN_WIDTH + fabs(xOffset)*2;
+//        
+        self.headerView.frame= CGRectMake(0,0,SCREEN_WIDTH,270);
+        DBLog(@"xxxx");
+    }
+}
+
 
 
 @end
