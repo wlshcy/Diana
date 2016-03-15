@@ -9,5 +9,12 @@
 #ifndef ComboListCell_h
 #define ComboListCell_h
 
+#import <UIKit/UIKit.h>
+
+@interface ComboListCell : UITableViewCell
+
+- (void)configProductCell;
+
+@end
 
 #endif /* ComboListCell_h */
