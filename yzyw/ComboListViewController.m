@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "ComboListViewController.h"
 #import "ComboListCell.h"
+#import <MJRefresh.h>
 
 #define CELL_HEIGHT  120
 
 @interface  ComboListViewController()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *listView;
-@property (nonatomic, strong) NSMutableArray *listData;
+@property (nonatomic, strong) NSMutableArray *combos;
 @end
 
 @implementation ComboListViewController
@@ -152,6 +153,32 @@
 //    }
 }
 
+- (void)pullToRefresh
+{
+    [HTTPManager getEsps:nil success:^(NSMutableArray *response) {
+        
+        
+        [self.listView.header endRefreshing];
+        self.listView.footer.hidden = NO;
+        
+        [_combos removeAllObjects];
+        [_combos addObjectsFromArray:response];
+        [self.listView reloadData];
+        
+        if ([response count] <10){
+            self.listView.footer.hidden = YES;
+        }
+    } failure:^(NSError *err) {
+        [self.listView.header endRefreshing];
+    }];
+}
+
+- (void)upToRefresh
+{
+    [self.listView.header endRefreshing];
+}
+
+
 - (UITableView *)listView
 {
     if (!_listView) {
@@ -163,7 +190,14 @@
         _listView.showsHorizontalScrollIndicator = NO;
         _listView.showsVerticalScrollIndicator = NO;
         _listView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
+        
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(pullToRefresh)];
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _listView.header = header;
+        
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(upToRefresh)];
+        _listView.footer = footer;
+        _listView.footer.hidden = YES;    }
     return _listView;
 }
 
