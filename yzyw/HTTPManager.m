@@ -579,6 +579,18 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
     
 }
 
++ (void) getCombos:(NSString *)lastid
+         success:(void (^)(id response))success
+         failure:(void (^)(NSError *err))failure
+{
+    if (lastid != nil) {
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/combos" parameter:@{@"lastid":lastid,@"length":@"10"} success:success failure:failure];
+    }else{
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/combos" parameter:@{@"length":@"10"} success:success failure:failure];
+    }
+    
+}
+
 + (void)showEsp:(NSString *)vid
         success:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure

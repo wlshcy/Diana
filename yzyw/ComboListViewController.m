@@ -155,7 +155,7 @@
 
 - (void)pullToRefresh
 {
-    [HTTPManager getEsps:nil success:^(NSMutableArray *response) {
+    [HTTPManager getCombos:nil success:^(NSMutableArray *response) {
         
         
         [self.listView.header endRefreshing];
