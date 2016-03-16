@@ -43,12 +43,12 @@
 
 - (void)configComboListCell:data
 {
-    DBLog(@"%@", data[@"name"]);
+    DBLog(@"%@", data[@"price"]);
     self.nameLabel.text = data[@"name"];
     self.freqLabel.text = [NSString stringWithFormat:@"一周配送%@次", data[@"freq"]];
     self.weightLabel.text = [NSString stringWithFormat:@"%@斤/次", data[@"weight"]];
     self.numberLabel.text = [NSString stringWithFormat:@"%@人份",data[@"num"]];
-    self.priceLabel.text = [NSString stringWithFormat:@"¥%@",data[@"price"]];
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f",[data[@"price"] floatValue]];
 }
 
 
@@ -62,8 +62,8 @@
     self.freqLabel.frame = CGRectMake(0,self.nameLabel.bottom+10, self.backView.width, 15);
     self.weightLabel.frame = CGRectMake(0,self.freqLabel.bottom+10, self.backView.width, 15);
     self.numberLabel.frame = CGRectMake(0, self.weightLabel.bottom+10, self.backView.width, 15);
-    self.lineView.frame = CGRectMake(10, self.numberLabel.bottom+10, self.backView.width, 1);
-    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom+10, self.backView.width, 15);
+    self.lineView.frame = CGRectMake(10, self.numberLabel.bottom+20, self.backView.width, 1);
+    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom, self.backView.width, 15);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -97,7 +97,7 @@
 {
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _nameLabel.font = FONT(15);
+        _nameLabel.font = FONT(16);
         _nameLabel.backgroundColor = CLEAR_COLOR;
         _nameLabel.textColor = BLACK_COLOR;
         _nameLabel.textAlignment = NSTextAlignmentCenter;
