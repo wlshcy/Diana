@@ -13,7 +13,7 @@
 
 @interface ComboListCell : UITableViewCell
 
-- (void)configProductCell;
+- (void)configComboListCell:data;
 
 @end
 
