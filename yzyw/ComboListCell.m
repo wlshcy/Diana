@@ -15,19 +15,13 @@
 
 @interface ComboListCell ()
 @property (nonatomic, strong) UIView *backView;
-@property (nonatomic, strong) UIView *lineView1;
-@property (nonatomic, strong) UIView *lineView2;
-//@property (nonatomic, strong) UIImageView *photo;
-
-//@property (nonatomic, strong) UIImageView *typeView;
+@property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
 @property (nonatomic ,strong) UILabel *freqLabel;
 @property (nonatomic ,strong) UILabel *weightLabel;
 @property (nonatomic, strong) UILabel *numberLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
-//@property (nonatomic, strong) UILabel *oriPriceLabel;
-
 @end
 
 @implementation ComboListCell
@@ -37,17 +31,12 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.backgroundColor = CLEAR_COLOR;
         [self addSubview:self.backView];
-//        [self addSubview:self.lineView1];
-        [self addSubview:self.lineView2];
-//        [self.backView addSubview:self.photo];
-//        [self.backView addSubview:self.typeView];
+        [self addSubview:self.lineView];
         [self.backView addSubview:self.nameLabel];
         [self.backView addSubview:self.freqLabel];
         [self.backView addSubview:self.weightLabel];
         [self.backView addSubview:self.numberLabel];
         [self.backView addSubview:self.priceLabel];
-        //        [self.backView addSubview:self.oriPriceLabel];
-        
     }
     return self;
 }
@@ -60,31 +49,6 @@
     self.weightLabel.text = [NSString stringWithFormat:@"%@斤/次", data[@"weight"]];
     self.numberLabel.text = [NSString stringWithFormat:@"%@人份",data[@"num"]];
     self.priceLabel.text = [NSString stringWithFormat:@"¥%@",data[@"price"]];
-    
-    
-//
-//    self.desLabel.text = [data weekTimesAndWeight];
-//    self.numberLabel.text = [data monthAndWeight];
-//    [self.photo sd_setImageWithURL:[NSURL URLWithString:[data photo]]placeholderImage:[UIImage imageNamed:@"taocan"]];
-//    self.nameLabel.text = [data name];
-//    
-//    self.typeView.image = [UIImage imageNamed:@"shu"];
-//    
-//    //self.priceLabel.text =  [data totalPrice];
-//    
-//    
-//    NSString *priceText = [NSString stringWithFormat:@"%@  %@",[data totalPrice],[data oriPrice]];
-//    
-//    
-//    
-//    NSMutableAttributedString *content = [[NSMutableAttributedString alloc]initWithString:priceText];
-//    
-//    NSRange range = [priceText rangeOfString:[data oriPrice]];
-//    
-//    
-//    [content addAttributes:@{NSStrikethroughStyleAttributeName:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle),NSStrikethroughColorAttributeName:RGB_COLOR(140, 140, 140),NSForegroundColorAttributeName:RGB_COLOR(140, 140, 140),NSFontAttributeName:FONT(14)} range:range];
-//    
-//    self.priceLabel.attributedText = content;
 }
 
 
@@ -92,25 +56,14 @@
 {
     [super layoutSubviews];
     
-    self.backView.frame = CGRectMake(10, 5, SCREEN_WIDTH-20, 160);
+    self.backView.frame = CGRectMake(10, 5, SCREEN_WIDTH-20, 150);
     self.nameLabel.frame = CGRectMake(0,20,self.backView.width, 15);
-//    self.lineView1.frame = CGRectMake(10, self.nameLabel.bottom+10, self.backView.width, 1);
 
     self.freqLabel.frame = CGRectMake(0,self.nameLabel.bottom+10, self.backView.width, 15);
     self.weightLabel.frame = CGRectMake(0,self.freqLabel.bottom+10, self.backView.width, 15);
     self.numberLabel.frame = CGRectMake(0, self.weightLabel.bottom+10, self.backView.width, 15);
-    self.lineView2.frame = CGRectMake(10, self.numberLabel.bottom+10, self.backView.width, 1);
-    self.priceLabel.frame = CGRectMake(0,self.lineView2.bottom+10, self.backView.width, 15);
-//    self.photo.frame = CGRectMake(self.backView.width-PHOTO_WIDTH-7, 7, PHOTO_WIDTH, PHOTO_HEIGHT);
-//    
-//    self.typeView.frame = CGRectMake(20, 20, 4, 15);
-//    self.nameLabel.frame = CGRectMake(self.typeView.right+10, 20, 150, 15);
-//    self.desLabel.frame = CGRectMake(20, self.nameLabel.bottom+15, 160, 12);
-//    
-//    
-//    self.numberLabel.frame = CGRectMake(20, self.desLabel.bottom+10, 150, 12);
-//    self.priceLabel.frame = CGRectMake(20, self.numberLabel.bottom+10, 200, 14);
-    
+    self.lineView.frame = CGRectMake(10, self.numberLabel.bottom+10, self.backView.width, 1);
+    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom+10, self.backView.width, 15);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -131,41 +84,14 @@
     return _backView;
 }
 
-- (UIView *)lineView1
+- (UIView *)lineView
 {
-    if (!_lineView1) {
-        _lineView1 = [[UIView alloc] initWithFrame:CGRectZero];
-        _lineView1.backgroundColor = TABLE_COLOR;
+    if (!_lineView) {
+        _lineView = [[UIView alloc] initWithFrame:CGRectZero];
+        _lineView.backgroundColor = TABLE_COLOR;
     }
-    return _lineView1;
+    return _lineView;
 }
-
-- (UIView *)lineView2
-{
-    if (!_lineView2) {
-        _lineView2 = [[UIView alloc] initWithFrame:CGRectZero];
-        _lineView2.backgroundColor = TABLE_COLOR;
-    }
-    return _lineView2;
-}
-
-//- (UIImageView *)photo
-//{
-//    if (!_photo) {
-//        _photo = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        //        _photo.backgroundColor = GRAY_COLOR;
-//    }
-//    return _photo;
-//}
-
-//- (UIImageView *)typeView
-//{
-//    if (!_typeView) {
-//        _typeView = [[UIImageView alloc] initWithFrame:CGRectZero];
-//    }
-//    return _typeView;
-//}
-
 
 - (UILabel *)nameLabel
 {
@@ -229,18 +155,5 @@
     }
     return _priceLabel;
 }
-
-
-//- (UILabel *)oriPriceLabel
-//{
-//    if (!_oriPriceLabel) {
-//        _oriPriceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//        _oriPriceLabel.font = FONT(14);
-//        _oriPriceLabel.backgroundColor = CLEAR_COLOR;
-//    }
-//    return _oriPriceLabel;
-//}
-
-
 
 @end
