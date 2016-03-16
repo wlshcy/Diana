@@ -62,8 +62,9 @@
     self.freqLabel.frame = CGRectMake(0,self.nameLabel.bottom+10, self.backView.width, 15);
     self.weightLabel.frame = CGRectMake(0,self.freqLabel.bottom+10, self.backView.width, 15);
     self.numberLabel.frame = CGRectMake(0, self.weightLabel.bottom+10, self.backView.width, 15);
-    self.lineView.frame = CGRectMake(10, self.numberLabel.bottom+20, self.backView.width, 1);
-    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom, self.backView.width, 15);
+    self.lineView.frame = CGRectMake(10, self.numberLabel.bottom+15, self.backView.width, 1);
+    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom+2
+                                       , self.backView.width, 15);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
