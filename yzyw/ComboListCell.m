@@ -21,6 +21,7 @@
 @property (nonatomic ,strong) UILabel *freqLabel;
 @property (nonatomic ,strong) UILabel *weightLabel;
 @property (nonatomic, strong) UILabel *numberLabel;
+//@property (nonatomic, strong) UILabel *longLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
 @end
 
@@ -34,6 +35,7 @@
         [self addSubview:self.lineView];
         [self.backView addSubview:self.nameLabel];
         [self.backView addSubview:self.freqLabel];
+//         [self.backView addSubview:self.longLabel];
         [self.backView addSubview:self.weightLabel];
         [self.backView addSubview:self.numberLabel];
         [self.backView addSubview:self.priceLabel];
@@ -46,7 +48,9 @@
     DBLog(@"%@", data[@"price"]);
     self.nameLabel.text = data[@"name"];
     self.freqLabel.text = [NSString stringWithFormat:@"一周配送%@次", data[@"freq"]];
+//    self.longLabel.text = [NSString stringWithFormat:@"配送%@周", data[@"long"]];
     self.weightLabel.text = [NSString stringWithFormat:@"%@斤/次", data[@"weight"]];
+    self.numberLabel.text = [NSString stringWithFormat:@"%@人份",data[@"num"]];
     self.numberLabel.text = [NSString stringWithFormat:@"%@人份",data[@"num"]];
     self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f",[data[@"price"] floatValue]];
 }
@@ -56,15 +60,15 @@
 {
     [super layoutSubviews];
     
-    self.backView.frame = CGRectMake(10, 5, SCREEN_WIDTH-20, 150);
+    self.backView.frame = CGRectMake(10, 5, SCREEN_WIDTH-20, 160);
     self.nameLabel.frame = CGRectMake(0,20,self.backView.width, 15);
 
     self.freqLabel.frame = CGRectMake(0,self.nameLabel.bottom+10, self.backView.width, 15);
+//    self.freqLabel.frame = CGRectMake(0,self.longLabel.bottom+10, self.backView.width, 15);
     self.weightLabel.frame = CGRectMake(0,self.freqLabel.bottom+10, self.backView.width, 15);
     self.numberLabel.frame = CGRectMake(0, self.weightLabel.bottom+10, self.backView.width, 15);
     self.lineView.frame = CGRectMake(10, self.numberLabel.bottom+15, self.backView.width, 1);
-    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom+2
-                                       , self.backView.width, 15);
+    self.priceLabel.frame = CGRectMake(0,self.lineView.bottom+8, self.backView.width, 15);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -143,6 +147,18 @@
     }
     return _numberLabel;
 }
+
+//- (UILabel *)longLabel
+//{
+//    if (!_longLabel) {
+//        _longLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//        _longLabel.font = FONT(14);
+//        _longLabel.backgroundColor = CLEAR_COLOR;
+//        _longLabel.textColor = GRAY_COLOR;
+//        _longLabel.textAlignment = NSTextAlignmentCenter;
+//    }
+//    return _longLabel;
+//}
 
 
 - (UILabel *)priceLabel

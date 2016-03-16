@@ -11,7 +11,7 @@
 #import "ComboListCell.h"
 #import <MJRefresh.h>
 
-#define CELL_HEIGHT  160
+#define CELL_HEIGHT  170
 
 @interface  ComboListViewController()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *listView;
