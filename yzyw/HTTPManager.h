@@ -219,6 +219,10 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
          success:(void (^)(id response))success
          failure:(void (^)(NSError *err))failure;
 
++ (void)showCombo:(NSString *)cid
+          success:(void (^)(id response))success
+          failure:(void (^)(NSError *err))failure;
+
 + (void)showEsp:(NSString *)vid
         success:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure;

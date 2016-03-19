@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ComboListViewController.h"
 #import "ComboListCell.h"
+#import "ComboDetailViewController.h"
 #import <MJRefresh.h>
 
 #define CELL_HEIGHT  170
@@ -87,45 +88,18 @@
             cell.selectionStyle = UITableViewCellSeparatorStyleNone;
         }
         [cell configComboListCell:_combos[indexPath.row]];
-//        [cell configProductCell];
-//        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//        nameLabel.font = FONT(16);
-//        nameLabel.backgroundColor = CLEAR_COLOR;
-//        nameLabel.textColor = BLACK_COLOR;
-//        nameLabel.text = @"幸福家庭月套餐";
-//        nameLabel.textAlignment = NSTextAlignmentCenter;
-//        nameLabel.frame = CGRectMake(0, 20, SCREEN_WIDTH, 15);
-//        [cell addSubview:nameLabel];
-//    
-//        UILabel *sendTime = [[UILabel alloc] initWithFrame:CGRectZero];
-//        sendTime.font = FONT(14);
-//        sendTime.backgroundColor = CLEAR_COLOR;
-//        sendTime.textColor = GRAY_COLOR;
-//        sendTime.text = @"一周配送两次";
-//        sendTime.textAlignment = NSTextAlignmentCenter;
-//        sendTime.frame = CGRectMake(0, nameLabel.bottom+10, SCREEN_WIDTH, 15);
-//        [cell addSubview:sendTime];
-//    
-//        UILabel *people = [[UILabel alloc] initWithFrame:CGRectZero];
-//        people.font = FONT(14);
-//        people.backgroundColor = CLEAR_COLOR;
-//        people.textColor = GRAY_COLOR;
-//        people.text = @"2人～5人";
-//        people.textAlignment = NSTextAlignmentCenter;
-//        people.frame = CGRectMake(0, sendTime.bottom+10, SCREEN_WIDTH, 15);
-//        [cell addSubview:people];
-//    
-//        UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//        priceLabel.font = FONT(15);
-//        priceLabel.backgroundColor = CLEAR_COLOR;
-//        priceLabel.textColor = RGB_COLOR(50,189, 111);
-//        priceLabel.text = @"¥240～¥580";
-//        priceLabel.textAlignment = NSTextAlignmentCenter;
-//        priceLabel.frame = CGRectMake(0, people.bottom+10, SCREEN_WIDTH, 15);
-//        [cell addSubview:priceLabel];
     
         return cell;
-//    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ComboDetailViewController *controller = [[ComboDetailViewController alloc] init];
+    controller.cid = _combos[indexPath.row][@"id"];
+//    controller.isNeedBottomBar = YES;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)pullToRefresh
