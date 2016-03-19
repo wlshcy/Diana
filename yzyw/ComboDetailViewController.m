@@ -116,7 +116,7 @@
     if (section == 0){
         return 1;
     }
-    return 4;
+    return 5;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -238,6 +238,17 @@
             cell.detailTextLabel.textColor = GRAY_COLOR;
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }else if(indexPath.row == 4){
+            cell.textLabel.text = @"蔬菜品种";
+            cell.textLabel.font = FONT(16);
+            cell.textLabel.textColor = GRAY_COLOR;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@种", _item[@"num"]];
+            cell.detailTextLabel.textColor = RGB_COLOR(0, 0, 0);
+            cell.detailTextLabel.font = FONT(16);
+            cell.detailTextLabel.textColor = GRAY_COLOR;
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         }
         return cell;
     }
