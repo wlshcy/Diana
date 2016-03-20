@@ -7,6 +7,7 @@
 //
 
 #import "ComboDetailViewController.h"
+#import "ChooseItemViewController.h"
 
 
 @interface ComboDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -116,7 +117,7 @@
     if (section == 0){
         return 1;
     }
-    return 5;
+    return 7;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -199,10 +200,11 @@
         }
         
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"配送时长";
+            cell.textLabel.text = @"套餐类型";
             cell.textLabel.font = FONT(16);
             cell.textLabel.textColor = GRAY_COLOR;
-            cell.detailTextLabel.text=[NSString stringWithFormat:@"%@周", _item[@"long"]];
+//            cell.detailTextLabel.text=[NSString stringWithFormat:@"%@周", _item[@"long"]];
+            cell.detailTextLabel.text = @"月套餐";
             cell.detailTextLabel.textColor = GRAY_COLOR;
             cell.detailTextLabel.font = FONT(16);
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -219,6 +221,16 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }else if(indexPath.row == 2){
+            cell.textLabel.text = @"配送次数";
+            cell.textLabel.font = FONT(16);
+            cell.textLabel.textColor = GRAY_COLOR;
+            cell.detailTextLabel.text = @"8次";
+            cell.detailTextLabel.textColor = RGB_COLOR(0, 0, 0);
+            cell.detailTextLabel.font = FONT(16);
+            cell.detailTextLabel.textColor = GRAY_COLOR;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }else if(indexPath.row == 3){
             cell.textLabel.text = @"单次配送重量";
             cell.textLabel.font = FONT(16);
             cell.textLabel.textColor = GRAY_COLOR;
@@ -228,7 +240,17 @@
             cell.detailTextLabel.textColor = GRAY_COLOR;
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }else if(indexPath.row == 3){
+        }else if(indexPath.row == 4){
+            cell.textLabel.text = @"总重量";
+            cell.textLabel.font = FONT(16);
+            cell.textLabel.textColor = GRAY_COLOR;
+            cell.detailTextLabel.text = @"32斤";
+            cell.detailTextLabel.textColor = RGB_COLOR(0, 0, 0);
+            cell.detailTextLabel.font = FONT(16);
+            cell.detailTextLabel.textColor = GRAY_COLOR;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }else if(indexPath.row == 5){
             cell.textLabel.text = @"适合人数";
             cell.textLabel.font = FONT(16);
             cell.textLabel.textColor = GRAY_COLOR;
@@ -238,11 +260,11 @@
             cell.detailTextLabel.textColor = GRAY_COLOR;
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }else if(indexPath.row == 4){
+        }else if(indexPath.row == 6){
             cell.textLabel.text = @"蔬菜品种";
             cell.textLabel.font = FONT(16);
             cell.textLabel.textColor = GRAY_COLOR;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@种", _item[@"num"]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f种", [_item[@"num"] floatValue]*2];
             cell.detailTextLabel.textColor = RGB_COLOR(0, 0, 0);
             cell.detailTextLabel.font = FONT(16);
             cell.detailTextLabel.textColor = GRAY_COLOR;
@@ -258,7 +280,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (indexPath.section == 1 && indexPath.row == 4) {
+        ChooseItemViewController *controller = [[ChooseItemViewController alloc] init];
+        
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

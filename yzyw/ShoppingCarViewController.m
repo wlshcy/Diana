@@ -413,20 +413,28 @@
 
 - (void)checkout:(UIButton *)sender
 {
-    if ([VGUtils userHasLogin]) {
-        OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
-        controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] +FREIGHT;
-        if ([self allPrice] >= PRICE_LIMIT) {
-            controller.freight = 0;
-        }else{
-            controller.freight = FREIGHT;
-        }
-        controller.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:controller animated:YES];
+//    if ([VGUtils userHasLogin]) {
+//        OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
+//        controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] +FREIGHT;
+//        if ([self allPrice] >= PRICE_LIMIT) {
+//            controller.freight = 0;
+//        }else{
+//            controller.freight = FREIGHT;
+//        }
+//        controller.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:controller animated:YES];
+//    }else{
+//        [self showErrorStatusWithTitle:@"登录后才能结算"];
+//    }
+    OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
+    controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] +FREIGHT;
+    if ([self allPrice] >= PRICE_LIMIT) {
+        controller.freight = 0;
     }else{
-        [self showErrorStatusWithTitle:@"登录后才能结算"];
+        controller.freight = FREIGHT;
     }
-    
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)login:(UIButton *)sender
