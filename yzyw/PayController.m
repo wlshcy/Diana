@@ -110,7 +110,7 @@
     
     // Return the number of rows in the section.
     if (section == 0) {
-        return 1;
+        return 2;
     }else if (section == 1){
         return 2;
     }else{
@@ -122,7 +122,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 100;
+        return 50;
     }
     return 60;
         
@@ -151,18 +151,52 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section==0){
-        static NSString *cellIndentifier = @"PRICECELL";
-        PriceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-        if (!cell) {
-            cell = [[PriceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (indexPath.row == 0) {
+            static NSString *cellIndentifier = @"ORDERNUMCELL";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            cell.textLabel.text = @"订单号";
+            cell.textLabel.font = FONT(16);
+            cell.detailTextLabel.text = @"201603211234567890";
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+            return cell;
         }
-        cell.textLabel.text = @"订单已提交 请完成付款";
-        cell.textLabel.font = FONT(16);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%0.2f",self.totalPrice];
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        else{
+            static NSString *cellIndentifier = @"PAYPRICECELL";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            cell.textLabel.text = @"支付金额";
+            cell.textLabel.font = FONT(16);
+            
+            cell.detailTextLabel.text = @"¥28.5";
+            cell.detailTextLabel.textColor = RGB_COLOR(243, 96, 67);
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+            return cell;
+        }
         
-        return cell;
+        
+//        static NSString *cellIndentifier = @"PRICECELL";
+//        PriceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+//        if (!cell) {
+//            cell = [[PriceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        }
+//        cell.textLabel.text = @"订单已提交 请完成付款";
+//        cell.textLabel.font = FONT(16);
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%0.2f",self.totalPrice];
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//        
+//        return cell;
         
         }else if (indexPath.section == 1){
         
