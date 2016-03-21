@@ -150,6 +150,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView setSeparatorColor:[UIColor colorWithRed:242.0/255.0f green:242.0/255.0f blue:242.0/255.0f alpha:1.0]];
+    
     if (indexPath.section==0){
         if (indexPath.row == 0) {
             static NSString *cellIndentifier = @"ORDERNUMCELL";
@@ -306,62 +308,62 @@
 {
     //订单不能重复提交如何判断
     
-    if (_isFromOrder) {
-        
-        if (self.order) {
-            
-            //已经有订单信息了
-            
-            if (self.oldcouponid == self.coupondata.cid) {
-                //直接调用alipay
-                [self Alipay];
-            }else{
-                
-                [self reFetchOrderWithType:@"2"];
-            }
-            
-        }else{
-            
-            [self reFetchOrderWithType:@"2"];
-        }
-        
-    }else{
-        
-        if (self.order) {
-            
-            //已经有订单信息了
-            
-            if (self.oldcouponid == self.coupondata.cid) {
-                //直接调用alipay
-                [self Alipay];
-            }else{
-                
-                //modify by jin 2015-10-16
-                [self reFetchOrderWithType:@"2"];
-            }
-            
-        }else{
-            
-            if (self.orderNo) {
-                //有订单号了，直接来了
-                [self reFetchOrderWithType:@"2"];
-                
-            }else{
-                if (self.payType == 1) {
-                    [self createTcOrderWithPaytype:@"2"];
-                    
-                }else if(self.payType == 3){
-                    DBLog(@"这里是秒杀啊~~");
-                    [self createMsOrderWithPaytype:@"2"];
-                    
-                    
-                }else{
-                    [self createOrderWithType:@"2"];
-                }
-            }
-        }
-    }
-
+//    if (_isFromOrder) {
+//        
+//        if (self.order) {
+//            
+//            //已经有订单信息了
+//            
+//            if (self.oldcouponid == self.coupondata.cid) {
+//                //直接调用alipay
+//                [self Alipay];
+//            }else{
+//                
+//                [self reFetchOrderWithType:@"2"];
+//            }
+//            
+//        }else{
+//            
+//            [self reFetchOrderWithType:@"2"];
+//        }
+//        
+//    }else{
+//        
+//        if (self.order) {
+//            
+//            //已经有订单信息了
+//            
+//            if (self.oldcouponid == self.coupondata.cid) {
+//                //直接调用alipay
+//                [self Alipay];
+//            }else{
+//                
+//                //modify by jin 2015-10-16
+//                [self reFetchOrderWithType:@"2"];
+//            }
+//            
+//        }else{
+//            
+//            if (self.orderNo) {
+//                //有订单号了，直接来了
+//                [self reFetchOrderWithType:@"2"];
+//                
+//            }else{
+//                if (self.payType == 1) {
+//                    [self createTcOrderWithPaytype:@"2"];
+//                    
+//                }else if(self.payType == 3){
+//                    DBLog(@"这里是秒杀啊~~");
+//                    [self createMsOrderWithPaytype:@"2"];
+//                    
+//                    
+//                }else{
+//                    [self createOrderWithType:@"2"];
+//                }
+//            }
+//        }
+//    }
+    [self Alipay];
 }
 
 
