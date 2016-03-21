@@ -220,12 +220,17 @@
 //                cell.detailTextLabel.text = @"微信支付";
               
   
-            }else{
+            }else if(indexPath.row == 1){
                 cell.imageView.image = [UIImage imageNamed:@"alipay"];
                 cell.textLabel.text = @"支付宝支付";
                 cell.textLabel.textColor = GRAY_COLOR;
 //                cell.detailTextLabel.text = @"支付宝支付";
-             }
+            }else{
+                cell.imageView.image = [UIImage imageNamed:@"wxpay"];
+                cell.textLabel.text = @"余额支付";
+                cell.textLabel.textColor = GRAY_COLOR;
+//                cell.detailTextLabel.text = @"暂未开通";
+            }
             
             cell.detailTextLabel.font = FONT(16);
             cell.detailTextLabel.textColor = BLACK_COLOR;
