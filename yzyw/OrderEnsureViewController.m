@@ -218,7 +218,6 @@
         cell = [[AddressCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.textLabel.text = nil;
         cell.detailTextLabel.text = nil;
-        
         if (_address) {
             UILabel *info = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH, 20)];
             info.text = [NSString stringWithFormat:@"%@  %@",_address[@"name"],_address[@"mobile"]];
