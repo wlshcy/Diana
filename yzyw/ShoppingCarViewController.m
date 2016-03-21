@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSMutableArray *listData;
 @property (nonatomic, strong) AddressInfo *address;
 
-//@property (nonatomic, strong) UILabel *headerLabel;
+@property (nonatomic, strong) UILabel *headerLabel;
 
 @property (nonatomic, strong) UIView *bottomToBorderView;
 @property (nonatomic, strong) UIView *bottomView;
@@ -73,6 +73,7 @@
     // Do any additional setup after loading the view.
     
     [self.view addSubview:self.listView];
+    self.listView.tableHeaderView = self.headerLabel;
     [self.view addSubview:self.bottomToBorderView];
     [self.view addSubview:self.bottomView];
     [self.bottomView addSubview:self.priceLabel];
@@ -464,6 +465,19 @@
     }
     return _listView;
 }
+
+- (UILabel *)headerLabel
+{
+    if (!_headerLabel) {
+        _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+        _headerLabel.backgroundColor = RGB_COLOR(50, 190, 112);
+        _headerLabel.text = @"  订单满20元免运费，不满20元加5元运费";
+        _headerLabel.font = FONT(12);
+        _headerLabel.textColor = WHITE_COLOR;
+    }
+    return _headerLabel;
+}
+
 
 - (UIView *)bottomView
 {
