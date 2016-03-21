@@ -31,6 +31,7 @@
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UIButton *submitBtn;
+@property (nonatomic, strong) UILabel *headerLabel;
 @end
 
 @implementation OrderEnsureViewController
@@ -59,6 +60,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.listView];
+    self.listView.tableHeaderView = self.headerLabel;
     [self.view addSubview:self.bottomView];
     [self.bottomView addSubview:self.priceLabel];
     [self.bottomView addSubview:self.submitBtn];
@@ -151,8 +153,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 || section == 1) {
-        return 33;
+//    if (section == 0 || section == 1) {
+//        return 33;
+//    }
+    if (section == 0) {
+        return 0;
     }
         return 5;
 }
@@ -160,10 +165,12 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0){
-        return @"收货地址";
+//        return @"收货地址";
+        return @"";
     }
     else if (section == 1){
-        return @"商品列表";
+//        return @"商品列表";
+        return @"";
     }
     else{
         return @"";
@@ -358,6 +365,18 @@
         _listView.backgroundColor = RGB_COLOR(242, 242, 242);
     }
     return _listView;
+}
+
+- (UILabel *)headerLabel
+{
+    if (!_headerLabel) {
+        _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+        _headerLabel.backgroundColor = RGB_COLOR(50, 190, 112);
+        _headerLabel.text = @"  当日下单次日送达，计划开通同城1小时送达";
+        _headerLabel.font = FONT(12);
+        _headerLabel.textColor = WHITE_COLOR;
+    }
+    return _headerLabel;
 }
 
 - (UIView *)bottomView
