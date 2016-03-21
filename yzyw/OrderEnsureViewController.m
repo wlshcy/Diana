@@ -127,10 +127,10 @@
     // Return the number of rows in the section.
     if (section == 0) {
         return 1;
-    }else if(section == 2){
+    }else if(section == 1){
         return _items.count;
     }else {
-        return 1;
+        return 3;
     }
 }
 
@@ -144,14 +144,17 @@
             return 50;
     }
     else{
-            return 60;
+            return 45;
         }
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section == 0 || section == 1) {
         return 33;
+    }
+        return 5;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -160,10 +163,10 @@
         return @"收货地址";
     }
     else if (section == 1){
-        return @"运费";
+        return @"商品列表";
     }
     else{
-        return @"商品列表";
+        return @"";
     }
     
 }
@@ -236,7 +239,7 @@
         
         
         
-    }else if (indexPath.section == 2){
+    }else if (indexPath.section == 1){
         static NSString *cellIndentifier = @"itemCell";
 //        EnsureCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
@@ -269,21 +272,55 @@
 
         return cell;
     }else {
-        static NSString *CellIdentifier = @"BEIZHUCELL";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (indexPath.row == 0) {
+            static NSString *CellIdentifier = @"PRICECELL";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            cell.textLabel.text = @"商品价格";
+            cell.textLabel.font = FONT(16);
+            
+            NSString *text = [NSString stringWithFormat:@"%.0f元", _totalPrice];
+            cell.detailTextLabel.text = text;
+            cell.detailTextLabel.font = FONT(16);
+            cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
+            return cell;
         }
-        cell.textLabel.text = @"运费";
-        cell.textLabel.font = FONT(16);
+        else if (indexPath.row == 1){
+            static NSString *CellIdentifier = @"FREIGHTCELL";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            cell.textLabel.text = @"运费";
+            cell.textLabel.font = FONT(16);
+            
+            NSString *text = [NSString stringWithFormat:@"%.0f元", _freight];
+            cell.detailTextLabel.text = text;
+            cell.detailTextLabel.font = FONT(16);
+            cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
+            return cell;
+        }
+        else {
+            static NSString *CellIdentifier = @"TOTALPRICECELL";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            cell.textLabel.text = @"合计";
+            cell.textLabel.font = FONT(16);
+            
+            NSString *text = [NSString stringWithFormat:@"%.0f元", _freight + _totalPrice];
+            cell.detailTextLabel.text = text;
+            cell.detailTextLabel.font = FONT(16);
+            cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
+            return cell;
+        }
         
-        NSString *text = [NSString stringWithFormat:@"%.0f元", _freight];
-        cell.detailTextLabel.text = text;
-        cell.detailTextLabel.font = FONT(16);
-        cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
-
-        return cell;
     }
 }
 
@@ -362,10 +399,10 @@
     
     if (_totalPrice >= 5) {
         
-        _priceLabel.text = [NSString stringWithFormat:@"共计:%0.2f元",_totalPrice];
+        _priceLabel.text = [NSString stringWithFormat:@"合计:%0.2f元",_totalPrice];
         
     }else{
-        _priceLabel.text = [NSString stringWithFormat:@"共计:%0.2f元",_totalPrice+5];
+        _priceLabel.text = [NSString stringWithFormat:@"合计:%0.2f元",_totalPrice+5];
     }
     
 }
