@@ -239,14 +239,6 @@
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
             }
-//            UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//            myLabel.text = @"暂不支付";
-//            myLabel.font = FONT(16);
-//            myLabel.textAlignment = NSTextAlignmentCenter;
-//            [cell.contentView addSubview:myLabel];
-////            cell.textLabel.text = @"暂不支付";
-////            cell.textLabel.textAlignment = NSTextAlignmentCenter;
-//            return cell;
             [cell addSubview:self.cancelBtn];
             return cell;
         }
