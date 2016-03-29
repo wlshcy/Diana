@@ -148,12 +148,17 @@
     UINavigationController *user = [[UINavigationController alloc]initWithRootViewController:UserViewController.new];
     
 
-    NSArray *titles = @[@"单品", @"套餐", @"购物车", @"我的"];
-    NSArray *images = @[@"home_unselected", @"esp_unselected", @"cart_unselected", @"mine_unselected"];
-    NSArray *selectimages = @[@"home_selected",@"esp_selected", @"cart_selected",@"mine_selected"];
+//    NSArray *titles = @[@"单品", @"套餐", @"购物车", @"我的"];
+//    NSArray *images = @[@"home_unselected", @"esp_unselected", @"cart_unselected", @"mine_unselected"];
+//    NSArray *selectimages = @[@"home_selected",@"esp_selected", @"cart_selected",@"mine_selected"];
+    
+    NSArray *titles = @[@"首页", @"购物车", @"我的"];
+    NSArray *images = @[@"home_unselected", @"cart_unselected", @"mine_unselected"];
+    NSArray *selectimages = @[@"home_selected",@"cart_selected",@"mine_selected"];
     
     _tabbarController = [[UITabBarController alloc] init];
-    _tabbarController.viewControllers = @[home,combo,car,user];
+//    _tabbarController.viewControllers = @[home,combo,car,user];
+    _tabbarController.viewControllers = @[home,car,user];
     [_tabbarController ew_configTabBarItemWithTitles:titles font:FONT(12) titleColor:RGB_COLOR(164, 162, 154) selectedTitleColor:RGB_COLOR(17,194, 88) images:images selectedImages:selectimages barBackgroundImage:nil];
     
     self.window.rootViewController = _tabbarController;

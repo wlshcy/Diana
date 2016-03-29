@@ -28,7 +28,7 @@
 {
     [super layoutSubviews];
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
-    self.line.frame = CGRectMake((SCREEN_WIDTH-(110+40+82*2)/2.0)/2.0, 14, (110+40+82*2)/2.0, 1);
+    self.line.frame = CGRectMake((SCREEN_WIDTH-(110+40+82*2)/2.0)/2.0, 15, (110+40+82*2)/2.0, 1);
     self.titleLabel.frame = CGRectMake(self.line.left+41, 0, self.line.width-82, 30);
 }
 

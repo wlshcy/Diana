@@ -14,7 +14,7 @@
 
 #define ITEMWIDTH (290/2.0)
 #define ITEMHEIGHT ((232+146)/2.0)
-#define HEADERHEIGHT  (216/2.0+90)
+#define HEADERHEIGHT  210
 
 //change
 //#import "HomeViewController.h"

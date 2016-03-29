@@ -58,7 +58,7 @@
 #pragma mark - EWFocusViewDelegate & Datasource
 - (UIView *)focusView:(EWFocusView *)focusView pageAtIndex:(NSInteger)index
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 216/2.0+64+20)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 220)];
     [imageView sd_setImageWithURL:[NSURL URLWithString:_slideData[index][@"photo"]] placeholderImage:[UIImage imageNamed:@"banner"]];
     return imageView;
 }
@@ -93,7 +93,7 @@
 - (EWFocusView *)focusView
 {
     if (!_focusView) {
-        _focusView = [[EWFocusView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 216/2.0+64+20) showPageIndicator:NO];
+        _focusView = [[EWFocusView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 216/2.0+64+40) showPageIndicator:NO];
         _focusView.delegate = self;
         _focusView.dataSource = self;
         _focusView.timeInterval = 5;
@@ -108,7 +108,7 @@
     if (!_topImageView) {
         _topImageView = [UIImageView new];
         _topImageView.image = [UIImage imageNamed:@"top"];
-        _topImageView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 216/2.0+64+20);
+        _topImageView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 216/2.0+64+40);
         _topImageView.hidden = YES;
     }
     return _topImageView;
