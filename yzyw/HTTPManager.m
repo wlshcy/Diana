@@ -917,6 +917,33 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                            success:success
                            failure:failure];
 }
+
++ (void)createOrder:(NSString *)name
+            mobile:(NSString *)mobile
+            region:(NSString *)region
+           address:(NSString *)address
+              items:(NSMutableArray *)items
+           success:(void (^)(id response))success
+           failure:(void (^)(NSError *err))failure
+{
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    
+    [parameter setValue:name forKey:@"name"];
+    [parameter setValue:mobile forKey:@"mobile"];
+    [parameter setValue:region forKey:@"region"];
+    [parameter setValue:address forKey:@"address"];
+    [parameter setValue:items forKey:@"items"];
+    [parameter setValue:XSRFVALUE forKey:XSRF];
+    
+    NSLog(@"%@", parameter);
+    
+    [HTTPManager requestWithMethod:RequestMethodTypePost
+                               url:@"/v1/orders"
+                         parameter:parameter
+                           success:success
+                           failure:failure];
+}
 ////////////////////////////////////////
 + (void)getUserV3AddressWithSuccess:(void (^)(id))success failure:(void (^)(NSError *))failure
 {

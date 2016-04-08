@@ -371,7 +371,7 @@
     if (!_headerLabel) {
         _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         _headerLabel.backgroundColor = RGB_COLOR(50, 190, 112);
-        _headerLabel.text = @"  当日下单次日送达，计划开通同城1小时送达";
+        _headerLabel.text = @"  当日下单次日送达，计划开通2小时送达";
         _headerLabel.font = FONT(12);
         _headerLabel.textColor = WHITE_COLOR;
     }
@@ -429,9 +429,30 @@
 
 {
     if (self.address) {
-        PayController *controller = [[PayController alloc] init];
-        controller.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:controller animated:YES];
+        NSMutableArray *item_list = [[NSMutableArray alloc] init];
+        for(int i=0; i<[_items count]; i++){
+            NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+
+            [item setObject:[_items objectAtIndex:i][@"id"] forKey:@"id"];
+            [item setValue:[_items objectAtIndex:i][@"count"] forKey:@"count"];
+            [item_list addObject:item];
+        }
+        
+        [HTTPManager createOrder:_address[@"name"] mobile:_address[@"mobile"] region:_address[@"region"] address:_address[@"address"] items:item_list success:^(id response) {
+
+            [self hideLoading];
+            PayController *controller = [[PayController alloc] init];
+            controller.number = response[@"number"];
+            controller.price = [response[@"price"] floatValue];
+            controller.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        } failure:^(NSError *err) {
+            [self hideLoading];
+            [self showFailureStatusWithTitle:@"服务器繁忙，请稍后重试"];
+            
+        }];
+        
     }
     else{
         [self showErrorStatusWithTitle:@"请选择收货地址"];

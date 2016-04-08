@@ -271,6 +271,14 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)deleteAddress:(NSString *)addr_id
               success:(void (^)(id))success
              failure:(void (^)(NSError *))failure;
+
++ (void)createOrder:(NSString *)name
+             mobile:(NSString *)mobile
+             region:(NSString *)region
+            address:(NSString *)address
+              items:(NSMutableArray *)items
+            success:(void (^)(id response))success
+            failure:(void (^)(NSError *err))failure;
 /**
  *  1.1.0 新增接口
  */
