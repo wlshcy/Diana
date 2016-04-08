@@ -43,12 +43,6 @@
 {
     if (self = [super init]) {
         [self layoutNavigationBar];
-        
-        _oldcouponid = 0;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshAddress:) name:@"SENDADDRESS" object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxpayResult:) name:@"WXPAYRESULT" object:nil];
     }
     return self;
 }
@@ -57,6 +51,13 @@
 {
     self.title = @"收银台";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButton:)];
+}
+
+- (void)clickLeftBarButton:(id)sender
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)viewDidLoad {
