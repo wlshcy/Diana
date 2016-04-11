@@ -288,7 +288,7 @@
             cell.textLabel.text = @"商品价格";
             cell.textLabel.font = FONT(16);
             
-            NSString *text = [NSString stringWithFormat:@"%.0f元", _totalPrice];
+            NSString *text = [NSString stringWithFormat:@"¥ %.1f", _totalPrice];
             cell.detailTextLabel.text = text;
             cell.detailTextLabel.font = FONT(16);
             cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
@@ -304,10 +304,11 @@
             cell.textLabel.text = @"运费";
             cell.textLabel.font = FONT(16);
             
-            NSString *text = [NSString stringWithFormat:@"%.0f元", _freight];
+            NSString *text = [NSString stringWithFormat:@"¥ %.0f", _freight];
             cell.detailTextLabel.text = text;
             cell.detailTextLabel.font = FONT(16);
-            cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
+            cell.detailTextLabel.textColor = RGB_COLOR(243, 96, 67);
+//            cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
             return cell;
         }
         else {
@@ -320,7 +321,7 @@
             cell.textLabel.text = @"合计";
             cell.textLabel.font = FONT(16);
             
-            NSString *text = [NSString stringWithFormat:@"%.0f元", _freight + _totalPrice];
+            NSString *text = [NSString stringWithFormat:@"¥ %.1f", _freight + _totalPrice];
             cell.detailTextLabel.text = text;
             cell.detailTextLabel.font = FONT(16);
             cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
