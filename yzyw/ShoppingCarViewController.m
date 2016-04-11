@@ -428,7 +428,7 @@
 //        [self showErrorStatusWithTitle:@"登录后才能结算"];
 //    }
     OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
-    controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] +FREIGHT;
+    controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] + FREIGHT;
     if ([self allPrice] >= PRICE_LIMIT) {
         controller.freight = 0;
     }else{
