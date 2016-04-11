@@ -19,8 +19,8 @@
 
 #define CELL_HEIGHT   222/2.0
 #define BOTTOM_HEIGHT 60
-#define FREIGHT 5
-#define PRICE_LIMIT 5
+#define FREIGHT 10
+#define PRICE_LIMIT 49
 
 @interface ShoppingCarViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -250,13 +250,13 @@
             
             if ([self allPrice] >= 5) {
                 
-                NSString *text = [NSString stringWithFormat:@"0元(订单满5元免运费)"];
+                NSString *text = [NSString stringWithFormat:@"0元(订单满49元免运费)"];
 
                 cell.detailTextLabel.attributedText = [text ew_focusSubstring:@"0" color:RGB_COLOR(243,96,67) font:FONT(14)];
                 
                 
             }else{
-                NSString *text = [NSString stringWithFormat:@"5元(订单满5元免运费)"];
+                NSString *text = [NSString stringWithFormat:@"5元(订单满49元免运费)"];
                 cell.detailTextLabel.attributedText = [text ew_focusSubstring:@"5元" color:RGB_COLOR(243,96,67) font:FONT(14)];
             }
             
@@ -471,7 +471,7 @@
     if (!_headerLabel) {
         _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         _headerLabel.backgroundColor = RGB_COLOR(50, 190, 112);
-        _headerLabel.text = @"  订单满20元免运费，不满20元加5元运费";
+        _headerLabel.text = @"  订单满49元免运费，不满49元加10元运费";
         _headerLabel.font = FONT(12);
         _headerLabel.textColor = WHITE_COLOR;
     }
