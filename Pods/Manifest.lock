@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - DLRadioButton (1.4.8)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
+  - DLRadioButton (~> 1.4)
   - FMDB (~> 2.5)
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 2.5.3)
@@ -42,6 +44,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  DLRadioButton: 8fe4865b3ea8a5236e1d114dd283dd0884d3dc46
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: b8c1321a77d91bcc007b94d38cbf5383c95ea30e

@@ -111,7 +111,7 @@
     
     // Return the number of rows in the section.
     if (section == 0) {
-        return 2;
+        return 1;
     }else if (section == 1){
         return 2;
     }else{
@@ -134,7 +134,10 @@
     return 8;
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
+}
 
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -154,22 +157,22 @@
     [tableView setSeparatorColor:[UIColor colorWithRed:242.0/255.0f green:242.0/255.0f blue:242.0/255.0f alpha:1.0]];
     
     if (indexPath.section==0){
-        if (indexPath.row == 0) {
-            static NSString *cellIndentifier = @"ORDERNUMCELL";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-            if (!cell) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            
-            cell.textLabel.text = @"订单号";
-            cell.textLabel.font = FONT(16);
-            cell.detailTextLabel.text = self.number;
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            
-            return cell;
-        }
-        else{
+//        if (indexPath.row == 0) {
+//            static NSString *cellIndentifier = @"ORDERNUMCELL";
+//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+//            if (!cell) {
+//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentifier];
+//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            }
+//            
+//            cell.textLabel.text = @"订单号";
+//            cell.textLabel.font = FONT(16);
+//            cell.detailTextLabel.text = self.number;
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            
+//            return cell;
+//        }
+//        else{
             static NSString *cellIndentifier = @"PAYPRICECELL";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
             if (!cell) {
@@ -180,13 +183,13 @@
             cell.textLabel.text = @"支付金额";
             cell.textLabel.font = FONT(16);
             
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f",self.price];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"¥ %.2f",self.price];
             cell.detailTextLabel.textColor = RGB_COLOR(243, 96, 67);
             cell.accessoryType = UITableViewCellAccessoryNone;
             
             return cell;
-        }
-        
+//        }
+    
         
 //        static NSString *cellIndentifier = @"PRICECELL";
 //        PriceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];

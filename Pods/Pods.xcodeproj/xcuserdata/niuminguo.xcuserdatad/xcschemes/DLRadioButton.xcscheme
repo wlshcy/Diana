@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '78439C24D272FF71243CE0AC'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = 'CE35EB54E280693551BDD151'
+               BlueprintName = 'DLRadioButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSDWebImage.a'>
+               BuildableName = 'libDLRadioButton.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
