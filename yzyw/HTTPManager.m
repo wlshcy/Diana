@@ -902,8 +902,19 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                             parameter:nil
                            success:success
                            failure:failure];
-    
+}
 
++ (void) getOrders:(NSString *)lastid
+            length:(NSInteger)length
+         success:(void (^)(id response))success
+         failure:(void (^)(NSError *err))failure
+{
+    if (lastid != nil) {
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/orders" parameter:@{@"lastid":lastid,@"length":[NSString stringWithFormat:@"%ld", (long)length]} success:success failure:failure];
+    }else{
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/orders" parameter:@{@"length":[NSString stringWithFormat:@"%ld", (long)length]} success:success failure:failure];
+    }
+    
 }
 
 + (void)deleteAddress:(NSString *)addr_id

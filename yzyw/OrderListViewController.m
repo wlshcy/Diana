@@ -16,6 +16,8 @@
 
 #define BOTTOM_HEIGHT 60
 
+#define LENGTH 10
+
 @interface OrderListViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *listView;
 @property (nonatomic, strong) UILabel *priceLabel;
@@ -161,7 +163,7 @@
 
 - (void)pullToRefresh
 {
-    [HTTPManager getAddresses:^(NSMutableArray *response) {
+    [HTTPManager getOrders:0 length:LENGTH success:^(NSMutableArray *response) {
         
         
         [self.listView.header endRefreshing];
@@ -175,17 +177,41 @@
         
         [self.listView reloadData];
         
-        if ([response count] <10){
+        if ([response count] < LENGTH){
             self.listView.footer.hidden = YES;
         }
     } failure:^(NSError *err) {
+        DBLog(@"here");
         [self.listView.header endRefreshing];
     }];
 }
 
 - (void)upToRefresh
 {
-    [self.listView.header endRefreshing];
+    NSString *lastid = [_listData lastObject][@"id"];
+    
+    [HTTPManager getVegs:lastid success:^(NSMutableArray *response) {
+        DBLog(@"response===%@",response);
+        
+        [self.listView.footer endRefreshing];
+        
+        if (response.count == 0) {
+            [self showErrorStatusWithTitle:@"没有更多商品了"];
+            self.listView.footer.hidden = YES;
+            return ;
+        }
+        
+        [_listData addObjectsFromArray:response];
+        [_listView reloadData];
+        
+        if (response.count < LENGTH) {
+            self.listView.footer.hidden = YES;
+        }
+    } failure:^(NSError *err) {
+        [self.listView.footer endRefreshing];
+        
+    }];
+
 }
 
 

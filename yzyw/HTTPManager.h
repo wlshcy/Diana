@@ -265,6 +265,11 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getAddresses:(void (^)(id))success
              failure:(void (^)(NSError *))failure;
 
++ (void)getOrders:(NSString *)lastid
+           length:(NSInteger)length
+          success:(void (^)(id))success
+             failure:(void (^)(NSError *))failure;
+
 + (void)getZoneData:(void (^)(id response))success
             failure:(void (^)(NSError *err))failure;
 
