@@ -20,6 +20,7 @@
 //#import "DelayViewController.h"
 //#import "ManageAddressViewController.h"
 //#import "ModifyPasswdViewController.h"
+#import "OrderListViewController.h"
 #import "AddressListViewController.h"
 
 //test
@@ -168,13 +169,19 @@
     switch (indexPath.row) {
         case 0:
         {
-//            if ([VGUtils userHasLogin]) {
-//                OrderListViewController *controller = [OrderListViewController new];
-//                controller.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:controller animated:YES];
-//            }else{
-//                [self showErrorStatusWithTitle:@"用户未登录"];
-//            }
+            if ([VGUtils userHasLogin]) {
+                OrderListViewController *controller = [OrderListViewController new];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }else{
+                [self showErrorStatusWithTitle:@"用户未登录"];
+                OrderListViewController *controller = [OrderListViewController new];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+//            OrderListViewController *controller = [[OrderListViewController alloc] init];
+//            controller.hidesBottomBarWhenPushed = YES;
+//             [self.navigationController pushViewController:controller animated:YES];
             
         }
             break;

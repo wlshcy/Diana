@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) UILabel *statusLabel;
 
-- (void)configOrderCell:(OrderInfo *)data;
+- (void)configOrderCell;
 
 @end
