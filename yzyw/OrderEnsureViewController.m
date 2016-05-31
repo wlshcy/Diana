@@ -35,7 +35,7 @@
 @property (nonatomic, strong) UILabel *headerLabel;
 @property (nonatomic, strong) UIButton *wxpayButton;
 @property (nonatomic, strong) UIButton *alipayButton;
-@property (nonatomic, strong) UIButton *dfpayButton;
+//@property (nonatomic, strong) UIButton *dfpayButton;
 @end
 
 @implementation OrderEnsureViewController
@@ -84,6 +84,10 @@
     [_listView reloadData];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    [self.wxpayButton setImage:[UIImage imageNamed:@"del_image_2.png"] forState:UIControlStateNormal];
+    [self.alipayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
+    self.payType = 0;
     
 }
 
@@ -138,7 +142,7 @@
     }else if(section == 2){
         return 3;
     }else{
-        return 3;
+        return 2;
     }
 }
 
@@ -364,7 +368,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
-            [cell addSubview:self.dfpayButton];
+//            [cell addSubview:self.dfpayButton];
             
             return cell;
         }
@@ -490,23 +494,23 @@
     return _alipayButton;
 }
 
-- (UIButton *)dfpayButton
-{
-    if (!_dfpayButton){
-        _dfpayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _dfpayButton.frame = CGRectMake(8, 20, SCREEN_WIDTH, 20);
-        _dfpayButton.backgroundColor = WHITE_COLOR;
-        [_dfpayButton setTitle:@"货到付款" forState:UIControlStateNormal];
-        [_dfpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
-        [_dfpayButton setTitleColor:BLACK_COLOR forState:UIControlStateNormal];
-        _dfpayButton.titleLabel.font = FONT(16);
-        _dfpayButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        _dfpayButton.imageEdgeInsets = UIEdgeInsetsMake(0, SCREEN_WIDTH-60, 0, 0);
-        _dfpayButton.titleEdgeInsets = UIEdgeInsetsMake(0, -20,0,0);
-        [_dfpayButton addTarget:self action:@selector(df_pay:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _dfpayButton;
-}
+//- (UIButton *)dfpayButton
+//{
+//    if (!_dfpayButton){
+//        _dfpayButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _dfpayButton.frame = CGRectMake(8, 20, SCREEN_WIDTH, 20);
+//        _dfpayButton.backgroundColor = WHITE_COLOR;
+//        [_dfpayButton setTitle:@"货到付款" forState:UIControlStateNormal];
+//        [_dfpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
+//        [_dfpayButton setTitleColor:BLACK_COLOR forState:UIControlStateNormal];
+//        _dfpayButton.titleLabel.font = FONT(16);
+//        _dfpayButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//        _dfpayButton.imageEdgeInsets = UIEdgeInsetsMake(0, SCREEN_WIDTH-60, 0, 0);
+//        _dfpayButton.titleEdgeInsets = UIEdgeInsetsMake(0, -20,0,0);
+//        [_dfpayButton addTarget:self action:@selector(df_pay:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _dfpayButton;
+//}
 
 - (void)computeTotalPrice
 {
@@ -532,22 +536,24 @@
 {
     [self.wxpayButton setImage:[UIImage imageNamed:@"del_image_2.png"] forState:UIControlStateNormal];
     [self.alipayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
-    [self.dfpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
+    self.payType = 0;
+//    [self.dfpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
 }
 
 - (void)ali_pay:(UIButton *)sender
 {
     [self.wxpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
     [self.alipayButton setImage:[UIImage imageNamed:@"del_image_2.png"] forState:UIControlStateNormal];
-    [self.dfpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
+    self.payType = 1;
+//    [self.dfpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
 }
 
-- (void)df_pay:(UIButton *)sender
-{
-    [self.wxpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
-    [self.alipayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
-    [self.dfpayButton setImage:[UIImage imageNamed:@"del_image_2.png"] forState:UIControlStateNormal];
-}
+//- (void)df_pay:(UIButton *)sender
+//{
+//    [self.wxpayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
+//    [self.alipayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
+//    [self.dfpayButton setImage:[UIImage imageNamed:@"del_image_2.png"] forState:UIControlStateNormal];
+//}
 
 
 - (void)commitOrder:(UIButton *)sender
@@ -563,14 +569,14 @@
             [item_list addObject:item];
         }
         
-        [HTTPManager createOrder:_address[@"name"] mobile:_address[@"mobile"] region:_address[@"region"] address:_address[@"address"] items:item_list success:^(id response) {
+        [HTTPManager createOrder:_address[@"name"] mobile:_address[@"mobile"] region:_address[@"region"] address:_address[@"address"] paytype:_payType items:item_list success:^(id response) {
 
             [self hideLoading];
-            PayController *controller = [[PayController alloc] init];
-            controller.number = response[@"number"];
-            controller.price = [response[@"price"] floatValue];
-            controller.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:controller animated:YES];
+//            PayController *controller = [[PayController alloc] init];
+//            controller.number = response[@"number"];
+//            controller.price = [response[@"price"] floatValue];
+//            controller.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:controller animated:YES];
             
         } failure:^(NSError *err) {
             [self hideLoading];

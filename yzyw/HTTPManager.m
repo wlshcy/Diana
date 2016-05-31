@@ -933,6 +933,7 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
             mobile:(NSString *)mobile
             region:(NSString *)region
            address:(NSString *)address
+            paytype:(NSInteger)paytype
               items:(NSMutableArray *)items
            success:(void (^)(id response))success
            failure:(void (^)(NSError *err))failure
