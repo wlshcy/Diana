@@ -58,9 +58,9 @@
     
     self.photo.frame = CGRectScaleXY(0, 0, 290/2.0, 232/2.0);
     self.name.frame = CGRectScaleXY(10, self.photo.bottom+10, self.width-20, 12);
-    self.size.frame = CGRectScaleXY(10, self.name.bottom+10, 50, 10);
-    self.price.frame = CGRectScaleXY(10,self.size.bottom+10, 50, 10);
-    self.mprice.frame = CGRectScaleXY(self.price.right+5, self.size.bottom+10, 50, 10);
+    self.size.frame = CGRectScaleXY(10, self.name.bottom+6, 50, 14);
+    self.price.frame = CGRectScaleXY(10,self.size.bottom+6, 50, 10);
+    self.mprice.frame = CGRectScaleXY(self.price.right+5, self.size.bottom+6, 50, 10);
     
 //    if (SCREEN_WIDTH >= 320) {
 //        self.countLabel.top = self.countLabel.top-4;
