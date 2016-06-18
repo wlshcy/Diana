@@ -44,7 +44,7 @@
     
     [self.photo sd_setImageWithURL:[NSURL URLWithString:data[@"photo"]] placeholderImage:[UIImage imageNamed:@"home_rec"]];
     self.name.text = data[@"name"];
-    self.size.text = [NSString stringWithFormat:@"%@g/份",data[@"size"]];
+    self.size.text = [NSString stringWithFormat:@"%@g",data[@"size"]];
     self.price.text = [NSString stringWithFormat:@"¥%0.2f",[data[@"price"] floatValue]];
     self.mprice.text = [NSString stringWithFormat:@"¥%0.2f",[data[@"mprice"] floatValue]];
 

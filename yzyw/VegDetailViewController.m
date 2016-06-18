@@ -217,7 +217,7 @@
 //            cell.textLabel.text = [NSString stringWithFormat:@"规格: %@g/份",@((NSInteger)_tcdata.packw)];
             cell.textLabel.text = @"规格";
             cell.textLabel.font = FONT(16);
-            cell.detailTextLabel.text=@"500g/份";
+            cell.detailTextLabel.text=@"500g";
             cell.detailTextLabel.textColor = RGB_COLOR(0, 0, 0);
             cell.detailTextLabel.font = FONT(16);
             cell.accessoryType = UITableViewCellAccessoryNone;

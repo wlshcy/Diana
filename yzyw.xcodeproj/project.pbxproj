@@ -348,7 +348,7 @@
 		EF1BA1551C9DA5E500490233 /* ChooseItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseItemViewController.h; sourceTree = "<group>"; };
 		EF1BA1561C9DA5FA00490233 /* ChooseItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseItemViewController.m; sourceTree = "<group>"; };
 		EF1BA1581C9FFB1400490233 /* yezf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yezf.png; sourceTree = "<group>"; };
-		EF543F461CBBE66300457EE8 /* wxpay_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wxpay_unselected.png; path = Images/wxpay_unselected.png; sourceTree = "<group>"; };
+		EF543F461CBBE66300457EE8 /* wxpay_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxpay_unselected.png; sourceTree = "<group>"; };
 		EF543F481CBBE92300457EE8 /* zfbpay_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zfbpay_selected.png; sourceTree = "<group>"; };
 		EF543F4E1CBBF0AD00457EE8 /* wx_selected.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wx_selected.jpg; sourceTree = "<group>"; };
 		EF597CF01C6E172C00CCBDBD /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -804,7 +804,6 @@
 		5B5647151C6CB649008EB890 /* yzyw */ = {
 			isa = PBXGroup;
 			children = (
-				EF543F461CBBE66300457EE8 /* wxpay_unselected.png */,
 				EF597CFB1C6E1CD300CCBDBD /* Images */,
 				EF597CF91C6E1C0900CCBDBD /* Images.xcassets */,
 				EFE10ABB1C6E0FD6004A869F /* AddAddressCell.h */,
@@ -926,6 +925,7 @@
 				EF1BA1581C9FFB1400490233 /* yezf.png */,
 				EFA9FD9C1C72DA430090F3DF /* alipay@2x.png */,
 				EFA9FD9A1C72D8200090F3DF /* wxpay@2x.png */,
+				EF543F461CBBE66300457EE8 /* wxpay_unselected.png */,
 				EFA9FD8D1C6F2AF00090F3DF /* address */,
 				EF597CFC1C6E1CD300CCBDBD /* audio */,
 				EF597CFF1C6E1CD300CCBDBD /* Detail */,
