@@ -216,6 +216,7 @@
 		EF73DD421CE6CDBC001C8E39 /* del_image_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF73DD401CE6CDBC001C8E39 /* del_image_2@3x.png */; };
 		EF73DD451CE6D49D001C8E39 /* del_image_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF73DD431CE6D49D001C8E39 /* del_image_1@2x.png */; };
 		EF73DD461CE6D49D001C8E39 /* del_image_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF73DD441CE6D49D001C8E39 /* del_image_1@3x.png */; };
+		EF8B22E51D15883400EEF727 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF8B22E41D15883400EEF727 /* OrderListViewController.m */; };
 		EFA9FD751C6E214A0090F3DF /* esp_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA9FD711C6E214A0090F3DF /* esp_selected@2x.png */; };
 		EFA9FD761C6E214A0090F3DF /* esp_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA9FD721C6E214A0090F3DF /* esp_selected@3x.png */; };
 		EFA9FD771C6E214A0090F3DF /* esp_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA9FD731C6E214A0090F3DF /* esp_unselected@2x.png */; };
@@ -539,6 +540,8 @@
 		EF73DD401CE6CDBC001C8E39 /* del_image_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "del_image_2@3x.png"; path = "zw/del_image_2@3x.png"; sourceTree = "<group>"; };
 		EF73DD431CE6D49D001C8E39 /* del_image_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "del_image_1@2x.png"; sourceTree = "<group>"; };
 		EF73DD441CE6D49D001C8E39 /* del_image_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "del_image_1@3x.png"; sourceTree = "<group>"; };
+		EF8B22E31D15883400EEF727 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
+		EF8B22E41D15883400EEF727 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
 		EFA9FD711C6E214A0090F3DF /* esp_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "esp_selected@2x.png"; sourceTree = "<group>"; };
 		EFA9FD721C6E214A0090F3DF /* esp_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "esp_selected@3x.png"; sourceTree = "<group>"; };
 		EFA9FD731C6E214A0090F3DF /* esp_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "esp_unselected@2x.png"; sourceTree = "<group>"; };
@@ -810,6 +813,8 @@
 				EFE10ABC1C6E0FD6004A869F /* AddAddressCell.m */,
 				EFE10ABD1C6E0FD6004A869F /* AddAddressViewController.h */,
 				EFE10ABE1C6E0FD6004A869F /* AddAddressViewController.m */,
+				EF8B22E31D15883400EEF727 /* OrderListViewController.h */,
+				EF8B22E41D15883400EEF727 /* OrderListViewController.m */,
 				EFE10AB51C6E0F44004A869F /* YMUtils.h */,
 				EFE10AB61C6E0F44004A869F /* YMUtils.m */,
 				EFE10AB81C6E0F44004A869F /* zh_CN.json */,
@@ -1816,6 +1821,7 @@
 				EFA9FD8B1C6EF4A60090F3DF /* EspDetailViewController.m in Sources */,
 				EFE10AAA1C6E0D5A004A869F /* PayHeader.m in Sources */,
 				EFE10A4F1C6E06C1004A869F /* UIWebView+Extension.m in Sources */,
+				EF8B22E51D15883400EEF727 /* OrderListViewController.m in Sources */,
 				EFE109931C6DF483004A869F /* EspSaleViewController.m in Sources */,
 				EFE10A9F1C6E0CC9004A869F /* VegHeader.m in Sources */,
 				EF1BA1531C996EBA00490233 /* ComboDetailViewController.m in Sources */,
