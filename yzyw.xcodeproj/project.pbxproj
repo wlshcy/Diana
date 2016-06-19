@@ -244,7 +244,7 @@
 		EFE109B31C6E00E3004A869F /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109B21C6E00E3004A869F /* AddressListCell.m */; };
 		EFE109B61C6E010D004A869F /* EspCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109B51C6E010D004A869F /* EspCell.m */; };
 		EFE109B91C6E0144004A869F /* ShoppingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109B81C6E0144004A869F /* ShoppingCell.m */; };
-		EFE109BC1C6E0178004A869F /* VegDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109BB1C6E0178004A869F /* VegDetailViewController.m */; };
+		EFE109BC1C6E0178004A869F /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109BB1C6E0178004A869F /* ItemDetailViewController.m */; };
 		EFE109BF1C6E01A3004A869F /* VegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109BE1C6E01A2004A869F /* VegCell.m */; };
 		EFE10A441C6E06C1004A869F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EFE109CC1C6E06C1004A869F /* AlipaySDK.bundle */; };
 		EFE10A451C6E06C1004A869F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE109CD1C6E06C1004A869F /* AlipaySDK.framework */; };
@@ -300,15 +300,15 @@
 		EFE10A771C6E06C1004A869F /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE10A3E1C6E06C1004A869F /* libSocialWechat.a */; };
 		EFE10A781C6E06C1004A869F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE10A411C6E06C1004A869F /* libWeChatSDK.a */; };
 		EFE10A7B1C6E081F004A869F /* CrossLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A7A1C6E081F004A869F /* CrossLineLabel.m */; };
-		EFE10A7E1C6E0874004A869F /* VegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A7D1C6E0874004A869F /* VegViewController.m */; };
+		EFE10A7E1C6E0874004A869F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A7D1C6E0874004A869F /* HomeViewController.m */; };
 		EFE10A811C6E0922004A869F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A801C6E0922004A869F /* LoginViewController.m */; };
 		EFE10A841C6E0965004A869F /* VGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A831C6E0965004A869F /* VGModel.m */; };
 		EFE10A871C6E09DC004A869F /* VGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A861C6E09DC004A869F /* VGUtils.m */; };
 		EFE10A8A1C6E0A2C004A869F /* UserHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A891C6E0A2C004A869F /* UserHeader.m */; };
 		EFE10A901C6E0A8D004A869F /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A8F1C6E0A8D004A869F /* OrderCell.m */; };
 		EFE10A991C6E0C79004A869F /* VegModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A981C6E0C79004A869F /* VegModel.m */; };
-		EFE10A9C1C6E0CA7004A869F /* CaiSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A9B1C6E0CA7004A869F /* CaiSectionHeader.m */; };
-		EFE10A9F1C6E0CC9004A869F /* VegHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A9E1C6E0CC9004A869F /* VegHeader.m */; };
+		EFE10A9C1C6E0CA7004A869F /* ItemSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A9B1C6E0CA7004A869F /* ItemSectionHeader.m */; };
+		EFE10A9F1C6E0CC9004A869F /* HomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A9E1C6E0CC9004A869F /* HomeHeader.m */; };
 		EFE10AA81C6E0D5A004A869F /* PacketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10AA11C6E0D5A004A869F /* PacketCell.m */; };
 		EFE10AA91C6E0D5A004A869F /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10AA31C6E0D5A004A869F /* PayController.m */; };
 		EFE10AAA1C6E0D5A004A869F /* PayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10AA51C6E0D5A004A869F /* PayHeader.m */; };
@@ -583,8 +583,8 @@
 		EFE109B51C6E010D004A869F /* EspCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EspCell.m; sourceTree = "<group>"; };
 		EFE109B71C6E0144004A869F /* ShoppingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCell.h; sourceTree = "<group>"; };
 		EFE109B81C6E0144004A869F /* ShoppingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCell.m; sourceTree = "<group>"; };
-		EFE109BA1C6E0178004A869F /* VegDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegDetailViewController.h; sourceTree = "<group>"; };
-		EFE109BB1C6E0178004A869F /* VegDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegDetailViewController.m; sourceTree = "<group>"; };
+		EFE109BA1C6E0178004A869F /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
+		EFE109BB1C6E0178004A869F /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
 		EFE109BD1C6E01A2004A869F /* VegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegCell.h; sourceTree = "<group>"; };
 		EFE109BE1C6E01A2004A869F /* VegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegCell.m; sourceTree = "<group>"; };
 		EFE109CC1C6E06C1004A869F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
@@ -696,8 +696,8 @@
 		EFE10A431C6E06C1004A869F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		EFE10A791C6E081F004A869F /* CrossLineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossLineLabel.h; sourceTree = "<group>"; };
 		EFE10A7A1C6E081F004A869F /* CrossLineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossLineLabel.m; sourceTree = "<group>"; };
-		EFE10A7C1C6E0874004A869F /* VegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegViewController.h; sourceTree = "<group>"; };
-		EFE10A7D1C6E0874004A869F /* VegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegViewController.m; sourceTree = "<group>"; };
+		EFE10A7C1C6E0874004A869F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		EFE10A7D1C6E0874004A869F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		EFE10A7F1C6E0922004A869F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EFE10A801C6E0922004A869F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EFE10A821C6E0965004A869F /* VGModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGModel.h; sourceTree = "<group>"; };
@@ -710,10 +710,10 @@
 		EFE10A8F1C6E0A8D004A869F /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		EFE10A971C6E0C79004A869F /* VegModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegModel.h; sourceTree = "<group>"; };
 		EFE10A981C6E0C79004A869F /* VegModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegModel.m; sourceTree = "<group>"; };
-		EFE10A9A1C6E0CA7004A869F /* CaiSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaiSectionHeader.h; sourceTree = "<group>"; };
-		EFE10A9B1C6E0CA7004A869F /* CaiSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaiSectionHeader.m; sourceTree = "<group>"; };
-		EFE10A9D1C6E0CC9004A869F /* VegHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegHeader.h; sourceTree = "<group>"; };
-		EFE10A9E1C6E0CC9004A869F /* VegHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegHeader.m; sourceTree = "<group>"; };
+		EFE10A9A1C6E0CA7004A869F /* ItemSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSectionHeader.h; sourceTree = "<group>"; };
+		EFE10A9B1C6E0CA7004A869F /* ItemSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSectionHeader.m; sourceTree = "<group>"; };
+		EFE10A9D1C6E0CC9004A869F /* HomeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeader.h; sourceTree = "<group>"; };
+		EFE10A9E1C6E0CC9004A869F /* HomeHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeader.m; sourceTree = "<group>"; };
 		EFE10AA01C6E0D5A004A869F /* PacketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketCell.h; sourceTree = "<group>"; };
 		EFE10AA11C6E0D5A004A869F /* PacketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketCell.m; sourceTree = "<group>"; };
 		EFE10AA21C6E0D5A004A869F /* PayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayController.h; sourceTree = "<group>"; };
@@ -833,10 +833,10 @@
 				EFE10AA51C6E0D5A004A869F /* PayHeader.m */,
 				EFE10AA61C6E0D5A004A869F /* PriceCell.h */,
 				EFE10AA71C6E0D5A004A869F /* PriceCell.m */,
-				EFE10A9D1C6E0CC9004A869F /* VegHeader.h */,
-				EFE10A9E1C6E0CC9004A869F /* VegHeader.m */,
-				EFE10A9A1C6E0CA7004A869F /* CaiSectionHeader.h */,
-				EFE10A9B1C6E0CA7004A869F /* CaiSectionHeader.m */,
+				EFE10A9D1C6E0CC9004A869F /* HomeHeader.h */,
+				EFE10A9E1C6E0CC9004A869F /* HomeHeader.m */,
+				EFE10A9A1C6E0CA7004A869F /* ItemSectionHeader.h */,
+				EFE10A9B1C6E0CA7004A869F /* ItemSectionHeader.m */,
 				EFE10A971C6E0C79004A869F /* VegModel.h */,
 				EFE10A981C6E0C79004A869F /* VegModel.m */,
 				EFE10A8E1C6E0A8D004A869F /* OrderCell.h */,
@@ -849,14 +849,14 @@
 				EFE10A831C6E0965004A869F /* VGModel.m */,
 				EFE10A7F1C6E0922004A869F /* LoginViewController.h */,
 				EFE10A801C6E0922004A869F /* LoginViewController.m */,
-				EFE10A7C1C6E0874004A869F /* VegViewController.h */,
-				EFE10A7D1C6E0874004A869F /* VegViewController.m */,
+				EFE10A7C1C6E0874004A869F /* HomeViewController.h */,
+				EFE10A7D1C6E0874004A869F /* HomeViewController.m */,
 				EFE10A791C6E081F004A869F /* CrossLineLabel.h */,
 				EFE10A7A1C6E081F004A869F /* CrossLineLabel.m */,
 				EFE109BD1C6E01A2004A869F /* VegCell.h */,
 				EFE109BE1C6E01A2004A869F /* VegCell.m */,
-				EFE109BA1C6E0178004A869F /* VegDetailViewController.h */,
-				EFE109BB1C6E0178004A869F /* VegDetailViewController.m */,
+				EFE109BA1C6E0178004A869F /* ItemDetailViewController.h */,
+				EFE109BB1C6E0178004A869F /* ItemDetailViewController.m */,
 				EF1BA1521C996EBA00490233 /* ComboDetailViewController.m */,
 				EF1BA1551C9DA5E500490233 /* ChooseItemViewController.h */,
 				EF1BA1561C9DA5FA00490233 /* ChooseItemViewController.m */,
@@ -1823,7 +1823,7 @@
 				EFE10A4F1C6E06C1004A869F /* UIWebView+Extension.m in Sources */,
 				EF8B22E51D15883400EEF727 /* OrderListViewController.m in Sources */,
 				EFE109931C6DF483004A869F /* EspSaleViewController.m in Sources */,
-				EFE10A9F1C6E0CC9004A869F /* VegHeader.m in Sources */,
+				EFE10A9F1C6E0CC9004A869F /* HomeHeader.m in Sources */,
 				EF1BA1531C996EBA00490233 /* ComboDetailViewController.m in Sources */,
 				5B5647181C6CB649008EB890 /* main.m in Sources */,
 				EFE10AB11C6E0E70004A869F /* EnsureCell.m in Sources */,
@@ -1834,12 +1834,12 @@
 				EFE109AD1C6E008A004A869F /* OrderEnsureViewController.m in Sources */,
 				EFE10AB41C6E0EFE004A869F /* ZoneListViewController.m in Sources */,
 				EFE10A991C6E0C79004A869F /* VegModel.m in Sources */,
-				EFE10A9C1C6E0CA7004A869F /* CaiSectionHeader.m in Sources */,
+				EFE10A9C1C6E0CA7004A869F /* ItemSectionHeader.m in Sources */,
 				EFE10A811C6E0922004A869F /* LoginViewController.m in Sources */,
 				EFE10A581C6E06C1004A869F /* UIView+Extension.m in Sources */,
 				EFE10A6A1C6E06C1004A869F /* SDWebImageManager+MJ.m in Sources */,
 				EFE10A4E1C6E06C1004A869F /* UITabBarController+Extension.m in Sources */,
-				EFE10A7E1C6E0874004A869F /* VegViewController.m in Sources */,
+				EFE10A7E1C6E0874004A869F /* HomeViewController.m in Sources */,
 				EFE10A4D1C6E06C1004A869F /* UIImage+Extension.m in Sources */,
 				EFE1098C1C6DF24D004A869F /* HTTPManager.m in Sources */,
 				EFE10A601C6E06C1004A869F /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1851,7 +1851,7 @@
 				EFE10A6B1C6E06C1004A869F /* UIImageView+MJWebCache.m in Sources */,
 				EFE10A501C6E06C1004A869F /* EWButton.m in Sources */,
 				EFE10A541C6E06C1004A869F /* EWTextField.m in Sources */,
-				EFE109BC1C6E0178004A869F /* VegDetailViewController.m in Sources */,
+				EFE109BC1C6E0178004A869F /* ItemDetailViewController.m in Sources */,
 				EFE10A901C6E0A8D004A869F /* OrderCell.m in Sources */,
 				EFE10A8A1C6E0A2C004A869F /* UserHeader.m in Sources */,
 				EFE10A671C6E06C1004A869F /* MJPhotoProgressView.m in Sources */,

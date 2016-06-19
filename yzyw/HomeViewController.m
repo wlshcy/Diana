@@ -6,39 +6,34 @@
 //  Copyright (c) 2015. All rights reserved.
 //
 
-#import "VegViewController.h"
+#import "HomeViewController.h"
 #import "VegCell.h"
-#import "CaiSectionHeader.h"
-#import "VegHeader.h"
+#import "ItemSectionHeader.h"
+#import "HomeHeader.h"
 #import <MJRefresh.h>
 
 #define ITEMWIDTH (290/2.0)
 #define ITEMHEIGHT ((232+146)/2.0)
 #define HEADERHEIGHT  210
 
-//change
-//#import "HomeViewController.h"
-#import "VegDetailViewController.h"
-//#import "PackageDetailViewController.h"
-//#import "FarmDetailViewController.h"
+#import "ItemDetailViewController.h"
 
-
-@interface VegViewController ()<UICollectionViewDataSource,
+@interface HomeViewController ()<UICollectionViewDataSource,
                                 UICollectionViewDelegate,
                                 UICollectionViewDelegateFlowLayout,
-                                VegHeaderDelegate,
+                                HomeHeaderDelegate,
                                 UIScrollViewDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *listData;
 @property (nonatomic, strong) NSMutableArray *slideData;
 @property (nonatomic, strong) CaiHomeData *caiData;
 @property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, strong) VegHeader *header;
+@property (nonatomic, strong) HomeHeader *header;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
-@implementation VegViewController
+@implementation HomeViewController
 
 
 - (instancetype)init
@@ -91,7 +86,7 @@
         
         _slideData = response;
         
-        [self.header configVegHeader:response];
+        [self.header configHomeHeader:response];
         
     } failure:^(NSError *err) {
         [self.collectionView.header endRefreshing];
@@ -152,7 +147,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    CaiSectionHeader *head = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER" forIndexPath:indexPath];
+    ItemSectionHeader *head = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER" forIndexPath:indexPath];
     if (_items) {
         head.titleLabel.text = @"蔬菜优选";
         head.line.hidden = NO;
@@ -172,7 +167,7 @@
 #pragma mark --- delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    VegDetailViewController *controller = [[VegDetailViewController alloc] init];
+    ItemDetailViewController *controller = [[ItemDetailViewController alloc] init];
     controller.vid = _listData[indexPath.row][@"id"];
     controller.isNeedBottomBar = YES;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -184,7 +179,7 @@
 #pragma mark - Cai delegate
 - (void)didSelectItemAtIndex:(NSInteger)index
 {
-    VegDetailViewController *controller = [[VegDetailViewController alloc] init];
+    ItemDetailViewController *controller = [[ItemDetailViewController alloc] init];
     controller.vid = _slideData[index][@"id"];
     controller.isNeedBottomBar = YES;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -258,7 +253,7 @@
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:[VegCell class] forCellWithReuseIdentifier:@"CAICELL"];
-        [_collectionView registerClass:[CaiSectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER"];
+        [_collectionView registerClass:[ItemSectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER"];
         
         _collectionView.contentInset = UIEdgeInsetsMake(HEADERHEIGHT, 0, 0, 0);
         [_collectionView addSubview:self.header];
@@ -281,10 +276,10 @@
 }
 
 
-- (VegHeader *)header
+- (HomeHeader *)header
 {
     if (!_header) {
-        _header = [VegHeader new];
+        _header = [HomeHeader new];
         _header.frame = CGRectMake(0, -(HEADERHEIGHT), SCREEN_WIDTH,HEADERHEIGHT);
         [_header.allCaiBtn addTarget:self action:@selector(pushAllCaiPage:) forControlEvents:UIControlEventTouchUpInside];
         _header.delegate = self;

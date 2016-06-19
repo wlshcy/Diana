@@ -19,7 +19,7 @@
 //#import "RedPacketViewController.h"
 //#import "PayResultViewController.h"
 
-#import "VegViewController.h"
+#import "HomeViewController.h"
 
 #define HEADER_HEIGHT 476/2.0
 #define BOTTOM_HEIGHT 50

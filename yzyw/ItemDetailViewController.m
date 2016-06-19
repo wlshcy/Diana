@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 nmg. All rights reserved.
 //
 
-#import "VegDetailViewController.h"
+#import "ItemDetailViewController.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import "LoginViewController.h"
 #import "CrossLineLabel.h"
 
 
-@interface VegDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
+@interface ItemDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong)NSDictionary *item;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIButton *backBtn;
@@ -51,7 +51,7 @@
 
 @end
 
-@implementation VegDetailViewController
+@implementation ItemDetailViewController
 
 //- (instancetype)initWithData:data
 - (instancetype)init

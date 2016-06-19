@@ -1,17 +1,10 @@
-//
-//  CaiSectionHeader.m
-//  Garden
-//
-//  Created by 金学利 on 9/7/15.
-//  Copyright (c) 2015 Kingxl. All rights reserved.
-//
 
-#import "CaiSectionHeader.h"
+#import "ItemSectionHeader.h"
 
-@interface CaiSectionHeader ()
+@interface ItemSectionHeader ()
 @end
 
-@implementation CaiSectionHeader
+@implementation ItemSectionHeader
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

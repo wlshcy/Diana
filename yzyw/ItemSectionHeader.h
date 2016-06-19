@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CaiSectionHeader : UICollectionReusableView
+@interface ItemSectionHeader : UICollectionReusableView
 @property (nonatomic, strong) UIView *line;
 @property (nonatomic, strong) UILabel *titleLabel;
 

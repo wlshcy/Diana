@@ -1,15 +1,8 @@
-//
-//  VegHeader.m
-//  Lynp
-//
-//  Created by nmg on 1/11/16.
-//  Copyright (c) 2015 nmg. All rights reserved.
-//
 
-#import "VegHeader.h"
-#import "VegDetailViewController.h"
+#import "HomeHeader.h"
+#import "ItemDetailViewController.h"
 
-@interface VegHeader()<EWFocusViewDataSource,EWFocusViewDelegate>
+@interface HomeHeader()<EWFocusViewDataSource,EWFocusViewDelegate>
 @property (nonatomic, strong) UIImageView *topImageView;
 @property (nonatomic, strong) EWFocusView *focusView;
 
@@ -20,7 +13,7 @@
 @property (nonatomic, strong) CaiHomeData *homeData;
 @end
 
-@implementation VegHeader
+@implementation HomeHeader
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -29,13 +22,6 @@
         _slideData = [NSMutableArray arrayWithCapacity:10];
         
         [self addSubview:self.focusView];
-        //[self addSubview:self.topImageView];
-        
-        //[self addSubview:self.bottomView];
-        
-        //[self.bottomView addSubview:self.titleLabel];
-        //[self.bottomView addSubview:self.allCaiBtn];
-        //[self.bottomView addSubview:self.myCaiBtn];
         
     }
     return self;
@@ -43,7 +29,7 @@
 
 
 
-- (void)configVegHeader:(NSMutableArray *)data
+- (void)configHomeHeader:(NSMutableArray *)data
 {
         self.focusView.hidden = NO;
         self.topImageView.hidden = YES;

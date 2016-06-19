@@ -15,15 +15,13 @@
 //#import <MobClick.h>
 #import "UMSocial.h"
 
-//#import "HomeViewController.h"
-#import "UserViewController.h"
-//#import "FrtViewController.h"
-//#import "SptViewController.h"
-#import "EspSaleViewController.h"
+#import "HomeViewController.h"
 #import "ShoppingCarViewController.h"
-#import "VegViewController.h"
-#import "ComboListViewController.h"
+#import "UserViewController.h"
+
 #import "LoginViewController.h"
+
+
 
 @interface AppDelegate ()<WXApiDelegate,RDVTabBarControllerDelegate>
 @property (strong, nonatomic) RDVTabBarController *tabbarController;
@@ -142,7 +140,7 @@
 - (void)changeToMainPage
 {
     
-    UINavigationController *home = [[UINavigationController alloc] initWithRootViewController:VegViewController.new];
+    UINavigationController *home = [[UINavigationController alloc] initWithRootViewController:HomeViewController.new];
     
     UINavigationController *cart = [[UINavigationController alloc]initWithRootViewController:ShoppingCarViewController.new];
     

@@ -15,7 +15,7 @@
 //#import "RemarkViewController.h"
 #import "LoginViewController.h"
 #import "OrderEnsureViewController.h"
-#import "VegDetailViewController.h"
+#import "ItemDetailViewController.h"
 
 #define CELL_HEIGHT   222/2.0
 #define BOTTOM_HEIGHT 60
