@@ -341,6 +341,7 @@
 
 - (void)subtcGoods:(UIButton *)sender
 {
+    [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%lu", _listData.count]];
     UITableViewCell *cell = nil;
     if ([sender.superview isKindOfClass:[UITableViewCell class]]) {
         cell = (UITableViewCell *)sender.superview;
@@ -357,7 +358,7 @@
         if (count == 0) {
             [[DBManager instance] deleteItem:data];
             [self.listData removeObjectAtIndex:indexPath.row];
-            [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%lu", _listData.count]];
+            
         }
         else{
             [data setObject:@(count) forKey:@"count"];
