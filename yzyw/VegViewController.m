@@ -50,17 +50,13 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopTimer:) name:@"STOPTIMER" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCaiData) name:@"REFRESHCAIHOMEDATA" object:nil];
     }
-//    self.hidesBottomBarWhenPushed = YES;
     return self;
 }
 
 - (void)layoutNavigationBar
 {
-//    //self.title = @"民乐";
-//           self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"我的" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightButton:)];
-//        [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:BLACK_COLOR,NSFontAttributeName:FONT(14)} forState:UIControlStateNormal];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"购物车" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightButton:)];
-//    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:BLACK_COLOR,NSFontAttributeName:FONT(14)} forState:UIControlStateNormal];
+    self.title = @"首页";
+
 }
 
 
@@ -68,26 +64,12 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-//    [self configNavBar];
 }
-
-
-//-(void)configNavBar
-//{
-//    self.rightBarButton.hidden = NO;
-//    self.leftBarButton.hidden = NO;
-//    [self.leftBarButton setImage:[UIImage imageNamed:@"nav_notice"] forState:UIControlStateNormal];
-//    [self.rightBarButton setTitle:@"已认证" forState:UIControlStateNormal];
-//    
-//    self.rightBarButton.enabled = YES;
-//}
-//
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setup];
-//    [self configNavBar];
     [ self getVegData];
 }
 

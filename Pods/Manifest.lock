@@ -28,6 +28,7 @@ PODS:
   - MJExtension (2.5.16)
   - MJRefresh (2.3.2)
   - PureLayout (3.0.1)
+  - RDVTabBarController (1.1.9)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - MJExtension (~> 2.5.3)
   - MJRefresh (~> 2.3.2)
   - PureLayout (~> 3.0.1)
+  - RDVTabBarController (~> 1.1.9)
   - SDWebImage (~> 3.7.3)
 
 SPEC CHECKSUMS:
@@ -50,6 +52,7 @@ SPEC CHECKSUMS:
   MJExtension: b8c1321a77d91bcc007b94d38cbf5383c95ea30e
   MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 
 COCOAPODS: 0.39.0

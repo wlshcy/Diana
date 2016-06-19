@@ -103,6 +103,9 @@
     [_listView reloadData];
     
     
+//    tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu",(unsigned long)_listData.count];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

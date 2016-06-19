@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
+
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 //#import <MobClick.h>
@@ -22,7 +25,8 @@
 #import "ComboListViewController.h"
 #import "LoginViewController.h"
 
-@interface AppDelegate ()<WXApiDelegate>
+@interface AppDelegate ()<WXApiDelegate,RDVTabBarControllerDelegate>
+@property (strong, nonatomic) RDVTabBarController *tabbarController;
 @end
 
 @implementation AppDelegate
@@ -140,28 +144,36 @@
     
     UINavigationController *home = [[UINavigationController alloc] initWithRootViewController:VegViewController.new];
     
-//    UINavigationController *esp = [[UINavigationController alloc] initWithRootViewController:EspSaleViewController.new];
-    UINavigationController *combo = [[UINavigationController alloc] initWithRootViewController:ComboListViewController.new];
-    
-    UINavigationController *car = [[UINavigationController alloc]initWithRootViewController:ShoppingCarViewController.new];
+    UINavigationController *cart = [[UINavigationController alloc]initWithRootViewController:ShoppingCarViewController.new];
     
     UINavigationController *user = [[UINavigationController alloc]initWithRootViewController:UserViewController.new];
-    
 
-//    NSArray *titles = @[@"单品", @"套餐", @"购物车", @"我的"];
-//    NSArray *images = @[@"home_unselected", @"esp_unselected", @"cart_unselected", @"mine_unselected"];
-//    NSArray *selectimages = @[@"home_selected",@"esp_selected", @"cart_selected",@"mine_selected"];
-    
-    NSArray *titles = @[@"首页", @"购物车", @"我的"];
-    NSArray *images = @[@"home_unselected", @"cart_unselected", @"mine_unselected"];
-    NSArray *selectimages = @[@"home_selected",@"cart_selected",@"mine_selected"];
-    
-    _tabbarController = [[UITabBarController alloc] init];
-//    _tabbarController.viewControllers = @[home,combo,car,user];
-    _tabbarController.viewControllers = @[home,car,user];
-    [_tabbarController ew_configTabBarItemWithTitles:titles font:FONT(12) titleColor:RGB_COLOR(164, 162, 154) selectedTitleColor:RGB_COLOR(17,194, 88) images:images selectedImages:selectimages barBackgroundImage:nil];
-    
+    _tabbarController = [[RDVTabBarController alloc] init];
+    _tabbarController.delegate = self;
+    [_tabbarController setViewControllers:@[home,cart,user]];
+    [self customizeTabBarForController:_tabbarController];
     self.window.rootViewController = _tabbarController;
+
+}
+
+- (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
+    UIImage *finishedImage = [UIImage imageNamed:@"tabbar_background"];
+    UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_background"];
+    
+    NSArray *tabBarItemImages = @[@"home", @"cart",@"mine"];
+    
+    NSInteger index = 0;
+    for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
+        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+        UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",
+                                                      [tabBarItemImages objectAtIndex:index]]];
+        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_unselected",
+                                                        [tabBarItemImages objectAtIndex:index]]];
+        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
+        [item setSelectedTitleAttributes:@{NSFontAttributeName:FONT(11),                           NSForegroundColorAttributeName: RGB_COLOR(0, 171, 97)}];
+        [item setUnselectedTitleAttributes:@{NSFontAttributeName:FONT(11),NSForegroundColorAttributeName:RGB_COLOR(80, 80, 80)}];
+        index++;
+    }
 }
 
 
@@ -302,6 +314,29 @@
     UINavigationController *navLogin = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
     [controller presentViewController:navLogin animated:YES completion:nil];
 }
+
+//#pragma mark - red tabbar delegate
+//- (void)tabBarController:(RDVTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+//{
+//    DBLog(@"uiviewcontroller====%@",viewController);
+//    if ([viewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)viewController topViewController] isKindOfClass:[FindViewController class]]) {
+//        
+//        RDVTabBarItem *item = [[_tabbarController tabBar] items][2];
+//        [item setBadgeValue:@"0"];
+//        item.badgeTextColor = CLEAR_COLOR;
+//        item.badgeBackgroundColor = CLEAR_COLOR;
+//    }
+//}
+//
+//#pragma mark - showRedpoint
+//- (void)showRedpoint
+//{
+//    RDVTabBarItem *item = [[_tabbarController tabBar] items][2];
+//    [item setBadgeValue:@"0"];
+//    item.badgeTextColor = CLEAR_COLOR;
+//    item.badgeBackgroundColor = RED_COLOR;
+//}
+//
 
 
 @end

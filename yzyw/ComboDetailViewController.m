@@ -369,7 +369,7 @@
 - (void)toShopCar:(UIButton *)sender
 {
     
-    [[APPDELEGATE tabbarController] setSelectedIndex:1];
+//    [[APPDELEGATE tabbarController] setSelectedIndex:1];
     
     
     if (self.navigationController.viewControllers.count > 1) {

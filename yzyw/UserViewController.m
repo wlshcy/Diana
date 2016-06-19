@@ -50,16 +50,13 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUserData:) name:@"REFRESHUSERPAGE" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushOrder) name:@"PUSHTOORDERLIST" object:nil];
-        
-        //test
-//        [EWUtils deleteObject:@"haspwd"];
     }
     return self;
 }
 
 - (void)layoutNavigationBar
 {
-
+    self.title = @"我的";
 }
 
 - (void)viewDidLoad {
