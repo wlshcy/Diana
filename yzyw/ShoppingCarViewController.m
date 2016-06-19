@@ -432,7 +432,7 @@
 - (UITableView *)listView
 {
     if (!_listView) {
-        _listView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-BOTTOM_HEIGHT-64) style:UITableViewStylePlain];
+        _listView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-60-BOTTOM_HEIGHT-64) style:UITableViewStylePlain];
         _listView.dataSource = self;
         _listView.delegate = self;
         _listView.backgroundColor = TABLE_COLOR;
