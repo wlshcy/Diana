@@ -341,7 +341,8 @@
 
 - (void)subtcGoods:(UIButton *)sender
 {
-    [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%lu", _listData.count]];
+    [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%ld",[self allGoodsCount] - 1]];
+    
     UITableViewCell *cell = nil;
     if ([sender.superview isKindOfClass:[UITableViewCell class]]) {
         cell = (UITableViewCell *)sender.superview;
@@ -372,6 +373,8 @@
             self.bottomView.hidden = YES;
             self.bottomToBorderView.hidden = YES;
             [[DBManager instance] clearAllItem];
+            [self rdv_tabBarItem].badgeBackgroundColor = CLEAR_COLOR;
+            [self rdv_tabBarItem].badgeTextColor = CLEAR_COLOR;
             return;
         }
         
