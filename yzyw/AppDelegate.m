@@ -143,6 +143,7 @@
 
     _tabbarController = [[RDVTabBarController alloc] init];
     _tabbarController.delegate = self;
+    
     [_tabbarController setViewControllers:@[home,cart,user]];
     [self customizeTabBarForController:_tabbarController];
     self.window.rootViewController = _tabbarController;
@@ -150,6 +151,11 @@
 }
 
 - (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
+    
+    RDVTabBar *tabBar = tabBarController.tabBar;
+    tabBar.translucent = YES;
+    tabBar.backgroundView.backgroundColor = WHITE_COLOR;
+
     UIImage *finishedImage = [UIImage imageNamed:@"tabbar_background"];
     UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_background"];
     
