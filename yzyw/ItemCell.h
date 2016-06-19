@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VegModel.h"
 
-@interface VegCell : UICollectionViewCell
+@interface ItemCell : UICollectionViewCell
 
-- (void)configVegCell:(VegCellData *)data;
-
+- (void)configItemCell:data;
 @end
 

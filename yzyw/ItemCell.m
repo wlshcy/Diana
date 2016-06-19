@@ -6,13 +6,12 @@
 //  Copyright (c) 2015 nmg. All rights reserved.
 //
 
-#import "VegCell.h"
+#import "ItemCell.h"
 #import <UIImageView+AFNetworking.h>
-#import "VegModel.h"
 #import "CrossLineLabel.h"
 
 
-@interface VegCell ()
+@interface ItemCell ()
 @property (nonatomic, strong) UIImageView *photo;
 @property (nonatomic, strong) UILabel *name;
 @property (nonatomic, strong) UILabel *size;
@@ -20,7 +19,7 @@
 @property (nonatomic, strong) CrossLineLabel *mprice;
 @end
 
-@implementation VegCell
+@implementation ItemCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -39,7 +38,7 @@
 }
 
 
-- (void)configVegCell:data
+- (void)configItemCell:data
 {
     
     [self.photo sd_setImageWithURL:[NSURL URLWithString:data[@"photo"]] placeholderImage:[UIImage imageNamed:@"home_rec"]];

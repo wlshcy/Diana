@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "VegCell.h"
+#import "ItemCell.h"
 #import "ItemSectionHeader.h"
 #import "HomeHeader.h"
 #import <MJRefresh.h>
@@ -139,9 +139,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    VegCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CAICELL" forIndexPath:indexPath];
+    ItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CAICELL" forIndexPath:indexPath];
         
-    [cell configVegCell:_listData[indexPath.row]];
+    [cell configItemCell:_listData[indexPath.row]];
     return cell;
 }
 
@@ -252,7 +252,7 @@
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
-        [_collectionView registerClass:[VegCell class] forCellWithReuseIdentifier:@"CAICELL"];
+        [_collectionView registerClass:[ItemCell class] forCellWithReuseIdentifier:@"CAICELL"];
         [_collectionView registerClass:[ItemSectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER"];
         
         _collectionView.contentInset = UIEdgeInsetsMake(HEADERHEIGHT, 0, 0, 0);

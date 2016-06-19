@@ -245,7 +245,7 @@
 		EFE109B61C6E010D004A869F /* EspCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109B51C6E010D004A869F /* EspCell.m */; };
 		EFE109B91C6E0144004A869F /* ShoppingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109B81C6E0144004A869F /* ShoppingCell.m */; };
 		EFE109BC1C6E0178004A869F /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109BB1C6E0178004A869F /* ItemDetailViewController.m */; };
-		EFE109BF1C6E01A3004A869F /* VegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109BE1C6E01A2004A869F /* VegCell.m */; };
+		EFE109BF1C6E01A3004A869F /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109BE1C6E01A2004A869F /* ItemCell.m */; };
 		EFE10A441C6E06C1004A869F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EFE109CC1C6E06C1004A869F /* AlipaySDK.bundle */; };
 		EFE10A451C6E06C1004A869F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE109CD1C6E06C1004A869F /* AlipaySDK.framework */; };
 		EFE10A461C6E06C1004A869F /* NSData+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE109D11C6E06C1004A869F /* NSData+Extension.m */; };
@@ -585,8 +585,8 @@
 		EFE109B81C6E0144004A869F /* ShoppingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCell.m; sourceTree = "<group>"; };
 		EFE109BA1C6E0178004A869F /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
 		EFE109BB1C6E0178004A869F /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
-		EFE109BD1C6E01A2004A869F /* VegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegCell.h; sourceTree = "<group>"; };
-		EFE109BE1C6E01A2004A869F /* VegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegCell.m; sourceTree = "<group>"; };
+		EFE109BD1C6E01A2004A869F /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		EFE109BE1C6E01A2004A869F /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		EFE109CC1C6E06C1004A869F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		EFE109CD1C6E06C1004A869F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		EFE109D01C6E06C1004A869F /* NSData+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Extension.h"; sourceTree = "<group>"; };
@@ -853,8 +853,8 @@
 				EFE10A7D1C6E0874004A869F /* HomeViewController.m */,
 				EFE10A791C6E081F004A869F /* CrossLineLabel.h */,
 				EFE10A7A1C6E081F004A869F /* CrossLineLabel.m */,
-				EFE109BD1C6E01A2004A869F /* VegCell.h */,
-				EFE109BE1C6E01A2004A869F /* VegCell.m */,
+				EFE109BD1C6E01A2004A869F /* ItemCell.h */,
+				EFE109BE1C6E01A2004A869F /* ItemCell.m */,
 				EFE109BA1C6E0178004A869F /* ItemDetailViewController.h */,
 				EFE109BB1C6E0178004A869F /* ItemDetailViewController.m */,
 				EF1BA1521C996EBA00490233 /* ComboDetailViewController.m */,
@@ -1859,7 +1859,7 @@
 				EFE109B31C6E00E3004A869F /* AddressListCell.m in Sources */,
 				EFE10A4B1C6E06C1004A869F /* UIAlertView+Extension.m in Sources */,
 				EFE10A5D1C6E06C1004A869F /* TPKeyboardAvoidingCollectionView.m in Sources */,
-				EFE109BF1C6E01A3004A869F /* VegCell.m in Sources */,
+				EFE109BF1C6E01A3004A869F /* ItemCell.m in Sources */,
 				EFE10A841C6E0965004A869F /* VGModel.m in Sources */,
 				EFE10ABF1C6E0FD6004A869F /* AddAddressCell.m in Sources */,
 			);
