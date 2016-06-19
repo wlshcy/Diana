@@ -155,6 +155,7 @@
     RDVTabBar *tabBar = tabBarController.tabBar;
     tabBar.translucent = YES;
     tabBar.backgroundView.backgroundColor = WHITE_COLOR;
+    tabBar.height = 60;
 
     UIImage *finishedImage = [UIImage imageNamed:@"tabbar_background"];
     UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_background"];
