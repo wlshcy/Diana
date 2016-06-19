@@ -17,6 +17,9 @@
 #import "OrderEnsureViewController.h"
 #import "ItemDetailViewController.h"
 
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
+
 #define CELL_HEIGHT   222/2.0
 #define BOTTOM_HEIGHT 60
 #define FREIGHT 10
@@ -55,6 +58,7 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBeiZhu:) name:@"CLEARBEIZHU" object:nil];
     }
+    [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"10"]];
     return self;
 }
 
@@ -78,6 +82,10 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView addSubview:self.priceLabel];
     [self.bottomView addSubview:self.submitBtn];
+    
+   
+    
+    
     
 }
 
@@ -349,6 +357,7 @@
         if (count == 0) {
             [[DBManager instance] deleteItem:data];
             [self.listData removeObjectAtIndex:indexPath.row];
+            [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%lu", _listData.count]];
         }
         else{
             [data setObject:@(count) forKey:@"count"];
@@ -356,32 +365,7 @@
         }
         [self changePriceStatus];
         [self.listView reloadData];
-//        
-//        if ([data[@"count"] integerValue] -1 == 0) {
-//            
-//            //clear db
-//            [[DBManager instance] deleteItem:data];
-//            //delete datasource
-//            [self.listData removeObjectAtIndex:indexPath.row];
-//            //reload section
-//            //[self.listView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-//            [self changePriceStatus];
-//            [self.listView reloadData];
-//
-//        }else{
-//        
-//            //count -1
-//            NSInteger preCount = [data[@"count"] integerValue];
-//            [data setObject:@(preCount-1) forKey:@"count"];
-//            
-//            //update db count
-//            [[DBManager instance] updateItem:data count:[data[@"count"] integerValue ]];
-//            //reload section
-//            //[self.listView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-//            [self changePriceStatus];
-//            [self.listView reloadData];
-//        }
-//        
+
         if (self.listData.count == 0) {
             self.listView.hidden = YES;
             self.bottomView.hidden = YES;
@@ -389,12 +373,6 @@
             [[DBManager instance] clearAllItem];
             return;
         }
-        
-        //都删除要更新页面
-//        if (self.listData.count == 0) {
-//            
-//            [self showEmptyCar];
-//        }
         
     }
 
