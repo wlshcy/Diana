@@ -19,8 +19,8 @@
 #import "AddressListViewController.h"
 #import "ZoneListViewController.h"
 
-
-
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
 
 #define HEADER_HEIGHT 476/2.0
 
@@ -73,6 +73,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     
     [_items removeAllObjects];
     [_items addObjectsFromArray:[[DBManager instance] getAllItems]];
