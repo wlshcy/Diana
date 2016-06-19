@@ -306,7 +306,6 @@
 		EFE10A871C6E09DC004A869F /* VGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A861C6E09DC004A869F /* VGUtils.m */; };
 		EFE10A8A1C6E0A2C004A869F /* UserHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A891C6E0A2C004A869F /* UserHeader.m */; };
 		EFE10A901C6E0A8D004A869F /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A8F1C6E0A8D004A869F /* OrderCell.m */; };
-		EFE10A991C6E0C79004A869F /* VegModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A981C6E0C79004A869F /* VegModel.m */; };
 		EFE10A9C1C6E0CA7004A869F /* ItemSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A9B1C6E0CA7004A869F /* ItemSectionHeader.m */; };
 		EFE10A9F1C6E0CC9004A869F /* HomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10A9E1C6E0CC9004A869F /* HomeHeader.m */; };
 		EFE10AA81C6E0D5A004A869F /* PacketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE10AA11C6E0D5A004A869F /* PacketCell.m */; };
@@ -708,8 +707,6 @@
 		EFE10A891C6E0A2C004A869F /* UserHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeader.m; sourceTree = "<group>"; };
 		EFE10A8E1C6E0A8D004A869F /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		EFE10A8F1C6E0A8D004A869F /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
-		EFE10A971C6E0C79004A869F /* VegModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegModel.h; sourceTree = "<group>"; };
-		EFE10A981C6E0C79004A869F /* VegModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegModel.m; sourceTree = "<group>"; };
 		EFE10A9A1C6E0CA7004A869F /* ItemSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSectionHeader.h; sourceTree = "<group>"; };
 		EFE10A9B1C6E0CA7004A869F /* ItemSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSectionHeader.m; sourceTree = "<group>"; };
 		EFE10A9D1C6E0CC9004A869F /* HomeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeader.h; sourceTree = "<group>"; };
@@ -837,8 +834,6 @@
 				EFE10A9E1C6E0CC9004A869F /* HomeHeader.m */,
 				EFE10A9A1C6E0CA7004A869F /* ItemSectionHeader.h */,
 				EFE10A9B1C6E0CA7004A869F /* ItemSectionHeader.m */,
-				EFE10A971C6E0C79004A869F /* VegModel.h */,
-				EFE10A981C6E0C79004A869F /* VegModel.m */,
 				EFE10A8E1C6E0A8D004A869F /* OrderCell.h */,
 				EFE10A8F1C6E0A8D004A869F /* OrderCell.m */,
 				EFE10A881C6E0A2C004A869F /* UserHeader.h */,
@@ -1833,7 +1828,6 @@
 				EFE10A481C6E06C1004A869F /* NSJSONSerialization+Extension.m in Sources */,
 				EFE109AD1C6E008A004A869F /* OrderEnsureViewController.m in Sources */,
 				EFE10AB41C6E0EFE004A869F /* ZoneListViewController.m in Sources */,
-				EFE10A991C6E0C79004A869F /* VegModel.m in Sources */,
 				EFE10A9C1C6E0CA7004A869F /* ItemSectionHeader.m in Sources */,
 				EFE10A811C6E0922004A869F /* LoginViewController.m in Sources */,
 				EFE10A581C6E06C1004A869F /* UIView+Extension.m in Sources */,
