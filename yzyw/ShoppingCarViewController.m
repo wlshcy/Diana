@@ -87,8 +87,6 @@
     [_listData removeAllObjects];
     [_listData addObjectsFromArray:[[DBManager instance] getAllItems]];
     
-//    DBLog(@"%@", _listData);
-    
     if (_listData.count == 0){
         self.listView.hidden = YES;
         self.bottomView.hidden = YES;
@@ -101,11 +99,6 @@
     
     [self changePriceStatus];
     [_listView reloadData];
-    
-    
-//    tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu",(unsigned long)_listData.count];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

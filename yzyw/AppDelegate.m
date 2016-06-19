@@ -40,11 +40,8 @@
     [self registLocalNotification];
     [self setupThirdparty];
     
-    
-    //init app
-    //[self initApp];
-    
-    //正式
+    [[DBManager instance] createDB];
+
     [self changeToMainPage];
     
     
@@ -54,9 +51,7 @@
 
     });
     
-    //db
-    [[DBManager instance] createDB];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jump:) name:@"JUMP" object:nil];
     
     return YES;
@@ -171,6 +166,15 @@
         [item setSelectedTitleAttributes:@{NSFontAttributeName:FONT(11),                           NSForegroundColorAttributeName: RGB_COLOR(0, 171, 97)}];
         [item setUnselectedTitleAttributes:@{NSFontAttributeName:FONT(11),NSForegroundColorAttributeName:RGB_COLOR(80, 80, 80)}];
         index++;
+    }
+    
+    NSMutableArray *items = [[DBManager instance] getAllItems];
+    if (items.count > 0){
+        RDVTabBarItem *item = [[_tabbarController tabBar] items][1];
+        [item setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)items.count]];
+        [item setBadgeTextFont:FONT(8)];
+        [item setBadgePositionAdjustment:UIOffsetMake(-6, 2)];
+        item.badgeBackgroundColor = RED_COLOR;
     }
 }
 
