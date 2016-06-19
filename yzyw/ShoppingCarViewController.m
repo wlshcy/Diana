@@ -33,8 +33,9 @@
 
 @property (nonatomic, strong) UILabel *headerLabel;
 
-@property (nonatomic, strong) UIView *bottomToBorderView;
+@property (nonatomic, strong) UIView *topBorderView;
 @property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) UIView *bottomBorderView;
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UIButton *submitBtn;
 
@@ -78,8 +79,9 @@
     
     [self.view addSubview:self.listView];
     self.listView.tableHeaderView = self.headerLabel;
-    [self.view addSubview:self.bottomToBorderView];
+    [self.view addSubview:self.topBorderView];
     [self.view addSubview:self.bottomView];
+    [self.view addSubview:self.bottomBorderView];
     [self.bottomView addSubview:self.priceLabel];
     [self.bottomView addSubview:self.submitBtn];
     
@@ -97,8 +99,9 @@
     
     if (_listData.count == 0){
         self.listView.hidden = YES;
+        self.topBorderView.hidden = YES;
         self.bottomView.hidden = YES;
-        self.bottomToBorderView.hidden = YES;
+        self.bottomBorderView.hidden = YES;
         return;
     }
     
@@ -370,8 +373,9 @@
 
         if (self.listData.count == 0) {
             self.listView.hidden = YES;
+            self.topBorderView.hidden = YES;
             self.bottomView.hidden = YES;
-            self.bottomToBorderView.hidden = YES;
+            self.bottomBorderView.hidden = YES;
             [[DBManager instance] clearAllItem];
             [self rdv_tabBarItem].badgeBackgroundColor = CLEAR_COLOR;
             [self rdv_tabBarItem].badgeTextColor = CLEAR_COLOR;
@@ -432,7 +436,11 @@
 - (UITableView *)listView
 {
     if (!_listView) {
-        _listView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-60-BOTTOM_HEIGHT-64) style:UITableViewStylePlain];
+        _listView = [[UITableView alloc] initWithFrame:CGRectMake(0,
+                                                                  0,
+                                                                  SCREEN_WIDTH,
+                                                                  SCREEN_HEIGHT-62-BOTTOM_HEIGHT-64)
+                                                 style:UITableViewStylePlain];
         _listView.dataSource = self;
         _listView.delegate = self;
         _listView.backgroundColor = TABLE_COLOR;
@@ -456,22 +464,30 @@
     return _headerLabel;
 }
 
+- (UIView *)topBorderView
+{
+    if (!_topBorderView) {
+        _topBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, _listView.bottom, SCREEN_WIDTH, 1)];
+        _topBorderView.backgroundColor = RGB_COLOR(242, 242, 242);
+    }
+    return _topBorderView;
+}
 
 - (UIView *)bottomView
 {
     if (!_bottomView) {
-        _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, _bottomToBorderView.bottom, SCREEN_WIDTH, BOTTOM_HEIGHT)];
+        _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, _topBorderView.bottom, SCREEN_WIDTH, BOTTOM_HEIGHT)];
     }
     return _bottomView;
 }
 
-- (UIView *)bottomToBorderView
+- (UIView *)bottomBorderView
 {
-    if (!_bottomToBorderView) {
-        _bottomToBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, _listView.bottom, SCREEN_WIDTH, 1)];
-        _bottomToBorderView.backgroundColor = RGB_COLOR(242, 242, 242);
+    if (!_bottomBorderView) {
+        _bottomBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, _bottomView.bottom, SCREEN_WIDTH, 1)];
+        _bottomBorderView.backgroundColor = RGB_COLOR(242, 242, 242);
     }
-    return _bottomToBorderView;
+    return _bottomBorderView;
 }
 
 
