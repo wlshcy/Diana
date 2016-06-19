@@ -169,9 +169,13 @@
     }
     
     NSMutableArray *items = [[DBManager instance] getAllItems];
-    if (items.count > 0){
+    NSInteger count = 0;
+    for (NSInteger i = 0; i < items.count; i++) {
+        count += [items[i][@"count"] integerValue];
+    }
+    if (count > 0){
         RDVTabBarItem *item = [[_tabbarController tabBar] items][1];
-        [item setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)items.count]];
+        [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
         [item setBadgeTextFont:FONT(8)];
         [item setBadgePositionAdjustment:UIOffsetMake(-6, 2)];
         item.badgeBackgroundColor = RED_COLOR;
