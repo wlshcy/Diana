@@ -154,9 +154,9 @@
 
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
-    imageview.image = [UIImage imageNamed:@"user_arrow.png"];
-    cell.accessoryView = imageview;
+//    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
+//    imageview.image = [UIImage imageNamed:@"user_arrow.png"];
+//    cell.accessoryView = imageview;
     return cell;
 }
 

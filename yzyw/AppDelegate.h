@@ -15,6 +15,7 @@
 
 
 - (void)changeToMainPage;
+-(void) updateCartTabBadge;
 
 - (void)loginWithWX:(UIViewController *)controller;
 

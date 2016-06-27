@@ -11,6 +11,7 @@
 #import "UMSocialWechatHandler.h"
 #import "LoginViewController.h"
 #import "CrossLineLabel.h"
+#import "AppDelegate.h"
 
 
 @interface ItemDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
@@ -376,7 +377,10 @@
     }
     [[DBManager instance] deleteItem:_item];
     [[DBManager instance] saveItem:_item count:_count];
+    
     [self showSuccessStatusWithTitle:@"成功加入购物车"];
+    
+     [(AppDelegate *)[[UIApplication sharedApplication] delegate] updateCartTabBadge];
 
 }
 

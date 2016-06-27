@@ -191,8 +191,6 @@
 		EF597E5C1C6E1CD300CCBDBD /* user_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DA51C6E1CD300CCBDBD /* user_arrow@3x.png */; };
 		EF597E5D1C6E1CD300CCBDBD /* user_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DA61C6E1CD300CCBDBD /* user_avatar@2x.png */; };
 		EF597E5E1C6E1CD300CCBDBD /* user_avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DA71C6E1CD300CCBDBD /* user_avatar@3x.png */; };
-		EF597E5F1C6E1CD300CCBDBD /* user_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DA81C6E1CD300CCBDBD /* user_header@2x.png */; };
-		EF597E601C6E1CD300CCBDBD /* user_header@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DA91C6E1CD300CCBDBD /* user_header@3x.png */; };
 		EF597E611C6E1CD300CCBDBD /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DAB1C6E1CD300CCBDBD /* 01.png */; };
 		EF597E621C6E1CD300CCBDBD /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DAC1C6E1CD300CCBDBD /* 02.png */; };
 		EF597E631C6E1CD300CCBDBD /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = EF597DAD1C6E1CD300CCBDBD /* 03.png */; };
@@ -514,8 +512,6 @@
 		EF597DA51C6E1CD300CCBDBD /* user_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_arrow@3x.png"; sourceTree = "<group>"; };
 		EF597DA61C6E1CD300CCBDBD /* user_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_avatar@2x.png"; sourceTree = "<group>"; };
 		EF597DA71C6E1CD300CCBDBD /* user_avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_avatar@3x.png"; sourceTree = "<group>"; };
-		EF597DA81C6E1CD300CCBDBD /* user_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_header@2x.png"; sourceTree = "<group>"; };
-		EF597DA91C6E1CD300CCBDBD /* user_header@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_header@3x.png"; sourceTree = "<group>"; };
 		EF597DAB1C6E1CD300CCBDBD /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
 		EF597DAC1C6E1CD300CCBDBD /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
 		EF597DAD1C6E1CD300CCBDBD /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
@@ -1180,8 +1176,6 @@
 				EF597DA51C6E1CD300CCBDBD /* user_arrow@3x.png */,
 				EF597DA61C6E1CD300CCBDBD /* user_avatar@2x.png */,
 				EF597DA71C6E1CD300CCBDBD /* user_avatar@3x.png */,
-				EF597DA81C6E1CD300CCBDBD /* user_header@2x.png */,
-				EF597DA91C6E1CD300CCBDBD /* user_header@3x.png */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1585,7 +1579,6 @@
 				EF597E501C6E1CD300CCBDBD /* order@3x.png in Resources */,
 				EF597E641C6E1CD300CCBDBD /* 1136.png in Resources */,
 				EF597E591C6E1CD300CCBDBD /* setting_s@2x.png in Resources */,
-				EF597E601C6E1CD300CCBDBD /* user_header@3x.png in Resources */,
 				EF597DEA1C6E1CD300CCBDBD /* arrow_img@2x.png in Resources */,
 				EF597E691C6E1CD300CCBDBD /* goods_detail@2x.png in Resources */,
 				EF597DC51C6E1CD300CCBDBD /* detail_share@3x.png in Resources */,
@@ -1668,7 +1661,6 @@
 				EF597DF41C6E1CD300CCBDBD /* intro_back@2x.png in Resources */,
 				EF19EAF51C801888005BCC13 /* set_default@3x.png in Resources */,
 				EF597E241C6E1CD300CCBDBD /* redpacket_460@3x.png in Resources */,
-				EF597E5F1C6E1CD300CCBDBD /* user_header@2x.png in Resources */,
 				EF597E321C6E1CD300CCBDBD /* home_unselected@3x.png in Resources */,
 				EF597DDB1C6E1CD300CCBDBD /* 750-1334_2.jpg in Resources */,
 				EF597DD21C6E1CD300CCBDBD /* 1242-2202_2.jpg in Resources */,
@@ -1986,7 +1978,7 @@
 					"$(PROJECT_DIR)/yzyw/Vendor/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/yzyw/Vendor/Easywork",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nmg.yzyw;
+				PRODUCT_BUNDLE_IDENTIFIER = nmg.cy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2016,7 +2008,7 @@
 					"$(PROJECT_DIR)/yzyw/Vendor/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/yzyw/Vendor/Easywork",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nmg.yzyw;
+				PRODUCT_BUNDLE_IDENTIFIER = nmg.cy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

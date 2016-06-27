@@ -20,6 +20,8 @@
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
 
+#import "AppDelegate.h"
+
 #define CELL_HEIGHT   222/2.0
 #define BOTTOM_HEIGHT 60
 #define FREIGHT 10
@@ -101,12 +103,12 @@
         self.listView.hidden = YES;
         self.topBorderView.hidden = YES;
         self.bottomView.hidden = YES;
-        self.bottomBorderView.hidden = YES;
         return;
     }
     
     self.listView.hidden = NO;
     self.bottomView.hidden = NO;
+    self.bottomBorderView.hidden = NO;
     
     [self changePriceStatus];
     [_listView reloadData];
@@ -329,10 +331,11 @@
         [data setObject:@(count+1) forKey:@"count"];
         //update db
         [[DBManager instance] updateItem:data count:[data[@"count"] integerValue ]];
-        //reload section
-        //[self.listView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+        
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] updateCartTabBadge];
         
         [self changePriceStatus];
+        
         [self.listView reloadData];
 
     }
@@ -344,7 +347,7 @@
 
 - (void)subtcGoods:(UIButton *)sender
 {
-    [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%ld",[self allGoodsCount] - 1]];
+   
     
     UITableViewCell *cell = nil;
     if ([sender.superview isKindOfClass:[UITableViewCell class]]) {
@@ -368,6 +371,7 @@
             [data setObject:@(count) forKey:@"count"];
             [[DBManager instance] updateItem:data count:[data[@"count"] integerValue ]];
         }
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] updateCartTabBadge];
         [self changePriceStatus];
         [self.listView reloadData];
 
@@ -375,10 +379,8 @@
             self.listView.hidden = YES;
             self.topBorderView.hidden = YES;
             self.bottomView.hidden = YES;
-            self.bottomBorderView.hidden = YES;
             [[DBManager instance] clearAllItem];
-            [self rdv_tabBarItem].badgeBackgroundColor = CLEAR_COLOR;
-            [self rdv_tabBarItem].badgeTextColor = CLEAR_COLOR;
+            
             return;
         }
         
