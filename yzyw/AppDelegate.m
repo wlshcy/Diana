@@ -24,7 +24,7 @@
 
 
 @interface AppDelegate ()<WXApiDelegate,RDVTabBarControllerDelegate>
-@property (strong, nonatomic) RDVTabBarController *tabbarController;
+@property (strong, nonatomic) RDVTabBarController *tabBarController;
 @end
 
 @implementation AppDelegate
@@ -58,7 +58,7 @@
 }
 
 - (void)jump:(NSNotification *)noti {
-    [self.tabbarController setSelectedIndex:0];
+    [self.tabBarController setSelectedIndex:0];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -141,13 +141,42 @@
     
     UINavigationController *user = [[UINavigationController alloc]initWithRootViewController:UserViewController.new];
 
-    _tabbarController = [[RDVTabBarController alloc] init];
-    _tabbarController.delegate = self;
     
-    [_tabbarController setViewControllers:@[home,cart,user]];
-    [self customizeTabBarForController:_tabbarController];
-    self.window.rootViewController = _tabbarController;
+    self.tabBarController = [[RDVTabBarController alloc] init];
+    self.tabBarController.delegate = self;
+    
+    [self.tabBarController setViewControllers:@[home,cart,user]];
+//    [self customizeTabBarForController:_tabbarController];
+    
+    [self setupTabBarItems];
+    
+    self.window.rootViewController = self.tabBarController;
 
+}
+
+- (void)setupTabBarItems
+{
+    RDVTabBar *tabBar = self.tabBarController.tabBar;
+    tabBar.translucent = YES;
+    tabBar.backgroundView.backgroundColor = WHITE_COLOR;
+    tabBar.height = 60;
+    
+    NSArray *tabBarItemImages = @[@"home", @"cart",@"mine"];
+    
+    NSInteger index = 0;
+    for (RDVTabBarItem *item in [[self.tabBarController tabBar] items]) {
+        UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",
+                                                      [tabBarItemImages objectAtIndex:index]]];
+        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_unselected",
+                                                        [tabBarItemImages objectAtIndex:index]]];
+        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
+        [item setSelectedTitleAttributes:@{NSFontAttributeName:FONT(11),                           NSForegroundColorAttributeName: RGB_COLOR(0, 171, 97)}];
+        [item setUnselectedTitleAttributes:@{NSFontAttributeName:FONT(11),NSForegroundColorAttributeName:RGB_COLOR(80, 80, 80)}];
+        index++;
+    }
+
+    
+    [self updateCartTabBadge];
 }
 
 - (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
@@ -175,18 +204,27 @@
         index++;
     }
     
+    [self updateCartTabBadge];
+}
+
+- (void)updateCartTabBadge
+{
     NSMutableArray *items = [[DBManager instance] getAllItems];
     NSInteger count = 0;
     for (NSInteger i = 0; i < items.count; i++) {
         count += [items[i][@"count"] integerValue];
     }
-    if (count > 0){
-        RDVTabBarItem *item = [[_tabbarController tabBar] items][1];
+
+    RDVTabBarItem *item = [self.tabBarController.tabBar.items objectAtIndex:1];
+    
+    if(count == 0)
+        [item setBadgeValue:nil];
+    else
         [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
         [item setBadgeTextFont:FONT(8)];
-        [item setBadgePositionAdjustment:UIOffsetMake(-6, 2)];
+        [item setBadgePositionAdjustment:UIOffsetMake(-6, 8)];
         item.badgeBackgroundColor = RED_COLOR;
-    }
+
 }
 
 
@@ -320,7 +358,7 @@
 #pragma mark - handle login
 - (void)login:(NSNotification *)noti
 {
-    UINavigationController *nav = [self.tabbarController selectedViewController];
+    UINavigationController *nav = [self.tabBarController selectedViewController];
     
     UIViewController *controller = nav.viewControllers.lastObject;
     

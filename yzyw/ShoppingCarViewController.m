@@ -60,14 +60,14 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBeiZhu:) name:@"CLEARBEIZHU" object:nil];
     }
     [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"10"]];
+    self.rdv_tabBarItem.badgeBackgroundColor = RED_COLOR;
     return self;
 }
 
 - (void)layoutNavigationBar
 {
     self.title = @"购物车";
-//       self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"咨询" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightButton:)];
-//    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:BLACK_COLOR,NSFontAttributeName:FONT(14)} forState:UIControlStateNormal];
+    DBLog(@"init");
 }
 
 
