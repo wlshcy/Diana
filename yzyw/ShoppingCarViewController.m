@@ -61,15 +61,12 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBeiZhu:) name:@"CLEARBEIZHU" object:nil];
     }
-    [[self rdv_tabBarItem] setBadgeValue:[NSString stringWithFormat:@"10"]];
-    self.rdv_tabBarItem.badgeBackgroundColor = RED_COLOR;
     return self;
 }
 
 - (void)layoutNavigationBar
 {
     self.title = @"购物车";
-    DBLog(@"init");
 }
 
 
@@ -96,6 +93,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:NO];
+    
     [_listData removeAllObjects];
     [_listData addObjectsFromArray:[[DBManager instance] getAllItems]];
     
@@ -412,13 +411,16 @@
 //        [self showErrorStatusWithTitle:@"登录后才能结算"];
 //    }
     OrderEnsureViewController *controller = [[OrderEnsureViewController alloc] init];
-    controller.totalPrice = [self allPrice] >= PRICE_LIMIT ?[self allPrice]:[self allPrice] + FREIGHT;
+    if ([self allPrice] >= PRICE_LIMIT){
+        controller.totalPrice = [self allPrice];
+    }else{
+        controller.totalPrice = [self allPrice] + FREIGHT;
+    }
     if ([self allPrice] >= PRICE_LIMIT) {
         controller.freight = 0;
     }else{
         controller.freight = FREIGHT;
     }
-    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

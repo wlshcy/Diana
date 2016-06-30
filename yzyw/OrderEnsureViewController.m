@@ -73,7 +73,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:NO];
     
     [_items removeAllObjects];
     [_items addObjectsFromArray:[[DBManager instance] getAllItems]];
@@ -83,8 +83,6 @@
     
     [self computeTotalPrice];
     [_listView reloadData];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [self.wxpayButton setImage:[UIImage imageNamed:@"del_image_2.png"] forState:UIControlStateNormal];
     [self.alipayButton setImage:[UIImage imageNamed:@"del_image_1.png"] forState:UIControlStateNormal];
@@ -301,7 +299,7 @@
             cell.textLabel.text = @"商品价格";
             cell.textLabel.font = FONT(16);
             
-            NSString *text = [NSString stringWithFormat:@"¥ %.1f", _totalPrice];
+            NSString *text = [NSString stringWithFormat:@"¥ %.1f", _totalPrice - _freight];
             cell.detailTextLabel.text = text;
             cell.detailTextLabel.font = FONT(16);
             cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
@@ -334,7 +332,7 @@
             cell.textLabel.text = @"合计";
             cell.textLabel.font = FONT(16);
             
-            NSString *text = [NSString stringWithFormat:@"¥ %.1f", _freight + _totalPrice];
+            NSString *text = [NSString stringWithFormat:@"¥ %.1f", _totalPrice];
             cell.detailTextLabel.text = text;
             cell.detailTextLabel.font = FONT(16);
             cell.detailTextLabel.textColor = RGB_COLOR(0,0,0);
