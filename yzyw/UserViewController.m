@@ -35,7 +35,6 @@
 @property (nonatomic, assign) BOOL enable;
 @property (nonatomic, strong) NSArray *imageArray;
 
-@property (nonatomic, strong) UILabel *tipsLabel;
 @property (nonatomic) UIEdgeInsets separatorInset NS_AVAILABLE_IOS(7_0) UI_APPEARANCE_SELECTOR;
 @end
 
@@ -47,9 +46,6 @@
     if (self = [super init]) {
         [self layoutNavigationBar];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUserData:) name:@"REFRESHUSERPAGE" object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushOrder) name:@"PUSHTOORDERLIST" object:nil];
     }
     return self;
 }
@@ -203,12 +199,7 @@
 
 - (void)login
 {
-    if ([VGUtils userHasLogin]) {
-        
-        self.tipsLabel.hidden = YES;
-
-        
-    }else{
+    if (![VGUtils userHasLogin]) {
     
         UINavigationController *navLogin = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
         [self presentViewController:navLogin animated:YES completion:nil];
@@ -240,24 +231,6 @@
         _header.delegate = self;
     }
     return _header;
-}
-
-- (UILabel *)tipsLabel
-{
-    if (!_tipsLabel) {
-        _tipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.listView.bottom-35, SCREEN_WIDTH, 35)];
-        _tipsLabel.backgroundColor = RGB_COLOR(220,238,225);
-        _tipsLabel.textColor = RGB_COLOR(71, 67, 35);
-        _tipsLabel.font = FONT(13);
-        _tipsLabel.textAlignment = NSTextAlignmentCenter;
-        _tipsLabel.text = @"为保证您的账户安全请设置密码，只需10秒!";
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goModifyPwd:)];
-        _tipsLabel.userInteractionEnabled = YES;
-        [_tipsLabel addGestureRecognizer:tap];
-        tap = nil;
-    }
-    return _tipsLabel;
 }
 
 #pragma mark - ios 7
