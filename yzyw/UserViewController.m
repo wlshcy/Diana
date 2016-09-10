@@ -172,100 +172,48 @@
                 [self.navigationController pushViewController:controller animated:YES];
             }else{
                 [self showErrorStatusWithTitle:@"用户未登录"];
-                OrderListViewController *controller = [OrderListViewController new];
-                controller.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:controller animated:YES];
             }
-//            OrderListViewController *controller = [[OrderListViewController alloc] init];
-//            controller.hidesBottomBarWhenPushed = YES;
-//             [self.navigationController pushViewController:controller animated:YES];
-            
         }
-            break;
+        break;
         
         case 1:
         {
 
-//            if ([VGUtils userHasLogin]){
-//                ManageAddressViewController *controller = [[ManageAddressViewController alloc] initWithFromType:1];
+            if ([VGUtils userHasLogin]){
                 AddressListViewController *controller = [[AddressListViewController alloc] initWithFlag:2];
                 controller.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:controller animated:YES];
-//            }else{
-//                [self showErrorStatusWithTitle:@"用户未登录"];
-//            }
+            }else{
+                [self showErrorStatusWithTitle:@"用户未登录"];
+            }
             
         }
-            break;
+        break;
         
         case 3:
         {
             [EWUtils ew_callNumber:@"010-67789567"];
             
         }
-            break;
+        break;
         default:
             break;
 }
 }
 
-- (void)didTapUserHeader
+- (void)login
 {
     if ([VGUtils userHasLogin]) {
         
-//        ModifyPasswdViewController *controller = [[ModifyPasswdViewController alloc]init];
-//        controller.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:controller animated:YES];
-        
-        [EWUtils setObject:@"1" key:@"MODIFYPWD"];
         self.tipsLabel.hidden = YES;
 
         
     }else{
     
-        [self login];
+        UINavigationController *navLogin = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
+        [self presentViewController:navLogin animated:YES completion:nil];
+
     }
-}
-
-- (void)reloadUserData:(NSNotification *)noti
-{
-    [self.header configUserHeader:nil];
-    if ([VGUtils userHasLogin] && [[EWUtils getObjectForKey:@"haspwd"]boolValue] == NO &&[[EWUtils getObjectForKey:@"MODIFYPWD"] boolValue] == NO) {
-        [self.view addSubview:self.tipsLabel];
-    }
-
-}
-
-
-- (void)login
-{
-//    UINavigationController *navLogin = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
-//    [self presentViewController:navLogin animated:YES completion:nil];
-    DBLog(@"go to wx");
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-   // [delegate loginWithWX:self];
-}
-
-
-- (void)pushOrder
-{
-//    OrderListViewController *controller = [OrderListViewController new];
-//    controller.hidesBottomBarWhenPushed = YES;
-//    controller.right = YES;
-//    [self.navigationController pushViewController:controller animated:NO];
-
-    
-}
-
-- (void)goModifyPwd:(UITapGestureRecognizer *)tap
-{
-    [EWUtils setObject:@"1" key:@"MODIFYPWD"];
-    self.tipsLabel.hidden = YES;
-    
-//    ModifyPasswdViewController *controller = [[ModifyPasswdViewController alloc]init];
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
-
 }
 
 #pragma mark - Getter

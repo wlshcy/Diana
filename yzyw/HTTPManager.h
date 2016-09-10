@@ -26,16 +26,14 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
                  success:(void (^)(id response))success
                  failure:(void (^)(NSError *err))failure;
 
-+ (void)getCodeWithPhone:(NSString *)phone
-                    type:(NSString *)type //修改密码传6 登录5
++ (void)getSMSCode:(NSString *)phone
                  success:(void (^)(id response))success
                  failure:(void (^)(NSError *err))failure;
 
 
 //login
-+ (void)loginWithPhone:(NSString *)phone
-                  code:(NSString *)code
-                  type:(NSInteger)type
++ (void)loginWithSMSCode:(NSString *)phone
+                    code: (NSString *)code
                success:(void (^)(id response))success
                failure:(void (^)(NSError *err))failure;
 

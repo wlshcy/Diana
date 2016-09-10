@@ -127,12 +127,11 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
     [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/onsales" parameter:nil success:success failure:failure];
 }
 
-+ (void)getCodeWithPhone:(NSString *)phone
-                    type:(NSString *)type
++ (void)getSMSCode:(NSString *)phone
                  success:(void (^)(id response))success
                  failure:(void (^)(NSError *err))failure
 {
-    NSDictionary *parameter = @{@"mobile":phone,XSRF:XSRFVALUE,@"type":type};
+    NSDictionary *parameter = @{@"mobile":phone,XSRF:XSRFVALUE};
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/util/smscode"
                          parameter:parameter
@@ -140,19 +139,14 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                            failure:failure];
 }
 
-+ (void)loginWithPhone:(NSString *)phone
++ (void)loginWithCode:(NSString *)phone
                   code:(NSString *)code
-                  type:(NSInteger)type
                success:(void (^)(id response))success
                failure:(void (^)(NSError *err))failure
 {
     NSDictionary *parameter;
-    if (type == 0) {
-        parameter = @{@"mobile":phone,XSRF:XSRFVALUE,@"smscode":code};
-    }else{
-        parameter = @{@"mobile":phone,XSRF:XSRFVALUE,@"password":code};
-    }
-    
+
+    parameter = @{@"mobile":phone,XSRF:XSRFVALUE,@"smscode":code};
     
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/auth/login"

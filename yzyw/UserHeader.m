@@ -1,11 +1,3 @@
-//
-//  UserHeader.m
-//  Garden
-//
-//  Created by nmg on 1/11/16.
-//  Copyright (c) 2015 nmg. All rights reserved.
-//
-
 #import "UserHeader.h"
 
 @interface UserHeader ()
@@ -78,11 +70,6 @@
         self.tipsLabel.hidden = NO;
         self.redView.hidden = YES;
     }
-    
-//    self.titleLabel.text = @"您购买的套餐";
-//    self.nameLabel.text = @"阖家幸福套餐";
-//    self.desLabel.text = @"每周配送1次  每次6斤";
-//    self.numberLabel.text = @"4次/月   共30斤";
 }
 
 
@@ -105,9 +92,9 @@
 }
 
 #pragma mark - gesture
-- (void)tapAvatar
+- (void)login
 {
-    [_delegate didTapUserHeader];
+    [_delegate login];
 }
 
 #pragma mark - Getter
@@ -134,7 +121,7 @@
         _avatar.layer.borderWidth = 1;
         
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAvatar)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(login)];
         [_avatar addGestureRecognizer:tap];
         tap = nil;
         
@@ -174,7 +161,7 @@
         _tipsLabel.font = FONT(16);
         _tipsLabel.textColor = RGB_COLOR(68, 102, 40);
         _tipsLabel.textAlignment = NSTextAlignmentCenter;
-        _tipsLabel.text = @"微信登录";
+        _tipsLabel.text = @"点击登录";
     }
     return _tipsLabel;
 }

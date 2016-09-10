@@ -10,7 +10,7 @@
 
 @protocol UserHeaderDelegate <NSObject>
 
-- (void)didTapUserHeader;
+- (void)login;
 
 @end
 
