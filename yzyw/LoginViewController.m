@@ -83,6 +83,7 @@
         }
         
     } failure:^(NSError *err) {
+
         [self showErrorStatusWithTitle:@"获取验证码失败"];
         
     }];
