@@ -63,7 +63,7 @@
 
 
 #pragma mark - UserAction
-- (void)getCode:(UIButton *)sender
+- (void)getSMSCode:(UIButton *)sender
 {
     if (![_phoneTextField.text ew_checkPhoneNumber]) {
         [self showErrorStatusWithTitle:@"请输入正确的手机号"];
@@ -72,22 +72,18 @@
     
     //request
     [HTTPManager getSMSCode:_phoneTextField.text success:^(id response) {
-    
-        DBLog(@"response=%@",response);
         
         if (response[@"errmsg"] != nil) {
             
             [self showErrorStatusWithTitle:response[@"errmsg"]];
             
         }else{
-            //btn status
             _timerBtn.enabled = NO;
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCount) userInfo:nil repeats:YES];
         }
         
-        
     } failure:^(NSError *err) {
-        DBError(err);
+        [self showErrorStatusWithTitle:@"获取验证码失败"];
         
     }];
     
@@ -107,9 +103,6 @@
     //request
     [HTTPManager loginWithSMSCode:_phoneTextField.text code:_codeTextField.text success:^(id response) {
         [self hideLoading];
-        
-        DBLog(@"response===%@",response);
-        
         if (response[@"errmsg"]!=nil) {
             [self showErrorStatusWithTitle:response[@"errmsg"]];
         }else{
@@ -234,7 +227,7 @@
         [_timerBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         _timerBtn.titleLabel.font = FONT(15);
         [_timerBtn setTitleColor:RGB_COLOR(48, 48, 48) forState:UIControlStateNormal];
-        [_timerBtn addTarget:self action:@selector(getCode:) forControlEvents:UIControlEventTouchUpInside];
+        [_timerBtn addTarget:self action:@selector(getSMSCode:) forControlEvents:UIControlEventTouchUpInside];
         [_timerBtn setTitleColor:RGB_COLOR(17,194,88)  forState:UIControlStateNormal];
     }
     return _timerBtn;

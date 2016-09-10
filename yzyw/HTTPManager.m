@@ -131,7 +131,7 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                  success:(void (^)(id response))success
                  failure:(void (^)(NSError *err))failure
 {
-    NSDictionary *parameter = @{@"mobile":phone,XSRF:XSRFVALUE};
+    NSDictionary *parameter = @{@"mobile":phone};
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/util/smscode"
                          parameter:parameter
@@ -144,6 +144,7 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                success:(void (^)(id response))success
                failure:(void (^)(NSError *err))failure
 {
+    
     NSDictionary *parameter;
 
     parameter = @{@"mobile":phone,XSRF:XSRFVALUE,@"smscode":code};
