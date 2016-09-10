@@ -65,7 +65,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setup];
-    [ self getVegData];
+    [ self getData];
 }
 
 - (void)setup
@@ -80,9 +80,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)getVegSlides
+- (void)getOnsales
 {
-    [HTTPManager getVegSlides:^(NSMutableArray *response) {
+    [HTTPManager getOnsales:^(NSMutableArray *response) {
         
         _slideData = response;
         
@@ -93,12 +93,11 @@
     }];
 
 }
-- (void)getVegs
+- (void)getItems
 {
     
-    [HTTPManager getVegs:nil success:^(NSMutableArray *response) {
+    [HTTPManager getItems:nil success:^(NSMutableArray *response) {
         
-        DBLog(@"%@", response);
         [self.collectionView.header endRefreshing];
         self.collectionView.footer.hidden = NO;
         
@@ -118,11 +117,11 @@
 
 
 
-- (void)getVegData
+- (void)getData
 {
     [self showLoading];
-    [self getVegSlides];
-    [self getVegs];
+    [self getOnsales];
+    [self getItems];
     [self hideLoading];
 }
 
@@ -187,21 +186,12 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-#pragma mark - User Action
-- (void)pushAllCaiPage:(id )sender
-{
-//    HomeViewController *controller = [[HomeViewController alloc] init];
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
-}
 
-
-- (void)getMoreVegs:(id)sender
+- (void)getMoreItems:(id)sender
 {
     NSString *lastid = [_listData lastObject][@"id"];
     
-    [HTTPManager getVegs:lastid success:^(NSMutableArray *response) {
-        DBLog(@"response===%@",response);
+    [HTTPManager getItems:lastid success:^(NSMutableArray *response) {
         
         [self.collectionView.footer endRefreshing];
         
@@ -258,14 +248,14 @@
         _collectionView.contentInset = UIEdgeInsetsMake(HEADERHEIGHT, 0, 0, 0);
         [_collectionView addSubview:self.header];
         
-        MJRefreshNormalHeader *refreshheader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getVegData)];
+        MJRefreshNormalHeader *refreshheader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getData)];
         refreshheader.ignoredScrollViewContentInsetTop = HEADERHEIGHT;
         refreshheader.lastUpdatedTimeLabel.hidden = YES;
         _collectionView.header = refreshheader;
 //        [self getVegs];
         
     
-        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMoreVegs:)];
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMoreItems:)];
         _collectionView.footer = footer;
         _collectionView.footer.hidden = YES;
 
@@ -385,59 +375,5 @@
     }];
     
 }
-
-
-#pragma mark - Add guid
-- (void)showGuideView
-{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    imageView.userInteractionEnabled = YES;
-    imageView.tag = 1024;
-    DBLog(@"frame===%@",NSStringFromCGRect(imageView.frame));
-    
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushCai)];
-//    [imageView addGestureRecognizer:tap];
-//    tap = nil;
-    
-    DeviceResolution device =  [EWUtils ew_deviceResolution];
-
-    
-    if (device == iPhone_320_480 || device == iPhone_640_960) {
-        imageView.image = [UIImage imageNamed:@"960-x"];
-    }else if (device == iPhone_640_1136){
-        imageView.image = [UIImage imageNamed:@"1136"];
-    }else if (device == iPhone_750_1334){
-        imageView.image = [UIImage imageNamed:@"1334"];
-    }else{
-        imageView.image = [UIImage imageNamed:@"2208"];
-    }
-    
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = CLEAR_COLOR;
-    [btn addTarget:self action:@selector(pushCai) forControlEvents:UIControlEventTouchUpInside];
-    
-    btn.frame = CGRectMake(0, 216/2.0+64+20+31, SCREEN_WIDTH, 112);
-    [imageView addSubview:btn];
-    
-    [UIView transitionWithView:imageView duration:0.5 options:UIViewAnimationOptionTransitionFlipFromTop animations:^{
-        [[APPDELEGATE window] addSubview:imageView];
-        
-    } completion:nil];
-    
-}
-
-- (void)pushCai
-{
-    UIView * temp = [[APPDELEGATE window] viewWithTag:1024];
-    
-    [UIView transitionWithView:temp duration:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [temp removeFromSuperview];
-    } completion:^(BOOL finished) {
-        [self pushAllCaiPage:nil];
-    }];
-}
-
 
 @end

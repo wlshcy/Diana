@@ -188,30 +188,7 @@
 
 - (void)upToRefresh
 {
-    NSString *lastid = [_listData lastObject][@"id"];
     
-    [HTTPManager getVegs:lastid success:^(NSMutableArray *response) {
-        DBLog(@"response===%@",response);
-        
-        [self.listView.footer endRefreshing];
-        
-        if (response.count == 0) {
-            [self showErrorStatusWithTitle:@"没有更多商品了"];
-            self.listView.footer.hidden = YES;
-            return ;
-        }
-        
-        [_listData addObjectsFromArray:response];
-        [_listView reloadData];
-        
-        if (response.count < LENGTH) {
-            self.listView.footer.hidden = YES;
-        }
-    } failure:^(NSError *err) {
-        [self.listView.footer endRefreshing];
-        
-    }];
-
 }
 
 

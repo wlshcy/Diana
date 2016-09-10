@@ -1,11 +1,3 @@
-//
-//  HTTPManager.h
-//  Garden
-//
-//  Created by 金学利 on 8/1/15.
-//  Copyright (c) 2015 Kingxl. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 
@@ -34,16 +26,10 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
                  success:(void (^)(id response))success
                  failure:(void (^)(NSError *err))failure;
 
-
-//init
-+ (void)appInitSuccess:(void (^)(id response))success
-               failure:(void (^)(NSError *err))failure;
-
-//getcode
 + (void)getCodeWithPhone:(NSString *)phone
                     type:(NSString *)type //修改密码传6 登录5
-                  success:(void (^)(id response))success
-                  failure:(void (^)(NSError *err))failure;
+                 success:(void (^)(id response))success
+                 failure:(void (^)(NSError *err))failure;
 
 
 //login
@@ -54,161 +40,17 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
                failure:(void (^)(NSError *err))failure;
 
 
-//zonelist
-+ (void)zoneListWithLocation:(CLLocationCoordinate2D)location
-                     success:(void (^)(id response))success
-                     failure:(void (^)(NSError *err))failure;
 
-
-
-//citylist
-+ (void)cityListWithSuccess:(void (^)(id response))success
-                   failure:(void (^)(NSError *err))failure;
-
-//region
-+ (void)regionListWithSuccess:(void (^)(id response))success
-                      failure:(void (^)(NSError *err))failure;
-//search
-+ (void)searchCityWithCityId:(NSString *)cid
-                     ksyword:(NSString *)keyword
-                     success:(void (^)(id response))success
-                     failure:(void (^)(NSError *err))failure;
-
-
-//address
-+ (void)addUserAddressWithID:(NSString *)aid
-                        name:(NSString *)name
-                      mobile:(NSString *)mobile
-                        city:(NSString *)city
-                      region:(NSString *)region
-                      street:(NSString *)street
-                         zid:(NSString *)zid
-                       zname:(NSString *)zname
-                    building:(NSString *)building
-                        unit:(NSString *)unit
-                        room:(NSString *)room
-                     success:(void (^)(id response))success
-                     failure:(void (^)(NSError *err))failure;
-
-//get address
-+ (void)getUserAddressWithSuccess:(void (^)(id response))success
-                          failure:(void (^)(NSError *err))failure;
-
-
-//combo
-+ (void)comboWithLastid:(NSString *)lastid
-                 length:(NSInteger)length
-                success:(void (^)(id response))success
-                failure:(void (^)(NSError *err))failure;
-
-
-//comboinfo
-+ (void)comboInfoWithID:(NSString *)cid
-                success:(void (^)(id response))success
-                failure:(void (^)(NSError *err))failure;
-
-
-//comboItemList
-+ (void)comboItemListWithId:(NSString *)cid
-                    orderno:(NSString *)orderno
-                       mode:(NSString *)mode
-                    success:(void (^)(id response))success
-                    failure:(void (^)(NSError *err))failure;
-
-
-//首页轮播图
-+ (void)getSlideWithSuccess:(void (^)(id response))success
-                    failure:(void (^)(NSError *err))failure;
-
-
-
-//更新
-+ (void)updateWithSuccess:(void (^)(id response))success
-                  failure:(void (^)(NSError *err))failure;
-
-
-//订单列表
-+ (void)orderListWithLastId:(NSString *)lastid
-                       type:(NSString*)type
-                    success:(void (^)(id response))success
-                    failure:(void (^)(NSError *err))failure;
-
-//订单详情
-+ (void)orderDetailWithOrderId:(NSString *)orderno
-                       success:(void (^)(id response))success
-                       failure:(void (^)(NSError *err))failure;
-
-
-//创建订单
-+ (void)createOrderWithComboId:(NSString *)comboId
-                      couponId:(NSString *)couponid  //add new 红包id
-                          type:(NSString *)type
-                      comboIdx:(NSString *)comboIdx
-                         items:(NSString *)items
-                        extras:(NSString *)extras
-                        spares:(NSString *)spares //add new  备选
-                          name:(NSString *)name
-                        mobile:(NSString *)mobile
-                       address:(NSString *)address
-                          memo:(NSString *)memo    //add new 备注
-                         addon:(NSString *)addon  //2.2.0 新增固定菜
-                       paytype:(NSString *)paytype  //2.支付宝支付，3.微信支付
-                       success:(void (^)(id response))success
-                       failure:(void (^)(NSError *err))failure;
-
-//pay order
-+ (void)payOrderWithOrderId:(NSString *)orderno
-                   couponId:(NSString *)coupon_id
-                    paytype:(NSString *)paytype
-                    success:(void (^)(id response))success
-                    failure:(void (^)(NSError *err))failure;
-
-
-//cai/delorder
-+ (void)delOrderWithId:(NSString *)orderid
-               success:(void (^)(id response))success
-               failure:(void (^)(NSError *err))failure;
-
-
-//反馈
-+ (void)feedBackWithContent:(NSString *)content
-                    success:(void (^)(id response))success
-                    failure:(void (^)(NSError *err))failure;
-
-
-//logout
-+ (void)logoutWithSuccess:(void (^)(id response))success
-                  failure:(void (^)(NSError *err))failure;
-//cai/altorder
-+ (void)alterOrderWithOrderNo:(NSString *)orderNo
-                        items:(NSString *)items
-                       spares:(NSString *)spares
-                        addon:(NSString *)addon
-                         name:(NSString *)name
-                       mobile:(NSString *)mobile
-                      address:(NSString *)address
-                         memo:(NSString *)memo
-                      success:(void (^)(id response))success
-                      failure:(void (^)(NSError *err))failure;
-
-
-// /cai/home
-//+ (void)caiHomeDataWithMode:(NSInteger)mode
-//                    success:(void (^)(id response))success
-//                    failure:(void (^)(NSError *err))failure;
-
-//+ (void)getVegs:(void (^)(id response))success
-//        failure:(void (^)(NSError *err))failure;
-
+//init
 + (void)showVeg:(NSString *)cid
         success:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure;
 
-+ (void) getVegs:(NSString *)lastid
++ (void) getItems:(NSString *)lastid
          success:(void (^)(id response))success
          failure:(void (^)(NSError *err))failure;
 
-+ (void)getVegSlides:(void (^)(id response))success
++ (void)getOnsales:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure;
 
 + (void) getEsps:(NSString *)lastid
