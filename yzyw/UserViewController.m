@@ -243,7 +243,7 @@
 //    [self presentViewController:navLogin animated:YES completion:nil];
     DBLog(@"go to wx");
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate loginWithWX:self];
+   // [delegate loginWithWX:self];
 }
 
 

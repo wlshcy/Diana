@@ -36,8 +36,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [self registRemoteNotification];
-    [self registLocalNotification];
     [self setupThirdparty];
     
     [[DBManager instance] createDB];
@@ -45,14 +43,6 @@
     [self changeToMainPage];
     
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //update
-        //[self appUpdate];
-
-    });
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jump:) name:@"JUMP" object:nil];
     
     return YES;
 }
@@ -111,12 +101,6 @@
 #pragma mark - config
 - (void)registRemoteNotification
 {
-}
-
-- (void)registLocalNotification
-{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login:) name:@"ERROR403" object:nil];
 }
 
 
@@ -226,168 +210,5 @@
         item.badgeBackgroundColor = RED_COLOR;
 
 }
-
-
-#pragma mark - InitApp
-- (void)initApp
-{
-    NSInteger flag = [[EWUtils getObjectForKey:SHOULDINIT] integerValue];
-    if (flag == 0) {
-        
-        [HTTPManager appInitSuccess:^(id response) {
-            if ([response[@"init"] integerValue] == 1) {
-                
-            }else{
-                DBLog(@"初始化失败~");
-            }
-
-        } failure:^(NSError *err) {
-            DBError(err);
-
-        }];
-    }else{
-        [EWUtils loadCookies];
-    }
-
-}
-
-
-#pragma mark - wechat paty
-//支付跳转回到 app 后带有支付状态
-- (void) onResp:(BaseResp*)resp
-{
-    
-    PayResp *response = (PayResp *)resp;
-    
-    switch (response.errCode)
-    {
-        case WXSuccess:
-            
-            //支付成功,进一步写相关逻辑
-            
-            POSTNOTIFICATION(@"WXPAYRESULT", @"0");
-            
-            break;
-            
-        case WXErrCodeUserCancel:
-            //用户中途取消支付
-            POSTNOTIFICATION(@"WXPAYRESULT", @"-2");
-
-            break;
-            
-        case WXErrCodeCommon:
-        case WXErrCodeAuthDeny:
-        case WXErrCodeSentFail:
-        case WXErrCodeUnsupport:
-            //支付失败!
-            POSTNOTIFICATION(@"WXPAYRESULT", @"-5");
-
-            break;
-            
-        default:
-            break;
-    }
-    
-}
-
-
-
-#pragma mark - app update
-- (void)appUpdate
-{
-    [HTTPManager updateWithSuccess:^(id response) {
-        
-        DBLog(@"----response=%@",response);
-        if (response[@"errmesg"] != nil) {
-            
-        }else{
-            
-            if ([VGUtils isNeedUpdate:response[@"version"]]) {
-                
-                if ([response[@"status"] integerValue] == 1) {
-                    DBLog(@"可更新");
-                    
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"应用升级" message:response[@"change"] delegate:nil cancelButtonTitle:@"更新" otherButtonTitles:@"取消", nil];
-                    
-                    [alert showAlertWithBlock:^(NSInteger buttonIndex) {
-                        
-                        if (buttonIndex == 1) {
-                            
-                            [EWUtils ew_jumpToAppleStore];
-                        }
-                        
-                    }];
-                    
-                    
-                }else if ([response[@"status"] integerValue] == 2){
-                    DBLog(@"强制更新");
-                    
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"应用升级" message:response[@"change"] delegate:nil cancelButtonTitle:@"更新" otherButtonTitles:nil, nil];
-                    
-                    [alert showAlertWithBlock:^(NSInteger buttonIndex) {
-
-                        [EWUtils ew_jumpToAppleStore];
-
-                        
-                    }];
-
-                }
-                
-            }
-            
-        }
-        
-    } failure:^(NSError *err) {
-        
-    }];
-}
-
-
-- (void)loginWithWX:(UIViewController *)controller
-{
-    SendAuthReq* req = [[SendAuthReq alloc] init] ;
-    req.scope = @"snsapi_userinfo"; // @"post_timeline,sns"
-    req.state = @"MyVillage";
-    
-    [WXApi sendAuthReq:req viewController:controller delegate:self];
-    
-}
-
-
-
-#pragma mark - handle login
-- (void)login:(NSNotification *)noti
-{
-    UINavigationController *nav = [self.tabBarController selectedViewController];
-    
-    UIViewController *controller = nav.viewControllers.lastObject;
-    
-    UINavigationController *navLogin = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
-    [controller presentViewController:navLogin animated:YES completion:nil];
-}
-
-//#pragma mark - red tabbar delegate
-//- (void)tabBarController:(RDVTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-//{
-//    DBLog(@"uiviewcontroller====%@",viewController);
-//    if ([viewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)viewController topViewController] isKindOfClass:[FindViewController class]]) {
-//        
-//        RDVTabBarItem *item = [[_tabbarController tabBar] items][2];
-//        [item setBadgeValue:@"0"];
-//        item.badgeTextColor = CLEAR_COLOR;
-//        item.badgeBackgroundColor = CLEAR_COLOR;
-//    }
-//}
-//
-//#pragma mark - showRedpoint
-//- (void)showRedpoint
-//{
-//    RDVTabBarItem *item = [[_tabbarController tabBar] items][2];
-//    [item setBadgeValue:@"0"];
-//    item.badgeTextColor = CLEAR_COLOR;
-//    item.badgeBackgroundColor = RED_COLOR;
-//}
-//
-
 
 @end

@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  Garden
+//  
 //
 //  Created by nmg on 16/2/2.
-//  Copyright (c) 2015 Kingxl. All rights reserved.
+//  Copyright (c) 2015 nmg. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -17,6 +17,5 @@
 - (void)changeToMainPage;
 -(void) updateCartTabBadge;
 
-- (void)loginWithWX:(UIViewController *)controller;
 
 @end
