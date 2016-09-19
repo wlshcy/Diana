@@ -133,8 +133,6 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                          parameter:parameter
                            success:success
                            failure:failure];
-    
-    
 }
 
 @end

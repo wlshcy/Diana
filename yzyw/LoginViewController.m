@@ -1,5 +1,7 @@
 #import "LoginViewController.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "Lockbox.h"
+
 @interface LoginViewController ()
 @property (nonatomic, strong) TPKeyboardAvoidingScrollView *scrollView;
 @property (nonatomic, strong) UIView *textBack;
@@ -104,29 +106,9 @@
     //request
     [HTTPManager loginWithSMSCode:_phoneTextField.text code:_codeTextField.text success:^(id response) {
         [self hideLoading];
-        if (response[@"errmsg"]!=nil) {
-            [self showErrorStatusWithTitle:response[@"errmsg"]];
-        }else{
-            [self showSuccessStatusWithTitle:@"登录成功"];
-            [EWUtils setObject:@"1" key:SHOULDINIT];
-            [EWUtils setObject:@"1" key:USERHASLOGIN];
-            
-            // SAVE USER INFO
-            [VGUtils saveUserData:response];
-            
-            //REFERSH HOME DATA & USER PAGE
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESHHOMEDATA" object:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESHUSERPAGE" object:nil];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESHTCPAGE" object:nil];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESHCAIHOMEDATA" object:nil];
-            //BACK
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self clickLeftBarButton:nil];
-            });
-        }
-        
+        DBLog(@"%@", response[@"token"]);
+        [Lockbox archiveObject:[NSString stringWithFormat:@"%@", response[@"token"]] forKey:@"token"];
+        [self.navigationController popViewControllerAnimated:true];
     } failure:^(NSError *err) {
         [self hideLoading];
         [self showFailureStatusWithTitle:NET_TIPS];
