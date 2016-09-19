@@ -24,6 +24,7 @@ PODS:
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
+  - Lockbox (3.0.2)
   - MBProgressHUD (0.9.2)
   - MJExtension (2.5.16)
   - MJRefresh (2.3.2)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
   - DLRadioButton (~> 1.4)
   - FMDB (~> 2.5)
+  - Lockbox
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 2.5.3)
   - MJRefresh (~> 2.3.2)
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   DLRadioButton: 8fe4865b3ea8a5236e1d114dd283dd0884d3dc46
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  Lockbox: bfc91deef886f9c0302e809a4d11e171c92c341b
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: b8c1321a77d91bcc007b94d38cbf5383c95ea30e
   MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
@@ -55,4 +58,6 @@ SPEC CHECKSUMS:
   RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: c0bf9fdd54355e5ba92b88b146eb630f46b24321
+
+COCOAPODS: 1.0.1
