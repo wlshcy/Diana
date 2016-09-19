@@ -11,18 +11,5 @@
 @interface VGUtils : NSObject
 
 + (BOOL)userHasLogin;
-+ (BOOL)isNeedUpdate:(NSString *)ver;
-
-+ (void)saveUserData:(NSDictionary *)data;
-
-+ (UIViewController *)cacheControllerWithName:(NSString *)name controllers:(NSArray *)controllers;
-
-void POSTNOTIFICATION(NSString *name,id data);
-
-void REMOVENOTIFICATION(id sender);
-
-NSString *STR(id data);
-
-+ (BOOL)isWelcome;
 
 @end

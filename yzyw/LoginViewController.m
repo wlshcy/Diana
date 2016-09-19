@@ -106,9 +106,13 @@
     //request
     [HTTPManager loginWithSMSCode:_phoneTextField.text code:_codeTextField.text success:^(id response) {
         [self hideLoading];
-        DBLog(@"%@", response[@"token"]);
+
         [Lockbox archiveObject:[NSString stringWithFormat:@"%@", response[@"token"]] forKey:@"token"];
-        [self.navigationController popViewControllerAnimated:true];
+        [Lockbox archiveObject:[NSString stringWithFormat:@"%@", _phoneTextField.text] forKey:@"phone"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESHUSERDATA" object:nil];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSError *err) {
         [self hideLoading];
         [self showFailureStatusWithTitle:NET_TIPS];

@@ -1,4 +1,5 @@
 #import "UserHeader.h"
+#import "Lockbox.h"
 
 @interface UserHeader ()
 @property (nonatomic, strong) UIImageView *backView;
@@ -28,7 +29,7 @@
         self.avatar.userInteractionEnabled = YES;
         self.loginLabel.hidden = YES;
         [self.avatar sd_setImageWithURL:[NSURL URLWithString:[EWUtils getObjectForKey:USERHEADIMG]] placeholderImage:[UIImage imageNamed:@"user_avatar"]];
-        self.phoneLabel.text = [EWUtils getObjectForKey:USERMOBILE];
+        self.phoneLabel.text = [Lockbox unarchiveObjectForKey:@"phone"];
 
     }else{
         self.avatar.userInteractionEnabled = YES;
@@ -43,12 +44,13 @@
     self.backView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 350/2.0);
     self.avatar.frame = CGRectMake((SCREEN_WIDTH-80)/2.0, 45, 80, 80);
     self.loginLabel.frame = CGRectMake(0, (self.avatar.height-20)/2.0, self.avatar.width, 20);
-    self.phoneLabel.frame = CGRectMake(0, self.avatar.bottom+5, SCREEN_WIDTH, 15);
+    self.phoneLabel.frame = CGRectMake(0, self.avatar.bottom+5, SCREEN_WIDTH, 20);
 }
 
 #pragma mark - gesture
 - (void)login
 {
+    DBLog(@"login");
     [_delegate login];
 }
 

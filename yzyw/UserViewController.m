@@ -46,9 +46,16 @@
     if (self = [super init]) {
         [self layoutNavigationBar];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUserData:) name:@"REFRESHUSERDATA" object:nil];
     }
     return self;
 }
+
+- (void)reloadUserData:(NSNotification *)noti
+{
+    [self.header configUserHeader:nil];
+}
+
 
 - (void)layoutNavigationBar
 {
