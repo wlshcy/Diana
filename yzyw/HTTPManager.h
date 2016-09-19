@@ -40,9 +40,9 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 
 
 //init
-//+ (void)showVeg:(NSString *)cid
-//        success:(void (^)(id response))success
-//        failure:(void (^)(NSError *err))failure;
++ (void)showVeg:(NSString *)cid
+        success:(void (^)(id response))success
+        failure:(void (^)(NSError *err))failure;
 
 + (void) getItems:(NSString *)lastid
          success:(void (^)(id response))success
@@ -52,32 +52,32 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
         failure:(void (^)(NSError *err))failure;
 
 
-//+ (void)addAddress:(NSString *)name
-//            mobile:(NSString *)mobile
-//            region:(NSString *)region
-//           address:(NSString *)address
-//           success:(void (^)(id response))success
-//           failure:(void (^)(NSError *err))failure;
-//
-//+ (void)getAddresses:(void (^)(id))success
-//             failure:(void (^)(NSError *))failure;
++ (void)addAddress:(NSString *)name
+            mobile:(NSString *)mobile
+            region:(NSString *)region
+           address:(NSString *)address
+           success:(void (^)(id response))success
+           failure:(void (^)(NSError *err))failure;
 
-//+ (void)getOrders:(NSString *)lastid
-//           length:(NSInteger)length
-//          success:(void (^)(id))success
-//             failure:(void (^)(NSError *))failure;
-//
-//+ (void)deleteAddress:(NSString *)addr_id
-//              success:(void (^)(id))success
-//             failure:(void (^)(NSError *))failure;
-//
-//+ (void)createOrder:(NSString *)name
-//             mobile:(NSString *)mobile
-//             region:(NSString *)region
-//            address:(NSString *)address
-//            paytype:(NSInteger)paytype
-//              items:(NSMutableArray *)items
-//            success:(void (^)(id response))success
-//            failure:(void (^)(NSError *err))failure;
++ (void)getAddresses:(void (^)(id))success
+             failure:(void (^)(NSError *))failure;
+
++ (void)getOrders:(NSString *)lastid
+           length:(NSInteger)length
+          success:(void (^)(id))success
+             failure:(void (^)(NSError *))failure;
+
++ (void)deleteAddress:(NSString *)addr_id
+              success:(void (^)(id))success
+             failure:(void (^)(NSError *))failure;
+
++ (void)createOrder:(NSString *)name
+             mobile:(NSString *)mobile
+             region:(NSString *)region
+            address:(NSString *)address
+            paytype:(NSInteger)paytype
+              items:(NSMutableArray *)items
+            success:(void (^)(id response))success
+            failure:(void (^)(NSError *err))failure;
 
 @end

@@ -1,6 +1,6 @@
 #import "HTTPManager.h"
 
-static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
+static NSString *const BASE_URL = @"http://192.168.1.100:8888";
 
 @implementation HTTPManager
 + (void)requestWithMethod:(RequestMethodType)methodType
@@ -100,6 +100,14 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
     
 }
 
++ (void)showVeg:(NSString *)vid
+        success:(void (^)(id response))success
+        failure:(void (^)(NSError *err))failure
+{
+    NSString *url = [NSString stringWithFormat:@"/v1/vegetables/%@",vid];
+    [HTTPManager requestWithMethod:RequestMethodTypeGet url:url parameter:nil success:success failure:failure];
+}
+
 + (void) getOnsales:(void (^)(id response))success
               failure:(void (^)(NSError *err))failure
 {
@@ -126,13 +134,97 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
     
     NSDictionary *parameter;
 
-    parameter = @{@"mobile":phone,XSRF:XSRFVALUE,@"smscode":code};
+    parameter = @{@"phone":phone,@"code":code};
     
     [HTTPManager requestWithMethod:RequestMethodTypePost
-                               url:@"/auth/login"
+                               url:@"/v1/login"
                          parameter:parameter
                            success:success
                            failure:failure];
 }
 
++ (void)addAddress:(NSString *)name
+            mobile:(NSString *)mobile
+            region:(NSString *)region
+           address:(NSString *)address
+           success:(void (^)(id response))success
+           failure:(void (^)(NSError *err))failure
+{
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    
+    [parameter setValue:name forKey:@"name"];
+    [parameter setValue:mobile forKey:@"mobile"];
+    [parameter setValue:region forKey:@"region"];
+    [parameter setValue:address forKey:@"address"];
+    [parameter setValue:XSRFVALUE forKey:XSRF];
+    
+    [HTTPManager requestWithMethod:RequestMethodTypePost
+                               url:@"/v1/addresses"
+                         parameter:parameter
+                           success:success
+                           failure:failure];
+}
+
++ (void)getAddresses:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    [HTTPManager requestWithMethod:RequestMethodTypeGet
+                               url:@"/v1/addresses"
+                         parameter:nil
+                           success:success
+                           failure:failure];
+}
+
++ (void) getOrders:(NSString *)lastid
+            length:(NSInteger)length
+           success:(void (^)(id response))success
+           failure:(void (^)(NSError *err))failure
+{
+    if (lastid != nil) {
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/orders" parameter:@{@"lastid":lastid,@"length":[NSString stringWithFormat:@"%ld", (long)length]} success:success failure:failure];
+    }else{
+        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/orders" parameter:@{@"length":[NSString stringWithFormat:@"%ld", (long)length]} success:success failure:failure];
+    }
+    
+}
+
++ (void)deleteAddress:(NSString *)addr_id
+              success:(void (^)(id))success
+              failure:(void (^)(NSError *))failure
+{
+    NSString *url = [NSString stringWithFormat:@"/v1/addresses/%@",addr_id];
+    [HTTPManager requestWithMethod:RequestMethodTypeDelete
+                               url:url
+                         parameter:nil
+                           success:success
+                           failure:failure];
+}
+
++ (void)createOrder:(NSString *)name
+             mobile:(NSString *)mobile
+             region:(NSString *)region
+            address:(NSString *)address
+            paytype:(NSInteger)paytype
+              items:(NSMutableArray *)items
+            success:(void (^)(id response))success
+            failure:(void (^)(NSError *err))failure
+{
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    
+    [parameter setValue:name forKey:@"name"];
+    [parameter setValue:mobile forKey:@"mobile"];
+    [parameter setValue:region forKey:@"region"];
+    [parameter setValue:address forKey:@"address"];
+    [parameter setValue:items forKey:@"items"];
+    [parameter setValue:XSRFVALUE forKey:XSRF];
+    
+    NSLog(@"%@", parameter);
+    
+    [HTTPManager requestWithMethod:RequestMethodTypePost
+                               url:@"/v1/orders"
+                         parameter:parameter
+                           success:success
+                           failure:failure];
+}
 @end
