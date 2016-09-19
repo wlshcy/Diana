@@ -3,7 +3,11 @@
 static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
 
 @implementation HTTPManager
-+ (void)requestWithMethod:(RequestMethodType)methodType url:(NSString *)url parameter:(NSDictionary *)parameter success:(void (^)(id))success failure:(void (^)(NSError *))failure
++ (void)requestWithMethod:(RequestMethodType)methodType
+                      url:(NSString *)url
+                parameter:(NSDictionary *)parameter
+                  success:(void (^)(id))success
+                  failure:(void (^)(NSError *))failure
 {
     AFHTTPRequestOperationManager* manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
     
@@ -20,21 +24,11 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
         {
             //GET请求
             [manager GET:url parameters:parameter
-                 success:^(AFHTTPRequestOperation* operation, NSDictionary* responseObj) {
+                 success:^(AFHTTPRequestOperation* operation, NSDictionary* response) {
                      if (success) {
-                         if ([url isEqualToString:@"/auth/init"]) {
-                             [EWUtils setObject:operation.response.allHeaderFields[@"X-Xsrftoken"] key:@"_xsrf"];
-                         }
-                         [EWUtils saveCookies];
-                         success(responseObj);
+                         success(response);
                          
-                         //
-                         //                         if ([responseObj[@"errcode"] integerValue] == 403 || 2001==[responseObj[@"errcode"] integerValue]) {
-                         //                             //处理403的问题
-                         //                             POSTNOTIFICATION(@"ERROR403", nil);
-                         //
-                         //                         }
-                     }
+                        }
                  } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
                      if (failure) {
                          failure(error);
@@ -47,16 +41,9 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
         {
             //POST请求
             [manager POST:url parameters:parameter
-                  success:^(AFHTTPRequestOperation* operation, NSDictionary* responseObj) {
+                  success:^(AFHTTPRequestOperation* operation, NSDictionary* response) {
                       if (success) {
-                          [EWUtils saveCookies];
-                          success(responseObj);
-                          
-                          if ([responseObj[@"errcode"] integerValue] == 403|| 2001==[responseObj[@"errcode"] integerValue]) {
-                              //处理403的问题
-                              POSTNOTIFICATION(@"ERROR403", nil);
-                              
-                          }
+                          success(response);
                           
                       }
                   } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
@@ -69,17 +56,9 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
         case RequestMethodTypeDelete:
         {
             [manager DELETE:url parameters:parameter
-                    success:^(AFHTTPRequestOperation* operation, NSDictionary* responseObj) {
+                    success:^(AFHTTPRequestOperation* operation, NSDictionary* response) {
                         if (success) {
-                            [EWUtils saveCookies];
-                            success(responseObj);
-                            
-                            if ([responseObj[@"errcode"] integerValue] == 403|| 2001==[responseObj[@"errcode"] integerValue]) {
-                                //处理403的问题
-                                POSTNOTIFICATION(@"ERROR403", nil);
-                                
-                            }
-                            
+                            success(response);
                         }
                     } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
                         if (failure) {
@@ -139,7 +118,7 @@ static NSString *const BASE_URL = @"http://api.freshtaste.me:8080";
                            failure:failure];
 }
 
-+ (void)loginWithCode:(NSString *)phone
++ (void)loginWithSMSCode:(NSString *)phone
                   code:(NSString *)code
                success:(void (^)(id response))success
                failure:(void (^)(NSError *err))failure
