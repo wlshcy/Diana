@@ -1,4 +1,5 @@
 #import "HTTPManager.h"
+#import "Lockbox.h"
 
 static NSString *const BASE_URL = @"http://192.168.1.100:8888";
 
@@ -6,18 +7,23 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
 + (void)requestWithMethod:(RequestMethodType)methodType
                       url:(NSString *)url
                 parameter:(NSDictionary *)parameter
+                    token:(NSString *)token
                   success:(void (^)(id))success
                   failure:(void (^)(NSError *))failure
 {
     AFHTTPRequestOperationManager* manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.requestSerializer.HTTPShouldHandleCookies = YES;
     [manager.requestSerializer setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
     [manager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", token] forHTTPHeaderField:@"X-Auth-Token"];
+    
     manager.operationQueue.maxConcurrentOperationCount = 5;
     manager.requestSerializer.timeoutInterval = 10;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
     
     switch (methodType) {
         case RequestMethodTypeGet:
@@ -39,6 +45,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
             break;
         case RequestMethodTypePost:
         {
+            
             //POST请求
             [manager POST:url parameters:parameter
                   success:^(AFHTTPRequestOperation* operation, NSDictionary* response) {
@@ -89,13 +96,24 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
 }
 
 + (void) getItems:(NSString *)lastid
+
           success:(void (^)(id response))success
           failure:(void (^)(NSError *err))failure
 {
     if (lastid != nil) {
-        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/items" parameter:@{@"lastid":lastid,@"length":@"10"} success:success failure:failure];
+        [HTTPManager requestWithMethod:RequestMethodTypeGet
+                                   url:@"/v1/items"
+                             parameter:@{@"lastid":lastid,@"length":@"10"}
+                                 token:nil
+                               success:success
+                               failure:failure];
     }else{
-        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/items" parameter:@{@"length":@"10"} success:success failure:failure];
+        [HTTPManager requestWithMethod:RequestMethodTypeGet
+                                   url:@"/v1/items"
+                             parameter:@{@"length":@"10"}
+                                 token:nil
+                               success:success
+                               failure:failure];
     }
     
 }
@@ -105,13 +123,23 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
         failure:(void (^)(NSError *err))failure
 {
     NSString *url = [NSString stringWithFormat:@"/v1/vegetables/%@",vid];
-    [HTTPManager requestWithMethod:RequestMethodTypeGet url:url parameter:nil success:success failure:failure];
+    [HTTPManager requestWithMethod:RequestMethodTypeGet
+                               url:url
+                         parameter:nil
+                             token:nil
+                           success:success
+                           failure:failure];
 }
 
 + (void) getOnsales:(void (^)(id response))success
               failure:(void (^)(NSError *err))failure
 {
-    [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/onsales" parameter:nil success:success failure:failure];
+    [HTTPManager requestWithMethod:RequestMethodTypeGet
+                               url:@"/v1/onsales"
+                         parameter:nil
+                             token:nil
+                           success:success
+                           failure:failure];
 }
 
 + (void)getSMSCode:(NSString *)phone
@@ -122,6 +150,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/util/smscode"
                          parameter:parameter
+                             token:nil
                            success:success
                            failure:failure];
 }
@@ -139,6 +168,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/v1/login"
                          parameter:parameter
+                             token:nil
                            success:success
                            failure:failure];
 }
@@ -162,6 +192,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/v1/addresses"
                          parameter:parameter
+                             token:[Lockbox unarchiveObjectForKey:@"token"]
                            success:success
                            failure:failure];
 }
@@ -171,6 +202,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     [HTTPManager requestWithMethod:RequestMethodTypeGet
                                url:@"/v1/addresses"
                          parameter:nil
+                             token:[Lockbox unarchiveObjectForKey:@"token"]
                            success:success
                            failure:failure];
 }
@@ -181,9 +213,19 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
            failure:(void (^)(NSError *err))failure
 {
     if (lastid != nil) {
-        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/orders" parameter:@{@"lastid":lastid,@"length":[NSString stringWithFormat:@"%ld", (long)length]} success:success failure:failure];
+        [HTTPManager requestWithMethod:RequestMethodTypeGet
+                                   url:@"/v1/orders"
+                             parameter:@{@"lastid":lastid,@"length":[NSString stringWithFormat:@"%ld", (long)length]}
+                                 token:[Lockbox unarchiveObjectForKey:@"token"]
+                               success:success
+                               failure:failure];
     }else{
-        [HTTPManager requestWithMethod:RequestMethodTypeGet url:@"/v1/orders" parameter:@{@"length":[NSString stringWithFormat:@"%ld", (long)length]} success:success failure:failure];
+        [HTTPManager requestWithMethod:RequestMethodTypeGet
+                                   url:@"/v1/orders"
+                             parameter:@{@"length":[NSString stringWithFormat:@"%ld", (long)length]}
+                                 token:[Lockbox unarchiveObjectForKey:@"token"]
+                               success:success
+                               failure:failure];
     }
     
 }
@@ -196,6 +238,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     [HTTPManager requestWithMethod:RequestMethodTypeDelete
                                url:url
                          parameter:nil
+                             token:[Lockbox unarchiveObjectForKey:@"token"]
                            success:success
                            failure:failure];
 }
@@ -224,6 +267,7 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     [HTTPManager requestWithMethod:RequestMethodTypePost
                                url:@"/v1/orders"
                          parameter:parameter
+                             token:[Lockbox unarchiveObjectForKey:@"token"]
                            success:success
                            failure:failure];
 }

@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 +(void)requestWithMethod:(RequestMethodType)methodType
                      url:(NSString *)url
                parameter:(NSDictionary *)parameter
+                token:(NSString *)token
                  success:(void (^)(id response))success
                  failure:(void (^)(NSError *err))failure;
 
