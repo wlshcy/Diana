@@ -127,9 +127,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ITEMCELL" forIndexPath:indexPath];
-        
+    ItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HOMEITEMCELL" forIndexPath:indexPath];
     [cell configItemCell:_listData[indexPath.row]];
+    
     return cell;
 }
 
@@ -152,7 +152,6 @@
     return CGSizeMake(SCREEN_WIDTH, 30);
 }
 
-#pragma mark --- delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ItemDetailViewController *controller = [[ItemDetailViewController alloc] init];
@@ -220,7 +219,7 @@
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
-        [_collectionView registerClass:[ItemCell class] forCellWithReuseIdentifier:@"CAICELL"];
+        [_collectionView registerClass:[ItemCell class] forCellWithReuseIdentifier:@"HOMEITEMCELL"];
         [_collectionView registerClass:[ItemSectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER"];
         
         _collectionView.contentInset = UIEdgeInsetsMake(HEADERHEIGHT, 0, 0, 0);

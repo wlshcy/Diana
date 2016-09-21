@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 
 
 //init
-+ (void)showVeg:(NSString *)cid
++ (void)showItem:(NSString *)cid
         success:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure;
 

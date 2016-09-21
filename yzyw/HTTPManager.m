@@ -1,7 +1,7 @@
 #import "HTTPManager.h"
 #import "Lockbox.h"
 
-static NSString *const BASE_URL = @"http://192.168.1.100:8888";
+static NSString *const BASE_URL = @"http://127.0.0.1:8888";
 
 @implementation HTTPManager
 + (void)requestWithMethod:(RequestMethodType)methodType
@@ -117,11 +117,11 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     
 }
 
-+ (void)showVeg:(NSString *)vid
++ (void)showItem:(NSString *)vid
         success:(void (^)(id response))success
         failure:(void (^)(NSError *err))failure
 {
-    NSString *url = [NSString stringWithFormat:@"/v1/vegetables/%@",vid];
+    NSString *url = [NSString stringWithFormat:@"/v1/items/%@",vid];
     [HTTPManager requestWithMethod:RequestMethodTypeGet
                                url:url
                          parameter:nil
