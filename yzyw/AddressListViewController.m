@@ -155,12 +155,19 @@
             UIButton *default_btn = [UIButton buttonWithType:UIButtonTypeCustom];
             default_btn.frame = CGRectMake(8, 10, 100, 20);
             default_btn.backgroundColor = WHITE_COLOR;
-            [default_btn setTitle:@"设为默认" forState:UIControlStateNormal];
-            [default_btn setImage:[UIImage imageNamed:@"set_default.png"] forState:UIControlStateNormal];
             [default_btn setTitleColor:BLACK_COLOR forState:UIControlStateNormal];
             default_btn.titleLabel.font = FONT(14);
             default_btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
-            [default_btn addTarget:self action:@selector(setDefault:) forControlEvents:UIControlEventTouchUpInside];
+            
+
+            if ([_listData[indexPath.section][@"default"] boolValue]) {
+                [default_btn setTitle:@"默认地址" forState:UIControlStateNormal];
+                [default_btn setImage:[UIImage imageNamed:@"default_addr.png"] forState:UIControlStateNormal];
+            }else{
+                [default_btn setTitle:@"设为默认" forState:UIControlStateNormal];
+                [default_btn setImage:[UIImage imageNamed:@"set_default.png"] forState:UIControlStateNormal];
+                [default_btn addTarget:self action:@selector(setDefault:) forControlEvents:UIControlEventTouchUpInside];
+            }
             [cell addSubview:default_btn];
             
             UIButton *edit_btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -186,12 +193,7 @@
             [cell addSubview:del_btn];
      }
     
-    
-    
         return cell;
-        
-        
-        
    }
 
 
@@ -221,11 +223,13 @@
         [self.listView.header endRefreshing];
         self.listView.footer.hidden = NO;
         
-        
         [_listData removeAllObjects];
         [_listData addObjectsFromArray:response];
         
-        DBLog(@"%@", _listData);
+        [_listData sortUsingDescriptors:
+         @[
+           [NSSortDescriptor sortDescriptorWithKey:@"default" ascending:NO],
+           ]];
         
         [self.listView reloadData];
         
@@ -276,23 +280,6 @@
     return _bottomView;
 }
 
-//- (UIButton *)addBtn
-//{
-//    if (!_addBtn) {
-//        _addBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-//        _addBtn.frame = CGRectMake(20, 5, SCREEN_WIDTH-40, 45);
-//        _addBtn.backgroundColor = RGB_COLOR(243, 96, 67);
-//        [_addBtn setTitle:@"添加地址" forState:UIControlStateNormal];
-//        [_addBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
-//        _addBtn.titleLabel.font = FONT(16);
-//        _addBtn.layer.cornerRadius = 3;
-//        [_addBtn addTarget:self action:@selector(addAddr:) forControlEvents:UIControlEventTouchUpInside];
-//        _addBtn.adjustsImageWhenHighlighted = YES;
-//    }
-//    
-//    return _addBtn;
-//}
-
 - (UIButton *)addBtn
 {
     if (!_addBtn) {
@@ -321,15 +308,23 @@
 
 - (void)setDefault:(UIButton *)sender
 {
+    AddressListCell *cell = (AddressListCell *)sender.superview;
+    NSIndexPath *indexPath = [self.listView indexPathForCell:cell];
     [sender setTitle:@"默认地址" forState:UIControlStateNormal];
     [sender setImage:[UIImage imageNamed:@"default_addr.png"] forState:UIControlStateNormal];
+    [HTTPManager defaultAddress:_listData[indexPath.section][@"id"] success:^(NSMutableArray *response) {
+        [self.listView.header beginRefreshing];
+        
+    } failure:^(NSError *err) {
+        
+    }];
+
 }
 
 - (void)deleteAddr:(UIButton *)sender
 {
     AddressListCell *cell = (AddressListCell *)sender.superview;
     NSIndexPath *indexPath = [self.listView indexPathForCell:cell];
-    DBLog(@"%ld", (long)indexPath.row);
     
     [HTTPManager deleteAddress:_listData[indexPath.section][@"id"] success:^(NSMutableArray *response) {
         [self.listView.header beginRefreshing];
@@ -337,16 +332,6 @@
     } failure:^(NSError *err) {
        
     }];
-
-    
-//    for (AddressListCell *cell in [self.listView visibleCells] ) {
-//        if (CGRectIntersectsRect(sender.frame, cell.frame)) {
-//            NSIndexPath *indexPath = [self.listView indexPathForCell:cell];
-//            NSString *addr_id = _listData[indexPath.row][@"id"];
-//            NSLog(@"%@", addr_id);
-//        }
-//    }
-    
 }
 
 @end

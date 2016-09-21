@@ -63,13 +63,17 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getAddresses:(void (^)(id))success
              failure:(void (^)(NSError *))failure;
 
++ (void)deleteAddress:(NSString *)addr_id
+              success:(void (^)(id))success
+              failure:(void (^)(NSError *))failure;
+
++ (void)defaultAddress:(NSString *)addr_id
+               success:(void (^)(id))success
+               failure:(void (^)(NSError *))failure;
+
 + (void)getOrders:(NSString *)lastid
            length:(NSInteger)length
           success:(void (^)(id))success
-             failure:(void (^)(NSError *))failure;
-
-+ (void)deleteAddress:(NSString *)addr_id
-              success:(void (^)(id))success
              failure:(void (^)(NSError *))failure;
 
 + (void)createOrder:(NSString *)name
