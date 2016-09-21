@@ -18,7 +18,6 @@ static NSString *const BASE_URL = @"http://192.168.1.100:8888";
     manager.requestSerializer.HTTPShouldHandleCookies = YES;
     [manager.requestSerializer setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
     [manager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", token] forHTTPHeaderField:@"X-Auth-Token"];
     
     manager.operationQueue.maxConcurrentOperationCount = 5;

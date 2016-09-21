@@ -1,11 +1,3 @@
-//
-//  VegViewController.m
-//  Lynp
-//
-//  Created by nmg on 1/11/16.
-//  Copyright (c) 2015. All rights reserved.
-//
-
 #import "HomeViewController.h"
 #import "ItemCell.h"
 #import "ItemSectionHeader.h"
@@ -41,9 +33,6 @@
     if (self = [super init]) {
         [self layoutNavigationBar];
         _listData = [NSMutableArray arrayWithCapacity:5];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopTimer:) name:@"STOPTIMER" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCaiData) name:@"REFRESHCAIHOMEDATA" object:nil];
     }
     return self;
 }
@@ -138,7 +127,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CAICELL" forIndexPath:indexPath];
+    ItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ITEMCELL" forIndexPath:indexPath];
         
     [cell configItemCell:_listData[indexPath.row]];
     return cell;
@@ -147,7 +136,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     ItemSectionHeader *head = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SECTIONHEADER" forIndexPath:indexPath];
-    if (_items) {
+    if (_items.count > 0) {
         head.titleLabel.text = @"蔬菜优选";
         head.line.hidden = NO;
     }else{
@@ -214,17 +203,6 @@
 
 }
 
-
-- (void)stopTimer:(NSNotification *)noti
-{
-    [self.header stopTimer];
-}
-
-- (void)reloadCaiData
-{
-    [self.collectionView.header beginRefreshing];
-}
-
 #pragma mark - Getter
 - (UICollectionView *)collectionView
 {
@@ -252,37 +230,13 @@
         refreshheader.ignoredScrollViewContentInsetTop = HEADERHEIGHT;
         refreshheader.lastUpdatedTimeLabel.hidden = YES;
         _collectionView.header = refreshheader;
-//        [self getVegs];
         
-    
         MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMoreItems:)];
         _collectionView.footer = footer;
         _collectionView.footer.hidden = YES;
-
-
-        
     }
     return _collectionView;
 }
-
-
-- (HomeHeader *)header
-{
-    if (!_header) {
-        _header = [HomeHeader new];
-        _header.frame = CGRectMake(0, -(HEADERHEIGHT), SCREEN_WIDTH,HEADERHEIGHT);
-        [_header.allCaiBtn addTarget:self action:@selector(pushAllCaiPage:) forControlEvents:UIControlEventTouchUpInside];
-        _header.delegate = self;
-    }
-    return _header;
-}
-
-- (UIRectEdge)edgesForExtendedLayout
-{
-    return UIRectEdgeAll;
-}
-
-
 
 - (UIScrollView *)scrollView
 {
@@ -292,88 +246,9 @@
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;
-//        _scrollView.bounces = NO;
         _scrollView.delegate = self;
     }
     
     return _scrollView;
 }
-
-
-
-//guide page
-- (void)showGuidePage
-{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [app.window addSubview:self.scrollView];
-    
-    NSArray *names = nil;
-    
-    
-    if ((SCREEN_HEIGHT == 480 && SCREEN_WIDTH == 320)||(SCREEN_WIDTH == 640/2.0 && SCREEN_HEIGHT == 960/2.0)) {
-        names = @[@"640-960_1.jpg",@"640-960_2.jpg",@"640-960_3.jpg"];
-    }else if (SCREEN_WIDTH == 640/2.0 && SCREEN_HEIGHT == 1136/2.0) {
-        names = @[@"640-1136_1.jpg",@"640-1136_2.jpg",@"640-1136_3.jpg"];
-    }else if (SCREEN_WIDTH == 750/2.0 && SCREEN_HEIGHT == 1334/2.0) {
-        names = @[@"750-1334_1.jpg",@"750-1334_2.jpg",@"750-1334_3.jpg"];
-    }else{
-        names = @[@"1242-2202_1.jpg",@"1242-2202_2.jpg",@"1242-2202_3.jpg"];
-    }
-    
-    for (NSInteger i = 0 ; i < 3; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        imageView.image = [UIImage ew_imageWithContentOfFile:names[i]];
-        [_scrollView addSubview:imageView];
-/*
-        if (i == 2) {
-            
-            imageView.userInteractionEnabled = YES;
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(70, SCREEN_HEIGHT-50, SCREEN_WIDTH-140, 40)];
-            [btn setBackgroundImage:[UIImage imageNamed:@"launch_btn_1"] forState:UIControlStateNormal];
-            [btn setBackgroundImage:[UIImage imageNamed:@"launch_btn_2"] forState:UIControlStateSelected];
-            [btn setTitle:@"立即体验" forState:UIControlStateNormal];
-            [btn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
-            [btn addTarget:self action:@selector(removeGuide) forControlEvents:UIControlEventTouchUpInside];
-            btn.titleLabel.font = FONT(14);
-            [imageView addSubview:btn];
-        }
- */
-        
-    }
-}
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (scrollView == _scrollView) {
-        DBLog(@"-------%@",@(scrollView.contentOffset.x));
-        if (scrollView.contentOffset.x > SCREEN_WIDTH*2+60) {
-            [self removeGuide];
-        }
-    }
-}
-
-
-- (void)removeGuide
-{
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
-        self.scrollView.left = 0-SCREEN_WIDTH;
-        
-    } completion:^(BOOL finished) {
-        
-        [self.scrollView removeFromSuperview];
-        [self setup];
-        
-        [EWUtils deleteObject:@"GUIDEVIEW"];
-        
-        [EWUtils setObject:[EWUtils ew_bundleVersion] key:@"APPVERSION"];
-        
-        [self.collectionView.header beginRefreshing];
-        
-        
-    }];
-    
-}
-
 @end
