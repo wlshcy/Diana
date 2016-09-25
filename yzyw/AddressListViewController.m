@@ -312,7 +312,7 @@
     NSIndexPath *indexPath = [self.listView indexPathForCell:cell];
     [sender setTitle:@"默认地址" forState:UIControlStateNormal];
     [sender setImage:[UIImage imageNamed:@"default_addr.png"] forState:UIControlStateNormal];
-    [HTTPManager defaultAddress:_listData[indexPath.section][@"id"] success:^(NSMutableArray *response) {
+    [HTTPManager setDefaultAddress:_listData[indexPath.section][@"id"] success:^(NSMutableArray *response) {
         [self.listView.header beginRefreshing];
         
     } failure:^(NSError *err) {

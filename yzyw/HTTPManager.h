@@ -67,7 +67,7 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
               success:(void (^)(id))success
               failure:(void (^)(NSError *))failure;
 
-+ (void)defaultAddress:(NSString *)addr_id
++ (void)setDefaultAddress:(NSString *)addr_id
                success:(void (^)(id))success
                failure:(void (^)(NSError *))failure;
 

@@ -242,7 +242,7 @@ static NSString *const BASE_URL = @"http://127.0.0.1:8888";
                            failure:failure];
 }
 
-+ (void)defaultAddress:(NSString *)addr_id
++ (void)setDefaultAddress:(NSString *)addr_id
                success:(void (^)(id))success
                failure:(void (^)(NSError *))failure
 {
