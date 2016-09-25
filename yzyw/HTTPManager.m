@@ -255,6 +255,18 @@ static NSString *const BASE_URL = @"http://127.0.0.1:8888";
                            failure:failure];
 }
 
++ (void)getDefaultAddress:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    NSString *url = [NSString stringWithFormat:@"/v1/default/address"];
+    [HTTPManager requestWithMethod:RequestMethodTypeGet
+                               url:url
+                         parameter:nil
+                             token:[Lockbox unarchiveObjectForKey:@"token"]
+                           success:success
+                           failure:failure];
+}
+
+
 + (void)createOrder:(NSString *)name
              mobile:(NSString *)mobile
              region:(NSString *)region

@@ -6,6 +6,7 @@
 //  Copyright (c) 2016 nmg. All rights reserved.
 //
 
+#import "LoginViewController.h"
 #import "PayController.h"
 #import "OrderEnsureViewController.h"
 #import "AddressCell.h"
@@ -68,6 +69,8 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView addSubview:self.priceLabel];
     [self.bottomView addSubview:self.submitBtn];
+    
+    [self setup];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -106,7 +109,7 @@
 
 - (void)setup
 {
-    [self.view addSubview:self.listView];
+    [self getDefaultAddress];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +126,27 @@
     [self.listView reloadData];
     
 }
+
+- (void)getDefaultAddress
+{
+    [HTTPManager getDefaultAddress:^(NSDictionary *response) {
+        
+        self.address = response;
+        
+        [self.listView reloadData];
+        
+    } failure:^(NSError *err) {
+        DBLog(@"%@", err);
+        
+        long statusCode = [[[err userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
+        if (statusCode == 401){
+            UINavigationController *navLogin = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
+            [self presentViewController:navLogin animated:YES completion:nil];
+            [self getDefaultAddress];
+        }
+    }];
+}
+
 
 #pragma mark - TableViewDelegate & Datasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -164,9 +188,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-//    if (section == 0 || section == 1) {
-//        return 33;
-//    }
     if (section == 0) {
         return 0;
     }
